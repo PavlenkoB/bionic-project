@@ -1,0 +1,3 @@
+add to fill DB
+* DELETE FROM orders;
+* ALTER SEQUENCE orders_id_seq RESTART WITH 1;

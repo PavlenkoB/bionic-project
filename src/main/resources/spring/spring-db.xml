@@ -17,41 +17,22 @@
         <jdbc:script encoding="utf-8" location="classpath:db/fillDB.sql"/>
     </jdbc:initialize-database>
 
-    <beans profile="postgres">
-        <context:property-placeholder location="classpath:db/postgres.properties" system-properties-mode="OVERRIDE"/>
+    <beans profile="mysql">
+        <context:property-placeholder location="classpath:db/mysql.properties" system-properties-mode="OVERRIDE"/>
     </beans>
 
     <beans profile="hsqldb">
         <context:property-placeholder location="classpath:db/hsqldb.properties" system-properties-mode="OVERRIDE"/>
     </beans>
 
-    <beans profile="jdbc">
-        <context:component-scan base-package="edu.bionic.dao.jdbc"/>
 
-        <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
-            <constructor-arg ref="dataSource"/>
-        </bean>
-
-        <bean id="namedJdbcTemplate" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
-            <constructor-arg ref="dataSource"/>
-        </bean>
-
-        <!-- Define transaction manager -->
-        <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-            <!-- (this dependency is defined somewhere else) -->
-            <property name="dataSource" ref="dataSource"/>
-        </bean>
-
-        <!-- enable the configuration of transactional behavior based on annotations -->
-        <tx:annotation-driven transaction-manager="txManager" proxy-target-class="true"/>
-    </beans>
 
     <beans profile="jpa">
-        <context:component-scan base-package="edu.bionic.dao.jpa"/>
+        <context:component-scan base-package="ua.ho.godex.dao.jpa"/>
 
         <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
             <property name="dataSource" ref="dataSource"/>
-            <property name="packagesToScan" value="edu.bionic.domain"/>
+            <property name="packagesToScan" value="ua.ho.godex.domain"/>
             <property name="jpaVendorAdapter">
                 <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
             </property>

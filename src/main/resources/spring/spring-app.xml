@@ -10,12 +10,4 @@
     <context:annotation-config/>
     <context:component-scan base-package="ua.ho.godex.service"/>
 
-    <beans profile="mock">
-        <bean id="orderDaoMock" class="edu.bionic.dao.mock.OrderDaoMock" init-method="initOrderStorage"/>
-        <bean id="productDaoMock" class="edu.bionic.dao.mock.ProductDaoMock" init-method="initProductStorage"/>
-        <bean id="commentDaoMock" class="edu.bionic.dao.mock.CommentDaoMock" init-method="initCommentStorage"/>
-
-        <context:component-scan base-package="edu.bionic.presentation.console"/>
-    </beans>
-
 </beans>

@@ -1,3 +1,5 @@
+
+
 DROP TABLE IF EXISTS comments;
 DROP SEQUENCE IF EXISTS comments_id_seq;
 DROP TABLE IF EXISTS orders_products;

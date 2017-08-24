@@ -1,10 +1,6 @@
-DELETE FROM comments;
-ALTER SEQUENCE comments_id_seq RESTART WITH 1;
-DELETE FROM orders_products;
-DELETE FROM orders;
-ALTER SEQUENCE orders_id_seq RESTART WITH 1;
-DELETE FROM products;
-ALTER SEQUENCE products_id_seq RESTART WITH 1;
+DELETE FROM users;
+
+INSERT INTO users ()
 
 INSERT INTO products (name, price, color, capacity, display, description)
 VALUES ('iPhone 6', 650, 0, 64, '4,7 inch', NULL);
