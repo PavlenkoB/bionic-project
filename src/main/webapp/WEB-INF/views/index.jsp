@@ -11,7 +11,7 @@
     <title>index</title>
 </head>
 <body>
-index
+index page
 
 </body>
 </html>

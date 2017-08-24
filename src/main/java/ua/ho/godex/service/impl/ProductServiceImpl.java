@@ -1,5 +1,6 @@
 package ua.ho.godex.service.impl;
 
+import ua.ho.godex.domain.Product;
 import ua.ho.godex.service.ProductService;
 
 import java.math.BigDecimal;
@@ -17,7 +18,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> getAll(String name, BigDecimal min, BigDecimal max, ProductSort productSort, int offset, int limit) {
+    public List<Product> getAll(String name, BigDecimal min, BigDecimal max,  int offset, int limit) {
         return null;
     }
 

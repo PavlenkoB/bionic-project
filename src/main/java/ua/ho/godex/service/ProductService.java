@@ -1,7 +1,7 @@
 package ua.ho.godex.service;
 
-import edu.bionic.domain.Product;
-import edu.bionic.domain.ProductSort;
+
+import ua.ho.godex.domain.Product;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -10,7 +10,7 @@ public interface ProductService {
 
     List<Product> getAll();
 
-    List<Product> getAll(String name, BigDecimal min, BigDecimal max, ProductSort productSort, int offset, int limit);
+    List<Product> getAll(String name, BigDecimal min, BigDecimal max, int offset, int limit);
 
     int getCount(String name, BigDecimal min, BigDecimal max);
 

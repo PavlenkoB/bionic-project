@@ -21,8 +21,6 @@ public class Product {
     @Min(value = 0, message = "Цена должна быть больше 0")
     private BigDecimal price;
     @NotNull(message = "Обязательное поле")
-    private Color color;
-    @NotNull(message = "Обязательное поле")
     @Min(value = 0, message = "Память должна быть больше 0")
     private Integer capacity;
     @NotBlank(message = "Обязательное поле")
@@ -36,11 +34,10 @@ public class Product {
         this.id = id;
     }
 
-    public Product(Integer id, String name, BigDecimal price, Color color, Integer capacity, String display, String description) {
+    public Product(Integer id, String name, BigDecimal price, Integer capacity, String display, String description) {
         this.id = id;
         this.name = name;
         this.price = price.setScale(2, BigDecimal.ROUND_HALF_UP);
-        this.color = color;
         this.capacity = capacity;
         this.display = display;
         this.description = description;
@@ -56,7 +53,6 @@ public class Product {
         if (id != null ? !id.equals(product.id) : product.id != null) return false;
         if (name != null ? !name.equals(product.name) : product.name != null) return false;
         if (price != null ? !price.equals(product.price) : product.price != null) return false;
-        if (color != product.color) return false;
         if (capacity != null ? !capacity.equals(product.capacity) : product.capacity != null) return false;
         if (display != null ? !display.equals(product.display) : product.display != null) return false;
         return description != null ? description.equals(product.description) : product.description == null;
@@ -67,7 +63,6 @@ public class Product {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (price != null ? price.hashCode() : 0);
-        result = 31 * result + (color != null ? color.hashCode() : 0);
         result = 31 * result + (capacity != null ? capacity.hashCode() : 0);
         result = 31 * result + (display != null ? display.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);
@@ -80,7 +75,6 @@ public class Product {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", price=" + price +
-                ", color=" + color +
                 ", capacity=" + capacity +
                 ", display='" + display + '\'' +
                 ", description='" + description + '\'' +
@@ -111,14 +105,6 @@ public class Product {
         this.price = price.setScale(2, BigDecimal.ROUND_HALF_UP);
     }
 
-    public Color getColor() {
-        return color;
-    }
-
-    public void setColor(Color color) {
-        this.color = color;
-    }
-
     public Integer getCapacity() {
         return capacity;
     }
@@ -136,7 +122,7 @@ public class Product {
     }
 
     public String printInfo() {
-        return String.format("%d. %s %s %d - %.2f", id, name, color, capacity, price);
+        return String.format("%d. %s %d - %.2f", id, name, capacity, price);
     }
 
     public String getDescription() {
