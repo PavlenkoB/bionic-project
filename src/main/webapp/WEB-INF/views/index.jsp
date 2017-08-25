@@ -17,7 +17,8 @@
 <jsp:include page="parts/header.jsp"/>
 <c:forEach items="${users}" var="user">
     <jsp:useBean id="user" type="ua.ho.godex.domain.User"/>
-
+    <br>
+    ${user.printInfo}
 
 </c:forEach>
 

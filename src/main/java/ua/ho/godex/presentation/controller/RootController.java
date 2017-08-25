@@ -4,7 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import ua.ho.godex.domain.User;
 import ua.ho.godex.service.UserService;
+
+import java.util.List;
 
 /**
  * Creator: Pavlenko Bohdan
@@ -24,8 +27,8 @@ public class RootController {
     @GetMapping("/")
     public String showMainPage(Model model) {
         //todo first
-//        List<User> userList = userService.getAll();
-//        model.addAttribute("users", userList);
+        List<User> userList = userService.getAll();
+        model.addAttribute("users", userList);
         return "index";
     }
 }
