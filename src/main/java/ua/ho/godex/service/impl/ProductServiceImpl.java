@@ -20,7 +20,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     //todo Write method
-    public List<Product> getAll(String name, BigDecimal min, BigDecimal max,  int offset, int limit) {
+    public List<Product> getAll(String name, BigDecimal min, BigDecimal max, int offset, int limit) {
         return null;
     }
 
