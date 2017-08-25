@@ -23,7 +23,9 @@ public class RootController {
 
     @GetMapping("/")
     public String showMainPage(Model model) {
-        model.addAttribute("users", userService.getAll());
+        //todo first
+//        List<User> userList = userService.getAll();
+//        model.addAttribute("users", userList);
         return "index";
     }
 }

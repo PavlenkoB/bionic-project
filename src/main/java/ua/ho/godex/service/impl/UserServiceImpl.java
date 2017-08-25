@@ -20,7 +20,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> getAll() {
-        return null;
+        return userDao.getAll();
     }
 
     @Override
@@ -30,16 +30,16 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User create(User user) {
-        return null;
+        return userDao.save(user);
     }
 
     @Override
     public void update(User user) {
-
+        userDao.save(user);
     }
 
     @Override
-    public void delete(Integer userId) {
-
+    public boolean delete(Integer userId) {
+        return userDao.delete(userId);
     }
 }

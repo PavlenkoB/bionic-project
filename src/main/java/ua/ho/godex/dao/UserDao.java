@@ -15,4 +15,12 @@ public interface UserDao {
     Optional<User> getById(int userId);
 
     Optional<User> getByEmail(String email);
+
+    /**
+     * Delete user from DB
+     *
+     * @param userId User id
+     * @return 1 - if delete 1 or more, 0 - if something wrong
+     */
+    boolean delete(Integer userId);
 }
