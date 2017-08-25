@@ -5,3 +5,5 @@ add to fill DB
 add favicon
 
 move to spring-boot
+
+rename Attribute to Property
