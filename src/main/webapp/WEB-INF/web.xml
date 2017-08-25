@@ -12,7 +12,7 @@
 
     <context-param>
         <param-name>spring.profiles.default</param-name>
-        <param-value>mysql, jpa</param-value>
+        <param-value>hsqldb, jpa</param-value>
     </context-param>
 
     <!-- Bootstrap the root application context using ContextLoaderListener -->
