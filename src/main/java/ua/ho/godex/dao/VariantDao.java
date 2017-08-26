@@ -6,6 +6,8 @@ import ua.ho.godex.domain.Variant;
 import java.util.List;
 
 public interface VariantDao {
+    Variant getById(Integer variantId);
+
     Variant save(Variant variant);
 
     List<Variant> getAll();
