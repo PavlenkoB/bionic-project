@@ -1,5 +1,8 @@
 package ua.ho.godex.service.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import ua.ho.godex.dao.ProductDao;
 import ua.ho.godex.domain.Product;
 import ua.ho.godex.service.ProductService;
 
@@ -11,7 +14,12 @@ import java.util.List;
  * Date: 24.08.2017
  * Project: supStore
  */
+@Service
 public class ProductServiceImpl implements ProductService {
+
+    @Autowired
+    ProductDao productDao;
+
     @Override
     //todo Write method
     public List<Product> getAll() {

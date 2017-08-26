@@ -1,11 +1,18 @@
 package ua.ho.godex.service.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import ua.ho.godex.dao.AttributeDao;
 import ua.ho.godex.domain.Attribute;
 import ua.ho.godex.service.AttributeService;
 
 import java.util.List;
 
+@Service
 public class AttributeServiceImpl implements AttributeService {
+    @Autowired
+    AttributeDao attributeDao;
+
     @Override
     public List<Attribute> getAll() {
         return null;
