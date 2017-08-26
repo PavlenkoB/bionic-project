@@ -4,6 +4,7 @@ import ua.ho.godex.domain.Category;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
+import java.util.Optional;
 
 public interface CategoryDao {
     List<Category> getAll();
@@ -12,5 +13,5 @@ public interface CategoryDao {
 
     Category save(Category category);
 
-    Category getById(Integer categoryId);
+    Optional<Category> getById(Integer categoryId);
 }

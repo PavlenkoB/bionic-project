@@ -6,12 +6,13 @@ import ua.ho.godex.dao.VariantDao;
 import ua.ho.godex.domain.Variant;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 @Transactional(readOnly = true)
 public class JpaVariantDaoImpl implements VariantDao {
     @Override
-    public Variant getById(Integer variantId) {
+    public Optional<Variant> getById(Integer variantId) {
         //todo write
         return null;
     }

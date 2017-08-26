@@ -12,8 +12,17 @@
     <title>header</title>
 </head>
 <body>
-<a href="<c:url value="/"/>">
-    Main
-</a>
+<ul style="display: inline;">
+    <li>
+        <a href="<c:url value="/"/>">
+            Main
+        </a>
+    </li>
+    <li>
+        <a href="<c:url value="/attributes"/>">
+            Attributes
+        </a>
+    </li>
+</ul>
 </body>
 </html>

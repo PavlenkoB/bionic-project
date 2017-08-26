@@ -4,9 +4,10 @@ import ua.ho.godex.domain.Attribute;
 import ua.ho.godex.domain.Variant;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface VariantDao {
-    Variant getById(Integer variantId);
+    Optional<Variant> getById(Integer variantId);
 
     Variant save(Variant variant);
 

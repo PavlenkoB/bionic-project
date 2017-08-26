@@ -17,6 +17,17 @@ public class Attribute {
     public Attribute() {
     }
 
+    public Attribute(Integer id, String name, String description) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+    }
+
+    public Attribute(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+
     public Integer getId() {
         return id;
     }

@@ -6,6 +6,7 @@ import ua.ho.godex.dao.CategoryDao;
 import ua.ho.godex.domain.Category;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 @Transactional(readOnly = true)
@@ -29,7 +30,7 @@ public class JpaCategoryDaoImpl implements CategoryDao {
     }
 
     @Override
-    public Category getById(Integer categoryId) {
+    public Optional<Category> getById(Integer categoryId) {
         return null;
         //todo write
     }

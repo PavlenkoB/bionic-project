@@ -8,7 +8,7 @@ public interface AttributeService {
 
     List<Attribute> getAll();
 
-    Attribute getById(int categoryId);
+    Attribute getById(Integer categoryId);
 
     Attribute create(Attribute category);
 

@@ -1,18 +1,18 @@
 package ua.ho.godex.dao;
 
 import ua.ho.godex.domain.Attribute;
-import ua.ho.godex.domain.Category;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface AttributeDao {
     Attribute save(Attribute attribute);
 
-    boolean delete(Attribute attribute);
+    boolean delete(Integer attributeId);
 
     List<Attribute> getAll();
 
-    Attribute getById(Integer attributeId);
+    Optional<Attribute> getById(Integer attributeId);
 
     List<Attribute> getAllForCategory(Integer categoryId);
 }

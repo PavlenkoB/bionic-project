@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import ua.ho.godex.dao.AttributeDao;
 import ua.ho.godex.domain.Attribute;
 import ua.ho.godex.service.AttributeService;
+import ua.ho.godex.util.exception.NotFoundException;
 
 import java.util.List;
 
@@ -15,36 +16,32 @@ public class AttributeServiceImpl implements AttributeService {
 
     @Override
     public List<Attribute> getAll() {
-        return null;
-        //todo write
+        return attributeDao.getAll();
     }
 
     @Override
-    public Attribute getById(int categoryId) {
-        return null;
-        //todo write
+    public Attribute getById(Integer attributeId) {
+        return attributeDao.getById(attributeId).
+                orElseThrow(() -> new NotFoundException(String.format("Атрибут с id=%d не найден", attributeId)));
     }
 
     @Override
-    public Attribute create(Attribute category) {
-        return null;
-        //todo write
+    public Attribute create(Attribute attribute) {
+        return attributeDao.save(attribute);
     }
 
     @Override
-    public void update(Attribute category) {
-        //todo write
+    public void update(Attribute attribute) {
+        attributeDao.save(attribute);
     }
 
     @Override
-    public boolean delete(Integer categoryId) {
-        return false;
-        //todo write
+    public boolean delete(Integer attributeId) {
+        return attributeDao.delete(attributeId);
     }
 
     @Override
     public List<Attribute> getForCategory(Integer categoryId) {
-        return null;
-        //todo write
+        return attributeDao.getAllForCategory(categoryId);
     }
 }
