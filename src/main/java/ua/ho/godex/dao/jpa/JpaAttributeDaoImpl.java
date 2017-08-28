@@ -1,5 +1,7 @@
 package ua.ho.godex.dao.jpa;
 
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import ua.ho.godex.dao.AttributeDao;
@@ -10,6 +12,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.util.List;
 import java.util.Optional;
+
 
 @Repository
 @Transactional(readOnly = true)

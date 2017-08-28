@@ -39,7 +39,7 @@
     </properties>
 
     <build>
-        <finalName>iStore</finalName>
+        <finalName>supStore</finalName>
         <defaultGoal>package</defaultGoal>
         <plugins>
             <plugin>
@@ -61,6 +61,18 @@
                     <port>8088</port>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>1.5.6.RELEASE</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
         <resources>
             <resource>
@@ -69,7 +81,18 @@
         </resources>
     </build>
 
+    <!--<parent>-->
+        <!--<groupId>org.springframework.boot</groupId>-->
+        <!--<artifactId>spring-boot-starter-parent</artifactId>-->
+        <!--<version>1.5.6.RELEASE</version>-->
+    <!--</parent>-->
     <dependencies>
+        <!-- spring boot library -->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-starter-web</artifactId>-->
+        <!--</dependency>-->
+
         <!-- Extended core library -->
         <dependency>
             <groupId>com.google.guava</groupId>
