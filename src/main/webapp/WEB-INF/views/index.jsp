@@ -13,8 +13,7 @@
     <link rel="icon" type="image/x-icon" href="find-favicon.ico">
 </head>
 <body>
-
 <jsp:include page="parts/header.jsp"/>
-
+${users.size()}
 </body>
 </html>

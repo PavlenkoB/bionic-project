@@ -13,14 +13,18 @@ import java.util.List;
 @Controller
 @RequestMapping("attributes")
 public class AttributeController {
-    @Autowired
     AttributeService attributeService;
+
+    @Autowired
+    public AttributeController(AttributeService attributeService) {
+        this.attributeService=attributeService;
+    }
 
     @GetMapping
     public String showAttributes(Model model) {
         List<Attribute> attributeList = attributeService.getAll();
         model.addAttribute("attributes", attributeList);
-        return "attribute/attribute-list";
+        return "/attribute/attribute-list";
     }
 
 }

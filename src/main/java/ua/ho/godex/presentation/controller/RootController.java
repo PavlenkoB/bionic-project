@@ -18,8 +18,12 @@ import java.util.List;
  */
 @Controller
 public class RootController {
+    @Autowired
+    UserService userService;
     @GetMapping("/")
     public String showMainPage(Model model) {
+        List<User> users = userService.getAll();
+        model.addAttribute("users",users);
         return "index";
     }
 }

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: godex
@@ -11,13 +12,11 @@
     <title>Attributes</title>
 </head>
 <body>
-
 <jsp:include page="../parts/header.jsp"/>
 <c:forEach items="${attributes}" var="attribute">
     <jsp:useBean id="attribute" type="ua.ho.godex.domain.Attribute"/>
     <br>
     ${attribute.name}
-
 </c:forEach>
 </body>
 </html>
