@@ -20,7 +20,6 @@ import java.util.List;
 public class RootController {
     @GetMapping("/")
     public String showMainPage(Model model) {
-        ;
         return "index";
     }
 }

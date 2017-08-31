@@ -1,8 +1,9 @@
 package ua.ho.godex;
 
-//import org.springframework.boot.SpringApplication;
-//import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-//import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
 
@@ -12,10 +13,9 @@ import org.springframework.stereotype.Controller;
  * Project: istore
  */
 @Controller
-//@EnableAutoConfiguration
-//@SpringBootApplication(scanBasePackages={"ua.ho.godex"})
-public class PlaceHolder {
+@SpringBootApplication(scanBasePackages={"ua.ho.godex"})
+public class PlaceHolder extends SpringBootServletInitializer {
     public static void main(String[] args) throws Exception {
-//        SpringApplication.run(PlaceHolder.class, args);
+        SpringApplication.run(PlaceHolder.class, args);
     }
 }
