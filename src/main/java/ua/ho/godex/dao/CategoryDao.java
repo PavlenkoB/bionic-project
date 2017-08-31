@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface CategoryDao {
-    boolean delete(Category category);
+    boolean delete(Integer categoryId);
 
     Category save(Category category);
 

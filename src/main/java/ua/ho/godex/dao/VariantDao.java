@@ -9,7 +9,7 @@ import java.util.Optional;
 public interface VariantDao {
     Variant save(Variant variant);
 
-    boolean delete(Variant variant);
+    boolean delete(Integer variantId);
 
     Optional<Variant> getById(Integer variantId);
 

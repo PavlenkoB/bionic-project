@@ -4,10 +4,10 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import ua.ho.godex.dao.ProductDao;
 import ua.ho.godex.domain.Product;
-import ua.ho.godex.domain.Variant;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,15 +22,20 @@ public class JpaProductDaoImpl implements ProductDao {
     @Override
     @Transactional
     public Product save(Product product) {
-        return null;
-        //todo write
+        if (product.getId() == null) {
+            entityManager.persist(product);
+            return product;
+        } else {
+            return entityManager.merge(product);
+        }
     }
 
     @Override
     @Transactional
     public boolean delete(Integer productId) {
-        return false;
-        //todo write
+        Query query = entityManager.createQuery("DELETE FROM Product O WHERE O.id = :id", Product.class)
+                .setParameter("id", productId);
+        return query.executeUpdate() != 0;
     }
 
     @Override

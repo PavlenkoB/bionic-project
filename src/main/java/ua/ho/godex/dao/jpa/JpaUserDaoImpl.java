@@ -33,8 +33,8 @@ public class JpaUserDaoImpl implements UserDao {
     @Override
     @Transactional
     public boolean delete(Integer userId) {
-        Query query = entityManager.createQuery("DELETE FROM User u WHERE u.id = :user_id", User.class);
-        query.setParameter("user_id", userId);
+        Query query = entityManager.createQuery("DELETE FROM User O WHERE O.id = :id", User.class)
+                .setParameter("id", userId);
         return query.executeUpdate() != 0;
     }
 
