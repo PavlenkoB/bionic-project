@@ -31,6 +31,14 @@ public class JpaUserDaoImpl implements UserDao {
     }
 
     @Override
+    @Transactional
+    public boolean delete(Integer userId) {
+        Query query = entityManager.createQuery("DELETE FROM User u WHERE u.id = :user_id", User.class);
+        query.setParameter("user_id", userId);
+        return query.executeUpdate() != 0;
+    }
+
+    @Override
     public List<User> getAll() {
         Query query = entityManager.createQuery("SELECT u FROM User u", User.class);
         return query.getResultList();
@@ -47,12 +55,5 @@ public class JpaUserDaoImpl implements UserDao {
                 entityManager.createQuery("SELECT u from User u WHERE u.email = :mail", User.class)
                         .setParameter("mail", email).getSingleResult()
         );
-    }
-
-    @Override
-    public boolean delete(Integer userId) {
-        Query query = entityManager.createQuery("DELETE FROM User u WHERE u.id = :user_id", User.class);
-        query.setParameter("user_id", userId);
-        return query.executeUpdate() != 0;
     }
 }

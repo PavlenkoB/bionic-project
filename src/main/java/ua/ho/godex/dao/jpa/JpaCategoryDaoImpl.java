@@ -5,12 +5,32 @@ import org.springframework.transaction.annotation.Transactional;
 import ua.ho.godex.dao.CategoryDao;
 import ua.ho.godex.domain.Category;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 import java.util.Optional;
 
 @Repository
 @Transactional(readOnly = true)
 public class JpaCategoryDaoImpl implements CategoryDao {
+
+    @PersistenceContext
+    EntityManager entityManager;
+
+    @Override
+    @Transactional
+    public boolean delete(Category category) {
+        return false;
+        //todo write
+    }
+
+    @Override
+    @Transactional
+    public Category save(Category category) {
+        return null;
+        //todo write
+    }
+
     @Override
     public List<Category> getAll() {
         return null;
@@ -18,20 +38,7 @@ public class JpaCategoryDaoImpl implements CategoryDao {
     }
 
     @Override
-    public boolean delete(Category category) {
-        return false;
-        //todo write
-    }
-
-    @Override
-    public Category save(Category category) {
-        return null;
-        //todo write
-    }
-
-    @Override
     public Optional<Category> getById(Integer categoryId) {
-        return null;
-        //todo write
+        return Optional.ofNullable(entityManager.find(Category.class,categoryId));
     }
 }

@@ -10,12 +10,6 @@ public interface UserDao {
 
     User save(User user);
 
-    List<User> getAll();
-
-    Optional<User> getById(int userId);
-
-    Optional<User> getByEmail(String email);
-
     /**
      * Delete user from DB
      *
@@ -23,4 +17,10 @@ public interface UserDao {
      * @return 1 - if delete 1 or more, 0 - if something wrong
      */
     boolean delete(Integer userId);
+
+    List<User> getAll();
+
+    Optional<User> getById(int userId);
+
+    Optional<User> getByEmail(String email);
 }

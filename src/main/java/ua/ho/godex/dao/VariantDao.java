@@ -7,13 +7,13 @@ import java.util.List;
 import java.util.Optional;
 
 public interface VariantDao {
-    Optional<Variant> getById(Integer variantId);
-
     Variant save(Variant variant);
+
+    boolean delete(Variant variant);
+
+    Optional<Variant> getById(Integer variantId);
 
     List<Variant> getAll();
 
     List<Variant> getForAttribute(Integer attributeId);
-
-    boolean delete(Variant variant);
 }

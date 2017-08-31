@@ -8,11 +8,11 @@ import java.util.Optional;
 public interface ProductDao {
     Product save(Product product);
 
+    boolean delete(Integer productId);
+
     List<Product> getAll();
 
     Optional<Product> getById(int productId);
-
-    boolean delete(Integer productId);
 
     List<Product> getAllForUser(Integer userId);
 

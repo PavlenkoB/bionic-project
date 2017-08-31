@@ -4,16 +4,32 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import ua.ho.godex.dao.ProductDao;
 import ua.ho.godex.domain.Product;
+import ua.ho.godex.domain.Variant;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 import java.util.Optional;
 
 @Repository
 @Transactional(readOnly = true)
 public class JpaProductDaoImpl implements ProductDao {
+
+    @PersistenceContext
+    EntityManager entityManager;
+
+
     @Override
+    @Transactional
     public Product save(Product product) {
         return null;
+        //todo write
+    }
+
+    @Override
+    @Transactional
+    public boolean delete(Integer productId) {
+        return false;
         //todo write
     }
 
@@ -25,14 +41,7 @@ public class JpaProductDaoImpl implements ProductDao {
 
     @Override
     public Optional<Product> getById(int productId) {
-        return null;
-        //todo write
-    }
-
-    @Override
-    public boolean delete(Integer productId) {
-        return false;
-        //todo write
+        return Optional.ofNullable(entityManager.find(Product.class,productId));
     }
 
     @Override

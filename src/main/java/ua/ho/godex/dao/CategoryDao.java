@@ -7,11 +7,11 @@ import java.util.List;
 import java.util.Optional;
 
 public interface CategoryDao {
-    List<Category> getAll();
-
     boolean delete(Category category);
 
     Category save(Category category);
+
+    List<Category> getAll();
 
     Optional<Category> getById(Integer categoryId);
 }
