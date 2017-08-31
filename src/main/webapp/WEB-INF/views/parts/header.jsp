@@ -9,20 +9,18 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <link rel="stylesheet" href="/css/style.css">
     <title>header</title>
 </head>
 <body>
-<ul style="display: inline;">
-    <li>
+<div class="menu">
         <a href="<c:url value="/"/>">
             Main
         </a>
-    </li>
-    <li>
         <a href="<c:url value="/attributes"/>">
             Attributes
         </a>
-    </li>
-</ul>
+</div>
+
 </body>
 </html>

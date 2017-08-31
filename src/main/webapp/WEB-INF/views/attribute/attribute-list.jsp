@@ -13,10 +13,21 @@
 </head>
 <body>
 <jsp:include page="../parts/header.jsp"/>
-<c:forEach items="${attributes}" var="attribute">
-    <jsp:useBean id="attribute" type="ua.ho.godex.domain.Attribute"/>
-    <br>
-    ${attribute.name}
-</c:forEach>
+<ul>
+    <c:forEach items="${attributes}" var="attribute">
+        <jsp:useBean id="attribute" type="ua.ho.godex.domain.Attribute"/>
+        <li>
+                ${attribute.name}
+            <ul>
+                <c:forEach items="${attribute.variantList}" var="variant">
+                    <jsp:useBean id="variant" type="ua.ho.godex.domain.Variant"/>
+                    <li>
+                        ${variant.name}(${variant.description})
+                    </li>
+                </c:forEach>
+            </ul>
+        </li>
+    </c:forEach>
+</ul>
 </body>
 </html>

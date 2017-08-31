@@ -3,6 +3,7 @@ package ua.ho.godex.domain;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "attributes")
@@ -13,6 +14,9 @@ public class Attribute {
     @NotBlank(message = "Обязательное поле")
     private String name;
     private String description;
+
+    @OneToMany(fetch = FetchType.EAGER,mappedBy = "attribute")
+    private List<Variant> variantList;
 
     public Attribute() {
     }
@@ -68,5 +72,13 @@ public class Attribute {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + name.hashCode();
         return result;
+    }
+
+    public List<Variant> getVariantList() {
+        return variantList;
+    }
+
+    public void setVariantList(List<Variant> variantList) {
+        this.variantList = variantList;
     }
 }

@@ -24,8 +24,6 @@
         <context:property-placeholder location="classpath:db/hsqldb.properties" system-properties-mode="OVERRIDE"/>
     </beans>
 
-
-
     <beans profile="jpa">
         <context:component-scan base-package="ua.ho.godex.dao.jpa"/>
 

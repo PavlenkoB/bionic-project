@@ -1,0 +1,13 @@
+{
+  "name": "my website",
+  "scripts": {
+    "build": "gulp build"
+  },
+  "dependencies": {
+    "gulp": "*",
+    "gulp-less": "*",
+    "gulp-minify-css": "*"
+  },
+  "private": true
+}
+//todo use grunt

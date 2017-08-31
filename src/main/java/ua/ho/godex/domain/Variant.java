@@ -13,9 +13,9 @@ public class Variant {
     @NotBlank(message = "Обязательное поле")
     private String name;
     private String description;
-    @Column(name = "ATTRIBUTE_ID")
-    @NotBlank(message = "Обязательное поле")
-    private Integer attributeId;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "attribute_id",nullable = false)
+    private Attribute attribute;
 
     public Variant() {
     }
@@ -27,16 +27,16 @@ public class Variant {
 
         Variant variant = (Variant) o;
 
-        if (id != null ? !id.equals(variant.id) : variant.id != null) return false;
-        if (!name.equals(variant.name)) return false;
-        return attributeId != null ? attributeId.equals(variant.attributeId) : variant.attributeId == null;
+        if (!id.equals(variant.id)) return false;
+        if (name != null ? !name.equals(variant.name) : variant.name != null) return false;
+        return description != null ? description.equals(variant.description) : variant.description == null;
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + name.hashCode();
-        result = 31 * result + (attributeId != null ? attributeId.hashCode() : 0);
+        int result = id.hashCode();
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (description != null ? description.hashCode() : 0);
         return result;
     }
 
@@ -62,13 +62,5 @@ public class Variant {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public Integer getAttributeId() {
-        return attributeId;
-    }
-
-    public void setAttributeId(Integer attributeId) {
-        this.attributeId = attributeId;
     }
 }
