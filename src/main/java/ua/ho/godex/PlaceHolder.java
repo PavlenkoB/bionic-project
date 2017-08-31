@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
  * Project: istore
  */
 @Controller
+@EnableAutoConfiguration
 @SpringBootApplication(scanBasePackages={"ua.ho.godex"})
 public class PlaceHolder extends SpringBootServletInitializer {
     public static void main(String[] args) throws Exception {
