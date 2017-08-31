@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: godex
@@ -9,9 +10,11 @@
 <html>
 <head>
     <title>index</title>
+    <link rel="icon" type="image/x-icon" href="find-favicon.ico">
 </head>
 <body>
-index
+
+<jsp:include page="parts/header.jsp"/>
 
 </body>
 </html>

@@ -31,6 +31,7 @@
         <!-- Database -->
         <hsqldb.version>2.4.0</hsqldb.version>
         <postgres.version>42.1.3</postgres.version>
+        <mysql.version>6.0.6</mysql.version>
         <hibernate.orm.version>5.2.10.Final</hibernate.orm.version>
 
         <!-- Testing -->
@@ -38,7 +39,7 @@
     </properties>
 
     <build>
-        <finalName>iStore</finalName>
+        <finalName>supStore</finalName>
         <defaultGoal>package</defaultGoal>
         <plugins>
             <plugin>
@@ -57,7 +58,7 @@
                 <version>2.2</version>
                 <configuration>
                     <path>/</path>
-                    <port>8080</port>
+                    <port>8088</port>
                 </configuration>
             </plugin>
             <plugin>
@@ -80,7 +81,18 @@
         </resources>
     </build>
 
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.5.6.RELEASE</version>
+    </parent>
     <dependencies>
+        <!-- spring boot library -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
         <!-- Extended core library -->
         <dependency>
             <groupId>com.google.guava</groupId>
@@ -152,6 +164,12 @@
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>${postgres.version}</version>
+        </dependency>
+        <!-- MySQL database driver -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.version}</version>
         </dependency>
         <!-- Spring JDBC -->
         <dependency>
