@@ -40,8 +40,7 @@ public class JpaProductDaoImpl implements ProductDao {
 
     @Override
     public List<Product> getAll() {
-        return null;
-        //todo write
+        return entityManager.createQuery("SELECT O from Product O", Product.class).getResultList();
     }
 
     @Override

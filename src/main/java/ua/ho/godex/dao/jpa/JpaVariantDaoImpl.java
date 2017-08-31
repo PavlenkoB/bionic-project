@@ -43,8 +43,7 @@ public class JpaVariantDaoImpl implements VariantDao {
 
     @Override
     public List<Variant> getAll() {
-        //todo write
-        return null;
+        return entityManager.createQuery("SELECT O from Variant O", Variant.class).getResultList();
     }
 
     @Override

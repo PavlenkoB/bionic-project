@@ -40,8 +40,7 @@ public class JpaCategoryDaoImpl implements CategoryDao {
 
     @Override
     public List<Category> getAll() {
-        return null;
-        //todo write
+        return entityManager.createQuery("SELECT O from Category O", Category.class).getResultList();
     }
 
     @Override
