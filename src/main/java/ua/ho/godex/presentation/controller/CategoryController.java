@@ -13,7 +13,7 @@ import java.util.List;
 @Controller
 @RequestMapping("categorys")
 public class CategoryController {
-    private CategoryService categoryService;
+    final private CategoryService categoryService;
 
     @Autowired
     public CategoryController(CategoryService categoryService) {
@@ -21,7 +21,7 @@ public class CategoryController {
     }
 
     @GetMapping
-    public String showAttributes(Model model) {
+    public String showCategorys(Model model) {
         List<Category> categoryList = categoryService.getAll();
         model.addAttribute("categorys", categoryList);
         return "/categorys/categorys-list";

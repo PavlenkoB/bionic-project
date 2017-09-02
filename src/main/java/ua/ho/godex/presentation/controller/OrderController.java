@@ -13,7 +13,7 @@ import java.util.List;
 @Controller
 @RequestMapping("orders")
 public class OrderController {
-    private OrderService orderService;
+    final private OrderService orderService;
 
     @Autowired
     public OrderController(OrderService orderService) {
@@ -21,7 +21,7 @@ public class OrderController {
     }
 
     @GetMapping
-    public String showAttributes(Model model) {
+    public String showOrders(Model model) {
         List<Order> orderList = orderService.getAll();
         model.addAttribute("orders", orderList);
         return "/orders/orders-list";

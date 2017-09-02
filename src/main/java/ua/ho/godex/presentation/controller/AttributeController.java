@@ -13,7 +13,7 @@ import java.util.List;
 @Controller
 @RequestMapping("attributes")
 public class AttributeController {
-    private AttributeService attributeService;
+    final private AttributeService attributeService;
 
     @Autowired
     public AttributeController(AttributeService attributeService) {

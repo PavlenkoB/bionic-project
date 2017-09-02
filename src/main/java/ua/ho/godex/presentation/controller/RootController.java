@@ -16,12 +16,17 @@ import java.util.List;
  */
 @Controller
 public class RootController {
+    private final UserService userService;
+
     @Autowired
-    UserService userService;
+    public RootController(UserService userService) {
+        this.userService = userService;
+    }
+
     @GetMapping("/")
     public String showMainPage(Model model) {
         List<User> users = userService.getAll();
-        model.addAttribute("users",users);
+        model.addAttribute("users", users);
         return "index";
     }
 }
