@@ -1,13 +1,12 @@
 {
-  "name": "my website",
+  "name": "sup_store",
   "scripts": {
     "build": "gulp build"
   },
   "dependencies": {
-    "gulp": "*",
+    "gulp": "^3.9.1",
     "gulp-less": "*",
     "gulp-minify-css": "*"
   },
   "private": true
 }
-//todo use grunt
