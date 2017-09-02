@@ -3,6 +3,7 @@ package ua.ho.godex.domain;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "categorys")
@@ -15,8 +16,12 @@ public class Category {
     @NotBlank(message = "Обязательное поле")
     private String name;
 
-    //todo write
-//    private List<Attribute> attributeList;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "categorys_atributes",
+            joinColumns = @JoinColumn(name = "categorys_id"),
+            inverseJoinColumns = @JoinColumn(name = "atributes_id")
+    )
+    private List<Attribute> attributes;
 
     public Category() {
     }

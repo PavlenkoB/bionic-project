@@ -2,6 +2,7 @@ package ua.ho.godex.domain;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
 @Table(name = "products")
@@ -17,6 +18,12 @@ public class Product {
     private Integer categoryId;
     @Column(name = "price")
     private BigDecimal price;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "products_users",
+            joinColumns = @JoinColumn(name = "products_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id")
+    )
+    private List<User> usersWhoHaveThisProduct;
 
     public Product() {
     }
@@ -49,5 +56,17 @@ public class Product {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", categoryId=" + categoryId +
+                ", price=" + price +
+                ", usersWhoHaveThisProduct=" + usersWhoHaveThisProduct +
+                '}';
     }
 }
