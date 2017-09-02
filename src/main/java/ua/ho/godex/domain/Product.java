@@ -1,19 +1,22 @@
 package ua.ho.godex.domain;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "products")
 public class Product {
-    //todo write
     @Id
     @Access(AccessType.PROPERTY)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
     private String description;
-    @Column(name = "category_id")
+    @Column(name = "categorys_id")
+    //todo write
     private Integer categoryId;
+    @Column(name = "price")
+    private BigDecimal price;
 
     public Product() {
     }

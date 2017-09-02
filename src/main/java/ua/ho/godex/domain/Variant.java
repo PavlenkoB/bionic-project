@@ -63,4 +63,12 @@ public class Variant {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public Attribute getAttribute() {
+        return attribute;
+    }
+
+    public void setAttribute(Attribute attribute) {
+        this.attribute = attribute;
+    }
 }

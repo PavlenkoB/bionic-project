@@ -15,6 +15,9 @@ public class Category {
     @NotBlank(message = "Обязательное поле")
     private String name;
 
+    //todo write
+//    private List<Attribute> attributeList;
+
     public Category() {
     }
 
