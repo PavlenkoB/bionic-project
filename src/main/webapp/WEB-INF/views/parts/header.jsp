@@ -35,7 +35,17 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link btn " href="<c:url value="/attributes"/>">
-                    Attributes
+                    Атрибуты
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link btn " href="<c:url value="/categorys"/>">
+                    Категории товаров
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link btn " href="<c:url value="/categorys"/>">
+                    Категории товаров
                 </a>
             </li>
         </ul>
