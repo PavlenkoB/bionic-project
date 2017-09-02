@@ -20,3 +20,9 @@ INSERT INTO VARIANTS (NAME, DESCRIPTION, ATTRIBUTE_ID)
 VALUES ('3 GB', NULL, 1);
 INSERT INTO VARIANTS (NAME, DESCRIPTION, ATTRIBUTE_ID)
 VALUES ('4 GB', NULL, 1);
+
+DELETE FROM orders;
+
+INSERT INTO orders (datetime, description, users_id)
+VALUES (now(), 'test order', 1);
+

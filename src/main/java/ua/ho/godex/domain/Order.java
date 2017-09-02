@@ -16,4 +16,10 @@ public class Order {
     private Integer id;
     @Column(name = "datetime")
     private LocalDateTime localDateTime;
+    @Column(name = "description")
+    private String description;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "users_id", nullable = false)
+    private User user;
 }
