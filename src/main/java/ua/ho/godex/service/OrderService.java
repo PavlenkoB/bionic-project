@@ -9,11 +9,11 @@ public interface OrderService {
 
     List<Order> getAll();
 
-    Order getById(Integer orderOd);
+    Order getById(Integer orderId);
 
     Order create(Order order);
 
     void update(Order order);
 
-    boolean delete(Integer orderOd);
+    boolean delete(Integer orderId);
 }

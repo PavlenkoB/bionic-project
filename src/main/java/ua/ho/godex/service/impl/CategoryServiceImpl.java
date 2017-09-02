@@ -28,7 +28,6 @@ public class CategoryServiceImpl implements CategoryService {
     public Category getById(Integer categoryId) {
         return categoryDao.getById(categoryId).
                 orElseThrow(() -> new NotFoundException(String.format("Category с id=%d не найден", categoryId)));
-
     }
 
     @Override
