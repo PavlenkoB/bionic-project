@@ -6,7 +6,8 @@
   "dependencies": {
     "gulp": "^3.9.1",
     "gulp-less": "*",
-    "gulp-minify-css": "*"
+    "gulp-minify-css": "*",
+    "gulp-livereload": "*"
   },
   "private": true
 }
