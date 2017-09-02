@@ -78,7 +78,4 @@ public class Attribute {
         return variantList;
     }
 
-    public void setVariantList(List<Variant> variantList) {
-        this.variantList = variantList;
-    }
 }

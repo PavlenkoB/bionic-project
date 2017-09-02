@@ -4,8 +4,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Controller;
 
 /**
@@ -20,6 +18,7 @@ public class PlaceHolder extends SpringBootServletInitializer {
     public static void main(String[] args) throws Exception {
         System.setProperty("spring.thymeleaf.cache", "false");
         System.setProperty("spring.profiles.active","jpa,mysql");//todo move
+//        System.setProperty("spring.jpa.properties.hibernate.enable_lazy_load_no_trans","true");//todo move
         SpringApplication.run(PlaceHolder.class, args);
     }
 }

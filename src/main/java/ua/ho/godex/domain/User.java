@@ -24,7 +24,7 @@ public class User {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     private List<Order> orderList;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "products_users",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "products_id")
@@ -133,4 +133,5 @@ public class User {
     public void setOwnProducts(List<Product> ownProducts) {
         this.ownProducts = ownProducts;
     }
+
 }

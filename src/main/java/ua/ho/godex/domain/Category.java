@@ -16,12 +16,15 @@ public class Category {
     @NotBlank(message = "Обязательное поле")
     private String name;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "categorys_atributes",
             joinColumns = @JoinColumn(name = "categorys_id"),
             inverseJoinColumns = @JoinColumn(name = "atributes_id")
     )
     private List<Attribute> attributes;
+
+    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
+    private List<Product> productList;
 
     public Category() {
     }
@@ -66,5 +69,21 @@ public class Category {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Attribute> getAttributes() {
+        return attributes;
+    }
+
+    public void setAttributes(List<Attribute> attributes) {
+        this.attributes = attributes;
+    }
+
+    public List<Product> getProductList() {
+        return productList;
+    }
+
+    public void setProductList(List<Product> productList) {
+        this.productList = productList;
     }
 }

@@ -71,4 +71,5 @@ public class Variant {
     public void setAttribute(Attribute attribute) {
         this.attribute = attribute;
     }
+
 }

@@ -21,7 +21,6 @@ ${users.size()}
     <ul>
         <li>${user.name}</li>
         <ul>
-
             <c:forEach var="product" items="${user.ownProducts}">
                 <jsp:useBean id="product" type="ua.ho.godex.domain.Product"/>
                 <li>

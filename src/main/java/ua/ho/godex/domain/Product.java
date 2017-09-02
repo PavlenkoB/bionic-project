@@ -13,12 +13,12 @@ public class Product {
     private Integer id;
     private String name;
     private String description;
-    @Column(name = "categorys_id")
-    //todo write
-    private Integer categoryId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "categorys_id", nullable = false)
+    private Category category;
     @Column(name = "price")
     private BigDecimal price;
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "products_users",
             joinColumns = @JoinColumn(name = "products_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id")
@@ -26,12 +26,6 @@ public class Product {
     private List<User> usersWhoHaveThisProduct;
 
     public Product() {
-    }
-
-    public Product(String name, String description, Integer categoryId) {
-        this.name = name;
-        this.description = description;
-        this.categoryId = categoryId;
     }
 
     public Integer getId() {
@@ -64,9 +58,32 @@ public class Product {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", categoryId=" + categoryId +
                 ", price=" + price +
                 ", usersWhoHaveThisProduct=" + usersWhoHaveThisProduct +
                 '}';
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
+    public List<User> getUsersWhoHaveThisProduct() {
+        return usersWhoHaveThisProduct;
+    }
+
+    public void setUsersWhoHaveThisProduct(List<User> usersWhoHaveThisProduct) {
+        this.usersWhoHaveThisProduct = usersWhoHaveThisProduct;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }
