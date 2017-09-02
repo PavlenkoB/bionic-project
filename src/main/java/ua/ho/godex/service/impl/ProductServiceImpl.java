@@ -5,8 +5,8 @@ import org.springframework.stereotype.Service;
 import ua.ho.godex.dao.ProductDao;
 import ua.ho.godex.domain.Product;
 import ua.ho.godex.service.ProductService;
+import ua.ho.godex.util.exception.NotFoundException;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -21,43 +21,28 @@ public class ProductServiceImpl implements ProductService {
     ProductDao productDao;
 
     @Override
-    //todo Write method
     public List<Product> getAll() {
-        return null;
+        return productDao.getAll();
     }
 
     @Override
-    //todo Write method
-    public List<Product> getAll(String name, BigDecimal min, BigDecimal max, int offset, int limit) {
-        return null;
-    }
-
-    @Override
-    //todo Write method
-    public int getCount(String name, BigDecimal min, BigDecimal max) {
-        return 0;
-    }
-
-    @Override
-    //todo Write method
     public Product getById(int productId) {
-        return null;
+        return productDao.getById(productId).
+                orElseThrow(() -> new NotFoundException(String.format("PRODUCT с id=%d не найден", productId)));
     }
 
     @Override
-    //todo Write method
     public Product create(Product product) {
-        return null;
+        return productDao.save(product);
     }
 
     @Override
     public void update(Product product) {
-//todo Write method
+        productDao.save(product);
     }
 
     @Override
     public boolean delete(Integer productId) {
-        //todo Write method
-        return false;
+        return productDao.delete(productId);
     }
 }
