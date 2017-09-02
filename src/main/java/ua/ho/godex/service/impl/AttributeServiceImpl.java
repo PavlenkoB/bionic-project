@@ -39,9 +39,4 @@ public class AttributeServiceImpl implements AttributeService {
     public boolean delete(Integer attributeId) {
         return attributeDao.delete(attributeId);
     }
-
-    @Override
-    public List<Attribute> getForCategory(Integer categoryId) {
-        return attributeDao.getAllForCategory(categoryId);
-    }
 }

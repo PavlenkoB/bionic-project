@@ -16,5 +16,4 @@ public interface AttributeService {
 
     boolean delete(Integer categoryId);
 
-    List<Attribute> getForCategory(Integer categoryId);
 }
