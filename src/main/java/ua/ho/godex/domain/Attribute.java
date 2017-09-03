@@ -7,7 +7,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "attributes")
-public class Attribute {
+public class Attribute implements AbstaractGenericDomainObj {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

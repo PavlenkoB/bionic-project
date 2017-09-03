@@ -6,47 +6,15 @@ import org.springframework.transaction.annotation.Transactional;
 import ua.ho.godex.dao.UserDao;
 import ua.ho.godex.domain.User;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-import java.util.List;
 import java.util.Optional;
 
 @Repository
-@Transactional(readOnly = true)
-public class JpaUserDaoImpl implements UserDao {
+@Transactional
+public class JpaUserDaoImpl extends JpaGenericDaoImpl<User> implements UserDao {
 
-    @PersistenceContext
-    EntityManager entityManager;
 
-    @Override
-    @Transactional
-    public User save(User user) {
-        if (user.getId() == null) {
-            entityManager.persist(user);
-            return user;
-        } else {
-            return entityManager.merge(user);
-        }
-    }
-
-    @Override
-    @Transactional
-    public boolean delete(Integer userId) {
-        Query query = entityManager.createQuery("DELETE FROM User O WHERE O.id = :id", User.class)
-                .setParameter("id", userId);
-        return query.executeUpdate() != 0;
-    }
-
-    @Override
-    public List<User> getAll() {
-        Query query = entityManager.createQuery("SELECT u FROM User u", User.class);
-        return query.getResultList();
-    }
-
-    @Override
-    public Optional<User> getById(int userId) {
-        return Optional.ofNullable(entityManager.find(User.class, userId));
+    public JpaUserDaoImpl() {
+        super(User.class);
     }
 
     @Override

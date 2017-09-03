@@ -6,7 +6,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "products")
-public class Product {
+public class Product implements AbstaractGenericDomainObj {
     @Id
     @Access(AccessType.PROPERTY)
     @GeneratedValue(strategy = GenerationType.IDENTITY)

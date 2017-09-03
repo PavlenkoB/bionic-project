@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "variants")
-public class Variant {
+public class Variant implements AbstaractGenericDomainObj {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -19,7 +19,6 @@ public class Variant {
 
     public Variant() {
     }
-
 
     @Override
     public boolean equals(Object o) {
