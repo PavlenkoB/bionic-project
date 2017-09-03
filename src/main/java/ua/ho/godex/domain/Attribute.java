@@ -4,7 +4,6 @@ import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "attributes")
@@ -84,8 +83,6 @@ public class Attribute {
     }
 
     public String getVariantsInString() {
-        return String.join("|\n",
-                this.variantList.stream().map(variant -> variant.toString()).collect(Collectors.toList())
-        );
+        return this.variantList.stream().map(Variant::toString).reduce((s, s2) -> s + "\n" + s2).orElse("empty");
     }
 }

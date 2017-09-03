@@ -31,7 +31,8 @@ public class JpaVariantDaoImpl implements VariantDao {
     @Override
     @Transactional
     public boolean delete(Integer variantId) {
-        Query query = entityManager.createQuery("DELETE FROM Variant O WHERE O.id = :id", Variant.class)
+        Query query = entityManager.createQuery
+                ("DELETE FROM Variant O WHERE O.id = :id")
                 .setParameter("id", variantId);
         return query.executeUpdate() != 0;
     }

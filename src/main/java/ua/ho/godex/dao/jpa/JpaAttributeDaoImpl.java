@@ -35,7 +35,7 @@ public class JpaAttributeDaoImpl implements AttributeDao {
         //todo bug in this
         Query query = entityManager.createQuery(
                 "DELETE FROM Attribute AS o WHERE o.id=:attribute_id"
-                , Attribute.class);
+        );
         query.setParameter("attribute_id", attributeId);
         return query.executeUpdate() != 0;
     }
