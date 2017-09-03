@@ -72,4 +72,12 @@ public class Variant {
         this.attribute = attribute;
     }
 
+    @Override
+    public String toString() {
+        return "Variant{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }

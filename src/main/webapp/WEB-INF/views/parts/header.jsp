@@ -9,14 +9,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <script src="res/js/jquery-3.2.1.min.js"></script>
+    <script src="/res/js/jquery-3.2.1.min.js"></script>
     <%--todo download lib--%>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
             integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
             crossorigin="anonymous"></script>
-    <script src="res/bootstrap/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="res/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="res/css/style.css">
+    <script src="/res/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/res/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/res/css/style.css">
+    <link rel="stylesheet" href="/res/font-awesome/css/font-awesome.min.css">
     <title>header</title>
 </head>
 <body>
@@ -34,7 +35,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link btn " href="<c:url value="/attributes"/>">
+                <a class="nav-link btn " href="<c:url value="admin/attributes"/>">
                     Атрибуты
                 </a>
             </li>

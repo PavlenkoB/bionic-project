@@ -4,6 +4,7 @@ import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "attributes")
@@ -15,10 +16,14 @@ public class Attribute {
     private String name;
     private String description;
 
-    @OneToMany(fetch = FetchType.EAGER,mappedBy = "attribute")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "attribute")
     private List<Variant> variantList;
 
     public Attribute() {
+    }
+
+    public Attribute(String name) {
+        this.name = name;
     }
 
     public Attribute(Integer id, String name, String description) {
@@ -78,4 +83,9 @@ public class Attribute {
         return variantList;
     }
 
+    public String getVariantsInString() {
+        return String.join("|\n",
+                this.variantList.stream().map(variant -> variant.toString()).collect(Collectors.toList())
+        );
+    }
 }
