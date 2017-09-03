@@ -48,7 +48,7 @@ public class JpaVariantDaoImpl implements VariantDao {
 
     @Override
     public List<Variant> getForAttribute(Integer attributeId) {
-        //todo write
+//        Query query=entityManager.createQuery("SELECT * FROM Variant V WHERE V.")
         return null;
     }
 }

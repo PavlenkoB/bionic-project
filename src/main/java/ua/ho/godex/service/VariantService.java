@@ -15,4 +15,5 @@ public interface VariantService {
 
     boolean delete(Integer variantId);
 
+    List<Variant> getForAttribute(Integer attributeId);
 }

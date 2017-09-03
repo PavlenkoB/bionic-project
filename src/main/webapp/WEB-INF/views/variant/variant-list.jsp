@@ -14,52 +14,52 @@
 </head>
 <body>
 <jsp:include page="../parts/header.jsp"/>
-<ul>
-    <table class="table table-striped">
-        <thead>
+
+<h1>${attribute.name}</h1>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <c:forEach items="${variants}" var="variant">
+        <jsp:useBean id="variant" type="ua.ho.godex.domain.Variant"/>
         <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Variants</th>
-            <th>Action</th>
-        </tr>
-        </thead>
-        <tbody>
-        <c:forEach items="${variants}" var="variant">
-            <jsp:useBean id="variant" type="ua.ho.godex.domain.Variant"/>
-            <tr>
-                <th scope="row">${variant.id}</th>
-                <td>${variant.name}</td>
-                <td>${variant.description}</td>
-                <td>
+            <th scope="row">${variant.id}</th>
+            <td>${variant.name}</td>
+            <td>${variant.description}</td>
+            <td>
+                <form method="post" action="/admin/variants/${variant.id}/edit">
                     <button class="btn btn-secondary">
-                        <a>
-                            <i class="fa fa-edit"></i>
-                        </a>
+                        <i class="fa fa-edit"></i>
                     </button>
+                </form>
+                <form method="post" action="/admin/variants/${variant.id}/delete">
                     <button class="btn btn-danger">
-                        <a href="/admin/attributes/${attribute.id}/delete">
-                            <i class="fa fa-remove"></i>
-                        </a>
+                        <i class="fa fa-remove"></i>
                     </button>
-                </td>
-            </tr>
-        </c:forEach>
-        </tbody>
-    </table>
-    <%--@elvariable id="newAttribute" type="ua.ho.godex.domain.Attribute"--%>
-    <form:form modelAttribute="newAttribute" method="post">
-        <div class="form-group">
-            <label for="name">Name</label>
-            <form:input type="text" class="form-control" id="name" path="name"/>
-        </div>
-        <div class="form-group">
-            <label for="description">Description</label>
-            <form:input type="text" class="form-control" id="description" path="description"/>
-        </div>
-        <button type="submit" class="btn btn-primary">Add</button>
-    </form:form>
-</ul>
+                </form>
+            </td>
+        </tr>
+    </c:forEach>
+    </tbody>
+</table>
+<%--@elvariable id="newVariant" type="ua.ho.godex.domain.Variant"--%>
+<form method="post" action="add">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" name="name"/>
+    </div>
+    <div class="form-group">
+        <label for="description">Description</label>
+        <input type="text" class="form-control" id="description" name="description"/>
+    </div>
+    <button type="submit" class="btn btn-primary">Add</button>
+</form>
+
 </body>
 </html>

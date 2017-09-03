@@ -40,4 +40,9 @@ public class VariantServiceImpl implements VariantService {
     public boolean delete(Integer variantId) {
         return variantDao.delete(variantId);
     }
+
+    @Override
+    public List<Variant> getForAttribute(Integer attributeId) {
+        return variantDao.getForAttribute(attributeId);
+    }
 }
