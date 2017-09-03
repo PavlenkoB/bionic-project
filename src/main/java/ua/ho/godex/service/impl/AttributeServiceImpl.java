@@ -11,8 +11,13 @@ import java.util.List;
 
 @Service
 public class AttributeServiceImpl implements AttributeService {
-    @Autowired
+    final
     AttributeDao attributeDao;
+
+    @Autowired
+    public AttributeServiceImpl(AttributeDao attributeDao) {
+        this.attributeDao = attributeDao;
+    }
 
     @Override
     public List<Attribute> getAll() {

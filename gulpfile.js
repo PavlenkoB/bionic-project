@@ -25,4 +25,3 @@ gulp.task('watch', function () {
 });
 gulp.task('build', ['less']);
 gulp.task('default', ['less', 'watch']);
-//todo use Gulp

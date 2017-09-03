@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import ua.ho.godex.domain.User;
 import ua.ho.godex.service.UserService;
+import ua.ho.godex.service.VariantService;
 
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class RootController {
     private final UserService userService;
 
     @Autowired
-    public RootController(UserService userService) {
+    public RootController(UserService userService, VariantService variantService) {
         this.userService = userService;
     }
 

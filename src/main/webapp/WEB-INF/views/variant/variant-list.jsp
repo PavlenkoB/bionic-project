@@ -26,31 +26,23 @@
         </tr>
         </thead>
         <tbody>
-        <c:forEach items="${attributes}" var="attribute">
-            <jsp:useBean id="attribute" type="ua.ho.godex.domain.Attribute"/>
+        <c:forEach items="${variants}" var="variant">
+            <jsp:useBean id="variant" type="ua.ho.godex.domain.Variant"/>
             <tr>
-                <th scope="row">${attribute.id}</th>
-                <td>${attribute.name}</td>
-                <td>${attribute.description}</td>
+                <th scope="row">${variant.id}</th>
+                <td>${variant.name}</td>
+                <td>${variant.description}</td>
                 <td>
-                    <pre>${attribute.variantsInString}</pre>
-                    <form method="post" action="/admin/variants/${attribute.id}/">
-                        <button class="btn btn-secondary">
+                    <button class="btn btn-secondary">
+                        <a>
                             <i class="fa fa-edit"></i>
-                        </button>
-                    </form>
-                </td>
-                <td>
-                    <form method="post" action="/admin/attributes/${attribute.id}/edit">
-                        <button class="btn btn-secondary">
-                            <i class="fa fa-edit"></i>
-                        </button>
-                    </form>
-                    <form method="post" action="/admin/attributes/${attribute.id}/delete">
-                        <button class="btn btn-danger">
+                        </a>
+                    </button>
+                    <button class="btn btn-danger">
+                        <a href="/admin/attributes/${attribute.id}/delete">
                             <i class="fa fa-remove"></i>
-                        </button>
-                    </form>
+                        </a>
+                    </button>
                 </td>
             </tr>
         </c:forEach>

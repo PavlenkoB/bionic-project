@@ -16,7 +16,7 @@ import java.util.Optional;
 @Transactional(readOnly = true)
 public class JpaAttributeDaoImpl implements AttributeDao {
     @PersistenceContext
-    EntityManager entityManager;
+    private EntityManager entityManager;
 
     @Override
     @Transactional
@@ -32,8 +32,11 @@ public class JpaAttributeDaoImpl implements AttributeDao {
     @Override
     @Transactional
     public boolean delete(Integer attributeId) {
-        Query query = entityManager.createQuery("DELETE FROM Attribute A WHERE A.id = :attribute_id", Attribute.class)
-                .setParameter("attribute_id", attributeId);
+        //todo bug in this
+        Query query = entityManager.createQuery(
+                "DELETE FROM Attribute AS o WHERE o.id=:attribute_id"
+                , Attribute.class);
+        query.setParameter("attribute_id", attributeId);
         return query.executeUpdate() != 0;
     }
 

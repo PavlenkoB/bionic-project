@@ -29,8 +29,6 @@ ${users.size()}
             </c:forEach>
         </ul>
     </ul>
-
-
 </c:forEach>
 </body>
 </html>

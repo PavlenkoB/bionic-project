@@ -24,6 +24,6 @@ public class VariantController {
     public String showVariants(Model model) {
         List<Variant> variantList = variantService.getAll();
         model.addAttribute("variants", variantList);
-        return "/variants/variants-list";
+        return "/variant/variant-list";
     }
 }
