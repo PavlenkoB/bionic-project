@@ -30,23 +30,23 @@
     <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link btn " href="<c:url value="/"/>">
+                <a class="nav-link btn btn-secondary" href="<c:url value="/"/>">
                     Main
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link btn " href="<c:url value="admin/attributes"/>">
+                <a class="nav-link btn btn-secondary" href="<c:url value="admin/attributes"/>">
                     Атрибуты
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link btn " href="<c:url value="/categorys"/>">
+                <a class="nav-link btn btn-secondary" href="<c:url value="/categorys"/>">
                     Категории товаров
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link btn " href="<c:url value="/categorys"/>">
-                    Категории товаров
+                <a class="nav-link btn btn-secondary" href="<c:url value="/admin/variants"/>">
+                    Варианты товаров
                 </a>
             </li>
         </ul>

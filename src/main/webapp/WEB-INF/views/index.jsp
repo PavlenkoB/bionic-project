@@ -30,5 +30,8 @@ ${users.size()}
         </ul>
     </ul>
 </c:forEach>
+<ul id="nav" class="category-menu">
+    <jsp:include page="parts/node.jsp"/>
+</ul>
 </body>
 </html>

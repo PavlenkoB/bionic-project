@@ -20,7 +20,7 @@
     <thead>
     <tr>
         <th>#</th>
-        <th>Name</th>
+        <th>Attribute</th>
         <th>Description</th>
         <th>Action</th>
     </tr>
@@ -30,6 +30,7 @@
         <jsp:useBean id="variant" type="ua.ho.godex.domain.Variant"/>
         <tr>
             <th scope="row">${variant.id}</th>
+            <td>${variant.attribute.name}</td>
             <td>${variant.name}</td>
             <td>${variant.description}</td>
             <td>

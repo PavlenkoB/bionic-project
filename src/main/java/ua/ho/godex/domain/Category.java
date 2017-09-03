@@ -1,12 +1,15 @@
 package ua.ho.godex.domain;
 
+import lombok.Data;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "categorys")
+@Data
 public class Category implements AbstaractGenericDomainObj {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,8 +28,15 @@ public class Category implements AbstaractGenericDomainObj {
 
     @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
     private List<Product> productList;
+    @Transient
+    private List<Category> children;
 
     public Category() {
+        this.children = new ArrayList<>();
+    }
+
+    public Category getSelf() {
+        return this;
     }
 
     @Override
@@ -45,45 +55,5 @@ public class Category implements AbstaractGenericDomainObj {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + name.hashCode();
         return result;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getParentCatId() {
-        return parentCatId;
-    }
-
-    public void setParentCatId(Integer parentCatId) {
-        this.parentCatId = parentCatId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public List<Attribute> getAttributes() {
-        return attributes;
-    }
-
-    public void setAttributes(List<Attribute> attributes) {
-        this.attributes = attributes;
-    }
-
-    public List<Product> getProductList() {
-        return productList;
-    }
-
-    public void setProductList(List<Product> productList) {
-        this.productList = productList;
     }
 }
