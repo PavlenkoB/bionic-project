@@ -11,9 +11,12 @@ public class Attribute implements AbstaractGenericDomainObj {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Column(name = "name")
     @NotBlank(message = "Обязательное поле")
     private String name;
+    @Column(name = "description")
     private String description;
+    @Column(name = "mod")
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "attribute")
     private List<Variant> variantList;

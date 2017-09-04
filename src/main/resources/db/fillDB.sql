@@ -1,45 +1,44 @@
+DELETE FROM products_users;
+DELETE FROM VARIANTS;
+DELETE FROM attributes;
+DELETE FROM products;
+DELETE FROM categorys;
 DELETE FROM users;
 
-INSERT INTO users (name, email, password, role)
-VALUES ('admin', 'admin@mail.com', 'admin', 0);
-INSERT INTO users (name, email, password, role)
-VALUES ('user', 'user@mail.com', 'user', 1);
+INSERT INTO `users` (id, `name`, `email`, `password`, `role`)
+VALUES (1, 'admin', 'admin@mail.com', 'admin', 0);
+INSERT INTO `users` (id, `name`, `email`, `password`, `role`)
+VALUES (2, 'user', 'user@mail.com', 'user', 1);
 
-DELETE FROM attributes;
+INSERT INTO `categorys` (`id`, `parent_cat_id`, `name`, `order`)
+VALUES (1, NULL, 'Техника', 0);
+INSERT INTO `categorys` (`id`, `parent_cat_id`, `name`, `order`)
+VALUES (2, 1, 'Мобильные телефоны', 0);
+INSERT INTO `categorys` (`id`, `parent_cat_id`, `name`, `order`)
+VALUES (3, 1, 'Компютеры', 0);
+INSERT INTO `categorys` (`id`, `parent_cat_id`, `name`, `order`)
+VALUES (4, 3, 'Ноутбуки', 0);
+INSERT INTO `categorys` (`id`, `parent_cat_id`, `name`, `order`)
+VALUES (5, NULL, 'Авто', 0);
 
-INSERT INTO attributes (NAME, DESCRIPTION)
-VALUES ('RAM', 'mobile phone RAM');
 
-DELETE FROM VARIANTS;
+INSERT INTO products (id, name, description, categorys_id)
+VALUES (1, 'LG g 1000', 'очень крутой телефоы', 2);
 
-INSERT INTO VARIANTS (NAME, DESCRIPTION, ATTRIBUTE_ID)
-VALUES ('1 GB', NULL, 1);
-INSERT INTO VARIANTS (NAME, DESCRIPTION, ATTRIBUTE_ID)
-VALUES ('2 GB', NULL, 1);
-INSERT INTO VARIANTS (NAME, DESCRIPTION, ATTRIBUTE_ID)
-VALUES ('3 GB', NULL, 1);
-INSERT INTO VARIANTS (NAME, DESCRIPTION, ATTRIBUTE_ID)
-VALUES ('4 GB', NULL, 1);
 
-DELETE FROM orders;
+INSERT INTO attributes (id, name, description, moderated, categorys_id, type)
+VALUES (1, 'RAM', 'mobile phone RAM', 1, 1, 'dropbox');
 
-INSERT INTO orders (datetime, description, users_id)
-VALUES (now(), 'test order', 1);
 
-DELETE FROM categorys;
-INSERT INTO categorys (parent_cat_id, name)
-VALUES (NULL, 'Техника');
-INSERT INTO categorys (parent_cat_id, name)
-VALUES (1, 'Мобильные телефоны');
+INSERT INTO VARIANTS (ID, NAME, DESCRIPTION, ATTRIBUTE_ID)
+VALUES (1, '1 GB', NULL, 1);
+INSERT INTO VARIANTS (ID, NAME, DESCRIPTION, ATTRIBUTE_ID)
+VALUES (2, '2 GB', NULL, 1);
+INSERT INTO VARIANTS (ID, NAME, DESCRIPTION, ATTRIBUTE_ID)
+VALUES (3, '3 GB', NULL, 1);
+INSERT INTO VARIANTS (ID, NAME, DESCRIPTION, ATTRIBUTE_ID)
+VALUES (4, '4 GB', NULL, 1);
 
-DELETE FROM currencys;
-INSERT INTO currencys (id, name, factor)
-VALUES (1, 'dolars', 1);
+INSERT INTO products_users (id, user_id, products_id, counter, price)
+  VALUE (1, 1, 1, 100, 150);
 
-DELETE FROM products;
-INSERT INTO products (name, price, description, categorys_id, currencys_id)
-VALUES ('LG g 1000', '0110.52', 'очень крутой телефоы', 2, 1);
-
-DELETE FROM products_users;
-INSERT INTO products_users (user_id, products_id)
-    VALUE (1, 1);
