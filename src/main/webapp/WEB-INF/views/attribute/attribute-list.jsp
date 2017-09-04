@@ -36,7 +36,7 @@
                 <td>${attribute.description}</td>
                 <td>
                     <pre>${attribute.variantsInString}</pre>
-                    <form method="post" action="/admin/variants/${attribute.id}/">
+                    <form method="get" action="/admin/variants/${attribute.id}/">
                         <button class="btn btn-secondary">
                             <i class="fa fa-edit"></i>
                         </button>

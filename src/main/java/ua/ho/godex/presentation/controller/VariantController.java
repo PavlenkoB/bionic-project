@@ -15,6 +15,10 @@ import java.util.List;
 @RequestMapping(VariantController.MAIN_URL)
 public class VariantController {
     final static String MAIN_URL = "/admin/variants";
+    final static String DELETE_URL = "/{variantId}/delete";
+    final static String DELETE_URL_PV = "variantId";
+    final static String EDIT_URL = "/{variantId}/edit";
+    final static String EDIT_URL_PV = "variantId";
     final private VariantService variantService;
     final private AttributeService attributeService;
 
@@ -61,11 +65,10 @@ public class VariantController {
         return "redirect:" + VariantController.MAIN_URL + "/" + attributeId + "/";
     }
 
-    @PostMapping("/{variantId}/delete")
-    String deleteAttribute(Model model, @PathVariable("variantId") Integer variantId) {
-        Variant variant = variantService.getById(variantId);
-        //todo not working
+    @PostMapping(DELETE_URL)
+    String deleteAttribute(Model model, @PathVariable(DELETE_URL_PV) Integer variantId) {
+        Integer attributeid = variantService.getById(variantId).getAttribute().getId();
         variantService.delete(variantId);
-        return "redirect:" + VariantController.MAIN_URL + "/" + variant.getAttribute().getId() + "/";
+        return "redirect:" + VariantController.MAIN_URL + "/" + attributeid + "/";
     }
 }
