@@ -38,7 +38,7 @@ public abstract class JpaGenericDaoImpl<T extends AbstaractGenericDomainObj> imp
     @Override
     @Transactional
     public boolean delete(Integer objectId) {
-        Query query = entityManager.createQuery("DELETE FROM " + attributeClass.getSimpleName() + " O WHERE O.id = :id", attributeClass)
+        Query query = entityManager.createQuery("DELETE FROM " + attributeClass.getSimpleName() + " O WHERE O.id = :id")
                 .setParameter("id", objectId);
         return query.executeUpdate() != 0;
     }
