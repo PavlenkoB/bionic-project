@@ -5,6 +5,7 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -22,10 +23,12 @@ public class Order implements AbstaractGenericDomainObj {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name = "datetime")
+    @Column(name = "datetime", columnDefinition = "DATETIME")
     private LocalDateTime localDateTime;
     @Column(name = "description")
     private String description;
+    @Column(name = "sum")
+    private BigDecimal sum;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "users_id", nullable = false)
@@ -35,5 +38,6 @@ public class Order implements AbstaractGenericDomainObj {
             joinColumns = @JoinColumn(name = "orders_id"),
             inverseJoinColumns = @JoinColumn(name = "products_id")
     )
+    //todo связь продукта с конкретным продажой пльзователя
     private List<Product> products;
 }
