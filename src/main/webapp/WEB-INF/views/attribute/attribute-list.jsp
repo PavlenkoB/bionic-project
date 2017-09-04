@@ -20,6 +20,7 @@
         <tr>
             <th>#</th>
             <th>Name</th>
+            <th>Type</th>
             <th>Description</th>
             <th>Variants</th>
             <th>Action</th>
@@ -31,6 +32,7 @@
             <tr>
                 <th scope="row">${attribute.id}</th>
                 <td>${attribute.name}</td>
+                <td>${attribute.fieldType}</td>
                 <td>${attribute.description}</td>
                 <td>
                     <pre>${attribute.variantsInString}</pre>
@@ -65,6 +67,24 @@
         <div class="form-group">
             <label for="description">Description</label>
             <form:input type="text" class="form-control" id="description" path="description"/>
+        </div>
+        <div class="form-group">
+            <label for="fieldtype">FieldType</label>
+            <form:select id="fieldtype" path="fieldType" class="form-control">
+                <c:forEach items="${fieldtypes}" var="fieldtype">
+                    <jsp:useBean id="fieldtype" type="ua.ho.godex.domain.FieldType"/>
+                    <form:option value="${fieldtype.name()}"/>
+                </c:forEach>
+            </form:select>
+        </div>
+        <div class="form-group">
+            <label for="categoryId">FieldType</label>
+            <select id="categoryId" name="categoryId" class="form-control">
+                <c:forEach items="${categorys}" var="category">
+                    <jsp:useBean id="category" type="ua.ho.godex.domain.Category"/>
+                    <option value="${category.id}">${category.name}</option>
+                </c:forEach>
+            </select>
         </div>
         <button type="submit" class="btn btn-primary">Add</button>
     </form:form>

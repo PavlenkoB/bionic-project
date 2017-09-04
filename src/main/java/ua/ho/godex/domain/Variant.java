@@ -22,7 +22,7 @@ public class Variant implements AbstaractGenericDomainObj {
     @Column(name = "description")
     private String description;
     @Column(name = "moderated")
-    private String moderated;
+    private Boolean moderated = false;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "attribute_id",nullable = false)

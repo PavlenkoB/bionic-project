@@ -22,7 +22,7 @@ public class Product implements AbstaractGenericDomainObj {
     @Column(name = "description")
     private String description;
     @Column(name = "moderated")
-    private Boolean moderated;
+    private Boolean moderated = false;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "categorys_id", nullable = false)

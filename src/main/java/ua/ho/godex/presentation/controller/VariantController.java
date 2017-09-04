@@ -66,6 +66,6 @@ public class VariantController {
         Variant variant = variantService.getById(variantId);
         //todo not working
         variantService.delete(variantId);
-        return "redirect:/" + VariantController.MAIN_URL + "/" + variant.getAttribute().getId() + "/";
+        return "redirect:" + VariantController.MAIN_URL + "/" + variant.getAttribute().getId() + "/";
     }
 }
