@@ -1,5 +1,9 @@
 package ua.ho.godex.domain;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -11,6 +15,9 @@ import java.util.List;
  */
 @Entity
 @Table(name = "orders")
+@Data
+@ToString
+@EqualsAndHashCode
 public class Order implements AbstaractGenericDomainObj {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,40 +36,4 @@ public class Order implements AbstaractGenericDomainObj {
             inverseJoinColumns = @JoinColumn(name = "products_id")
     )
     private List<Product> products;
-
-    public LocalDateTime getLocalDateTime() {
-        return localDateTime;
-    }
-
-    public void setLocalDateTime(LocalDateTime localDateTime) {
-        this.localDateTime = localDateTime;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public List<Product> getProducts() {
-        return products;
-    }
-
-    public void setProducts(List<Product> products) {
-        this.products = products;
-    }
-
-    public Integer getId() {
-        return id;
-    }
 }

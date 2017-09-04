@@ -1,11 +1,18 @@
 package ua.ho.godex.domain;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.List;
 
 @Entity
 @Table(name = "products")
+@Data
+@ToString
+@EqualsAndHashCode
 public class Product implements AbstaractGenericDomainObj {
     @Id
     @Access(AccessType.PROPERTY)
@@ -26,64 +33,5 @@ public class Product implements AbstaractGenericDomainObj {
     private List<User> usersWhoHaveThisProduct;
 
     public Product() {
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    @Override
-    public String toString() {
-        return "Product{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", price=" + price +
-                ", usersWhoHaveThisProduct=" + usersWhoHaveThisProduct +
-                '}';
-    }
-
-    public BigDecimal getPrice() {
-        return price;
-    }
-
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
-
-    public List<User> getUsersWhoHaveThisProduct() {
-        return usersWhoHaveThisProduct;
-    }
-
-    public void setUsersWhoHaveThisProduct(List<User> usersWhoHaveThisProduct) {
-        this.usersWhoHaveThisProduct = usersWhoHaveThisProduct;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
     }
 }

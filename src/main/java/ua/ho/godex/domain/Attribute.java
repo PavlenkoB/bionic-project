@@ -1,5 +1,8 @@
 package ua.ho.godex.domain;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
@@ -7,6 +10,9 @@ import java.util.List;
 
 @Entity
 @Table(name = "attributes")
+@Data
+@ToString
+@EqualsAndHashCode
 public class Attribute implements AbstaractGenericDomainObj {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,10 +22,18 @@ public class Attribute implements AbstaractGenericDomainObj {
     private String name;
     @Column(name = "description")
     private String description;
-    @Column(name = "mod")
+    @Column(name = "moderated")
+    private Boolean moderated;
+    @Column(name = "type")
+    @Enumerated(value = EnumType.STRING)
+    private FieldType fieldType;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "attribute")
+    @OneToMany(mappedBy = "attribute", fetch = FetchType.EAGER)
     private List<Variant> variantList;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "categorys_id", nullable = false)
+    private Category category;
 
     public Attribute() {
     }
@@ -37,52 +51,6 @@ public class Attribute implements AbstaractGenericDomainObj {
     public Attribute(String name, String description) {
         this.name = name;
         this.description = description;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Attribute attribute = (Attribute) o;
-
-        if (id != null ? !id.equals(attribute.id) : attribute.id != null) return false;
-        return name.equals(attribute.name);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + name.hashCode();
-        return result;
-    }
-
-    public List<Variant> getVariantList() {
-        return variantList;
     }
 
     public String getVariantsInString() {

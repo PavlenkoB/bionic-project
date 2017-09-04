@@ -30,6 +30,7 @@ public class RootController {
     @GetMapping("/")
     public String showMainPage(Model model) {
         List<Category> categoryList = categoryService.getAll();
+        //todo use ordering
         Map<Integer, Category> integerCategoryHashMap = categoryList.stream().collect(Collectors.toMap(Category::getId, Category::getSelf));
         for (Category category : categoryList) {
             Integer parentCatId = category.getParentCatId();
