@@ -7,6 +7,7 @@ import ua.ho.godex.domain.AbstaractGenericDomainObj;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,6 +36,7 @@ public abstract class JpaGenericDaoImpl<T extends AbstaractGenericDomainObj> imp
     }
 
     @Override
+    @Transactional
     public boolean delete(Integer objectId) {
         Query query = entityManager.createQuery("DELETE FROM " + attributeClass.getSimpleName() + " O WHERE O.id = :id", attributeClass)
                 .setParameter("id", objectId);
@@ -42,12 +44,13 @@ public abstract class JpaGenericDaoImpl<T extends AbstaractGenericDomainObj> imp
     }
 
     @Override
-    public T save(T category) {
-        if (category.getId() == null) {
-            entityManager.persist(category);
-            return category;
+    @Transactional
+    public T save(T object) {
+        if (object.getId() == null) {
+            entityManager.persist(object);
+            return object;
         } else {
-            return entityManager.merge(category);
+            return entityManager.merge(object);
         }
     }
 
