@@ -3,7 +3,9 @@
 var gulp = require('gulp'),
     less = require('gulp-less'),
     minify = require('gulp-minify-css'),
-    livereload = require('gulp-livereload');
+    livereload = require('gulp-livereload'),
+    cleanCSS = require('gulp-clean-css'),
+    sourcemaps = require('gulp-sourcemaps');
 
 gulp.task('less', function () {
     return gulp.src('./src/main/webapp/WEB-INF/web-resources/less/style.less')
@@ -12,7 +14,9 @@ gulp.task('less', function () {
                 '../src/main/webapp/WEB-INF/web-resources/css/'
             ]
         }))
-        .pipe(minify({processImport: false}))
+        .pipe(cleanCSS({
+            format: 'beautify'
+        }))
         .pipe(gulp.dest('./src/main/webapp/WEB-INF/web-resources/css/'))
         .pipe(livereload());
 });
