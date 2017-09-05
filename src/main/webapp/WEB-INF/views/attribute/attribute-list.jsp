@@ -1,3 +1,4 @@
+<%@ page import="ua.ho.godex.domain.FieldType" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%--
@@ -36,11 +37,13 @@
                 <td>${attribute.description}</td>
                 <td>
                     <pre>${attribute.variantsInString}</pre>
+                    <% if (attribute.getFieldType() == FieldType.DROP_BOX) {%>
                     <form method="get" action="/admin/variants/${attribute.id}/">
                         <button class="btn btn-secondary">
                             <i class="fa fa-edit"></i>
                         </button>
                     </form>
+                    <% } %>
                 </td>
                 <td>
                     <form method="post" action="/admin/attributes/${attribute.id}/edit">
