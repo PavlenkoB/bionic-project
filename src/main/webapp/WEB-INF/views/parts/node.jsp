@@ -7,14 +7,14 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%--@elvariable id="categorys" type="ua.ho.godex.domain.Category"--%>
-<c:forEach varStatus="loop" var="node" items="${categorys}">
-    <jsp:useBean id="node" type="ua.ho.godex.domain.Category"/>
+<%--@elvariable id="categorysMenu" type="ua.ho.godex.domain.Category"--%>
+<c:forEach varStatus="loop" var="menuNode" items="${categorysMenu}">
+    <jsp:useBean id="menuNode" type="ua.ho.godex.domain.Category"/>
     <li>
-        <a>${node.name}</a>
-        <c:if test="${node.children.size() > 0}">
+        <a>${menuNode.name}</a>
+        <c:if test="${menuNode.children.size() > 0}">
             <ul>
-                <c:set var="categorys" value="${node.children}" scope="request"/>
+                <c:set var="categorysMenu" value="${menuNode.children}" scope="request"/>
                 <jsp:include page="node.jsp"/>
             </ul>
         </c:if>

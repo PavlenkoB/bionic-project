@@ -6,7 +6,7 @@ var gulp = require('gulp'),
     livereload = require('gulp-livereload');
 
 gulp.task('less', function () {
-    return gulp.src('./src/main/webapp/WEB-INF/web-resources/less/*.less')
+    return gulp.src('./src/main/webapp/WEB-INF/web-resources/less/style.less')
         .pipe(less({
             paths: [
                 '../src/main/webapp/WEB-INF/web-resources/css/'

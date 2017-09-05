@@ -13,7 +13,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <jsp:include page="parts/header.jsp"/>
 ${users.size()}
 <c:forEach var="user" items="${users}">
@@ -30,8 +29,5 @@ ${users.size()}
         </ul>
     </ul>
 </c:forEach>
-<ul id="nav" class="category-menu">
-    <jsp:include page="parts/node.jsp"/>
-</ul>
 </body>
 </html>

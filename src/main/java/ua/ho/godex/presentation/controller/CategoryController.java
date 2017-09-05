@@ -29,14 +29,14 @@ public class CategoryController {
         Map<Integer, Category> integerCategoryHashMap = categoryList.stream().collect(Collectors.toMap(Category::getId, Category::getSelf));
         for (Category category : categoryList) {
             Integer parentCatId = category.getParentCatId();
-            if (parentCatId != 0) {
+            if (parentCatId != null) {
                 integerCategoryHashMap.get(parentCatId).getChildren().add(category);
             }
         }
         List<Category> categories = new ArrayList<>();
         for (Category category : categoryList) {
             Integer parentCatId = category.getParentCatId();
-            if (parentCatId != 0) {
+            if (parentCatId == null) {
                 categories.add(category);
             }
         }

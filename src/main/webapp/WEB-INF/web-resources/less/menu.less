@@ -1,0 +1,85 @@
+/* Стили меню */
+.category-menu {
+  display: inline-block;
+  width: 100%;
+  margin: 0px auto;
+  padding: 0;
+  background: #335599 url(../images/bg.png) repeat-x 0 -110px;
+
+  border-radius: 10px; /*немного css3*/
+  box-shadow: 0 2px 2px rgba(0, 0, 0, .5);
+  li {
+    margin: 10px;
+    float: left;
+    position: relative;
+    list-style: none;
+  }
+  a {
+    font-weight: bold;
+    color: #e7e5e5;
+    text-decoration: none;
+    display: block;
+    padding: 8px 20px;
+    border-radius: 10px; /*немного css3*/
+    text-shadow: 0 2px 2px rgba(0, 0, 0, .7);
+  }
+}
+
+/* sВыбранный пункт меню */
+.category-menu .current a, .category-menu li:hover > a {
+  background: #7788aa url(../images/bg.png) repeat-x 0 -20px;
+  color: #000;
+  border-top: 1px solid #f8f8f8;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, .7); /*немного css3*/
+  text-shadow: 0 2px 2px rgba(255, 255, 255, 0.7);
+}
+
+/* Подуровень */
+.category-menu ul li:hover a, .category-menu li:hover li a {
+  background: none;
+  border: none;
+  color: #000;
+}
+
+.category-menu ul li a:hover {
+  background: #335599 url(../images/bg.png) repeat-x 0 -100px;
+  color: #fff;
+
+  border-radius: 10px;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.7);
+}
+
+/* выпадающий список */
+.category-menu li:hover > ul {
+  opacity: 1;
+  visibility: visible;
+}
+
+.category-menu ul {
+  opacity: 0;
+  visibility: hidden;
+  padding: 0;
+  width: 175px;
+  position: absolute;
+  background: #aabbcc url(../images/bg.png) repeat-x 0 0;
+  border: 1px solid #7788aa;
+
+  border-radius: 10px; /*немного css3*/
+  box-shadow: 0 2px 2px rgba(0, 0, 0, .5);
+  transition: opacity .25s linear, visibility .1s linear .1s;
+}
+
+.category-menu ul li {
+  float: none;
+  margin: 0;
+}
+
+.category-menu ul a {
+  font-weight: normal;
+  text-shadow: 0 2px 2px rgba(255, 255, 255, 0.7);
+}
+
+.category-menu ul ul {
+  left: 160px;
+  top: 0px;
+}
