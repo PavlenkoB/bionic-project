@@ -23,7 +23,7 @@
 <body>
 <nav class="navbar navbar-expand-lg fixed-top head-menu">
     <a class="navbar-brand" href="/">
-        <i class="fa fa-puzzle-piece fa-3x"></i>
+        <i class="fa fa-beer fa-3x"></i>
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
             aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -49,6 +49,11 @@
             <li class="nav-item">
                 <a class="nav-link btn btn-secondary" href="<c:url value="/admin/variants"/>">
                     Варианты товаров
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link btn btn-secondary" href="<c:url value="/admin/users"/>">
+                    Users
                 </a>
             </li>
         </ul>

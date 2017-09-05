@@ -11,8 +11,13 @@ import ua.ho.godex.service.UserService;
 import java.util.List;
 
 @Controller
-@RequestMapping("users")
+@RequestMapping(UserController.MAIN_URL)
 public class UserController {
+    final static String MAIN_URL = "/admin/users";
+    final static String DELETE_URL = "/{userId}/delete";
+    final static String DELETE_URL_PV = "userId";
+    final static String EDIT_URL = "/{userId}/edit";
+    final static String EDIT_URL_PV = "userId";
     final private UserService userService;
 
     @Autowired
