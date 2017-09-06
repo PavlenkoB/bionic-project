@@ -1,88 +1,98 @@
 .category-list .category-list-item {
-    display: inline-flex
+  display: inline-flex
 }
 .category-list .category-list-item .category-actions {
-    display: flex
+  display: flex
 }
 .category-menu {
-    display: inline-block;
-    width: 100%;
-    margin: 0 auto;
-    padding: 0;
-    background: #249919 repeat-x 0 -110px;
-    border-radius: 10px;
-    box-shadow: 0 2px 2px rgba(0, 0, 0, .5)
+  display: inline-block;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  background: #249919 repeat-x 0 -110px;
+  border-radius: 10px;
+  box-shadow: 0 2px 2px rgba(0,0,0,.5)
 }
 .category-menu li {
-    margin: 10px;
-    float: left;
-    position: relative;
-    list-style: none
+  margin: 10px;
+  float: left;
+  position: relative;
+  list-style: none
 }
 .category-menu a {
-    font-weight: 700;
-    color: #343a40;
-    text-decoration: none;
-    display: block;
-    padding: 8px 20px;
-    border-radius: 10px
+  font-weight: 700;
+  color: #343a40;
+  text-decoration: none;
+  display: block;
+  padding: 8px 20px;
+  border-radius: 10px
 }
 .category-menu .current a,
 .category-menu li:hover > a {
-    background: #24b919 url(../images/bg.png) repeat-x 0 -20px;
-    color: #343a40;
-    border-top: 1px solid #f8f8f8;
-    box-shadow: 0 2px 2px rgba(0, 0, 0, .7)
+  background: #24b919 url(../images/bg.png) repeat-x 0 -20px;
+  color: #343a40;
+  border-top: 1px solid #f8f8f8;
+  box-shadow: 0 2px 2px rgba(0,0,0,.7)
 }
 .category-menu li:hover li a,
 .category-menu ul li:hover a {
-    background: 0 0;
-    border: none;
-    color: #343a40
+  background: 0 0;
+  border: none;
+  color: #343a40
 }
 .category-menu ul li a:hover {
-    background: #24b919 url(../images/bg.png) repeat-x 0 -100px;
-    color: #343a40;
-    border-radius: 10px
+  background: #24b919 url(../images/bg.png) repeat-x 0 -100px;
+  color: #343a40;
+  border-radius: 10px
 }
 .category-menu li:hover > ul {
-    opacity: 1;
-    visibility: visible
+  opacity: 1;
+  visibility: visible
 }
 .category-menu ul {
-    opacity: 0;
-    visibility: hidden;
-    padding: 0;
-    width: 175px;
-    position: absolute;
-    background: #abc url(../images/bg.png) repeat-x 0 0;
-    border: 1px solid #78a;
-    border-radius: 10px;
-    box-shadow: 0 2px 2px rgba(0, 0, 0, .5);
-    transition: opacity .25s linear, visibility .1s linear .1s
+  opacity: 0;
+  visibility: hidden;
+  padding: 0;
+  width: 175px;
+  position: absolute;
+  background: #abc url(../images/bg.png) repeat-x 0 0;
+  border: 1px solid #78a;
+  border-radius: 10px;
+  box-shadow: 0 2px 2px rgba(0,0,0,.5);
+  transition: opacity .25s linear,visibility .1s linear .1s
 }
 .category-menu ul li {
-    float: none;
-    margin: 0
+  float: none;
+  margin: 0
 }
 .category-menu ul a {
-    font-weight: 400
+  font-weight: 400
 }
 .category-menu ul ul {
-    left: 160px;
-    top: 0
+  left: 160px;
+  top: 0
 }
 .content {
-    margin-top: 80px
+  margin-top: 80px
 }
 .content a {
-    color: red
+  color: red
 }
 .btn {
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .5)
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,.5)
 }
 .table form {
-    float: left;
-    margin-right: 5px
+  float: left;
+  margin-right: 5px
+}
+.error-404 h1 {
+  color: #bf0000;
+  font-size: 16em
+}
+.error-404 h1 span:nth-child(2) {
+  font-size: 1.2em
+}
+.error-404 pre {
+  font-size: 10em
 }

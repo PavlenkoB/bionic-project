@@ -1,11 +1,14 @@
 package ua.ho.godex.presentation.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
+import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
+import org.springframework.boot.web.servlet.ErrorPage;
+import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 import ua.ho.godex.domain.Category;
 import ua.ho.godex.service.CategoryService;
 import ua.ho.godex.service.VariantService;
@@ -73,5 +76,21 @@ public class RootController {
         }
         model.addAttribute("categorysMenu", categories);
         return "index";
+    }
+
+    @RequestMapping("/*")
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public String customize404() {
+        return "/errors/404";
+    }
+
+    @Bean
+    public EmbeddedServletContainerCustomizer containerCustomizer() {
+        return new EmbeddedServletContainerCustomizer() {
+            @Override
+            public void customize(ConfigurableEmbeddedServletContainer container) {
+                container.addErrorPages(new ErrorPage(HttpStatus.NOT_FOUND, "/404.html"));
+            }
+        };
     }
 }

@@ -10,16 +10,18 @@ VALUES (1, 'admin', 'admin@mail.com', 'admin', 0);
 INSERT INTO `users` (id, `name`, `email`, `password`, `role`)
 VALUES (2, 'user', 'user@mail.com', 'user', 1);
 
-INSERT INTO `categorys` (`id`, `parent_cat_id`, `name`, `order`)
-VALUES (1, NULL, 'Техника', 0);
-INSERT INTO `categorys` (`id`, `parent_cat_id`, `name`, `order`)
-VALUES (2, 1, 'Мобильные телефоны', 0);
-INSERT INTO `categorys` (`id`, `parent_cat_id`, `name`, `order`)
-VALUES (3, 1, 'Компютеры', 0);
-INSERT INTO `categorys` (`id`, `parent_cat_id`, `name`, `order`)
-VALUES (4, 3, 'Ноутбуки', 0);
-INSERT INTO `categorys` (`id`, `parent_cat_id`, `name`, `order`)
-VALUES (5, NULL, 'Авто', 0);
+INSERT INTO `categorys` (`id`, `parent_cat_id`, `name`, `order`) VALUES (1, NULL, 'Техника', 0);
+INSERT INTO `categorys` (`id`, `parent_cat_id`, `name`, `order`) VALUES (2, 6, 'Мобильные телефоны', 0);
+INSERT INTO `categorys` (`id`, `parent_cat_id`, `name`, `order`) VALUES (3, 6, 'Компютеры', 0);
+INSERT INTO `categorys` (`id`, `parent_cat_id`, `name`, `order`) VALUES (4, 3, 'Ноутбуки', 0);
+INSERT INTO `categorys` (`id`, `parent_cat_id`, `name`, `order`) VALUES (5, NULL, 'Авто', 0);
+INSERT INTO `categorys` (`id`, `parent_cat_id`, `name`, `order`) VALUES (6, 1, 'Електроника', 0);
+INSERT INTO `categorys` (`id`, `parent_cat_id`, `name`, `order`) VALUES (7, 2, 'Смартфон', 0);
+INSERT INTO `categorys` (`id`, `parent_cat_id`, `name`, `order`) VALUES (8, 3, 'Собраные', 0);
+INSERT INTO `categorys` (`id`, `parent_cat_id`, `name`, `order`) VALUES (9, 3, 'Детали', 0);
+INSERT INTO `categorys` (`id`, `parent_cat_id`, `name`, `order`) VALUES (10, 9, 'Процесоры', 0);
+INSERT INTO `categorys` (`id`, `parent_cat_id`, `name`, `order`) VALUES (11, NULL, 'Сантехника, Стройматериалы', 0);
+
 
 
 INSERT INTO products (id, name, description, categorys_id)

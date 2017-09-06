@@ -11,7 +11,7 @@
 <c:forEach varStatus="loop" var="menuNode" items="${categorysMenu}">
     <jsp:useBean id="menuNode" type="ua.ho.godex.domain.Category"/>
     <li>
-        <a>${menuNode.name}</a>
+        <a href="/category/${menuNode.id}/">${menuNode.name}</a>
         <c:if test="${menuNode.children.size() > 0}">
             <ul>
                 <c:set var="categorysMenu" value="${menuNode.children}" scope="request"/>
