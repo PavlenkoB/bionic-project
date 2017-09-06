@@ -11,8 +11,12 @@ import ua.ho.godex.service.ProductService;
 import java.util.List;
 
 @Controller
-@RequestMapping("products")
+@RequestMapping(ProductController.MAIN_URL)
 public class ProductController {
+    final static String MAIN_URL = "/admin/products";
+    final static String DELETE_URL = "/{categoryId}/delete";
+    final static String DELETE_URL_PV = "categoryId";
+
     final private ProductService productService;
 
     @Autowired
@@ -24,7 +28,7 @@ public class ProductController {
     public String showProducts(Model model) {
         List<Product> productList = productService.getAll();
         model.addAttribute("products", productList);
-        return "/products/products-list";
+        return "/products/list";
     }
 
 }

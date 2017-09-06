@@ -51,6 +51,11 @@
                     Users
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link btn btn-secondary" href="<c:url value="/admin/products"/>">
+                    Products
+                </a>
+            </li>
         </ul>
     </div>
 </nav>

@@ -4,8 +4,9 @@
   width: 100%;
   margin: 0px auto;
   padding: 0;
-  background: #249919 repeat-x 0 -110px;
-  border-radius: 10px; /*немного css3*/
+  background: #343a40 repeat-x 0 -110px;
+  /*немного css3*/
+  border-radius: 0px 0px 20px 20px;
   box-shadow: 0 2px 2px rgba(0, 0, 0, .5);
   li {
     margin: 10px;
@@ -15,18 +16,21 @@
   }
   a {
     font-weight: bold;
-    color: #343a40;
+    color: rgb(255, 255, 255, 0.5);
     text-decoration: none;
     display: block;
     padding: 8px 20px;
     border-radius: 10px; /*немного css3*/
+    &:hover {
+      color: #343a40;
+    }
   }
 }
 
 /* sВыбранный пункт меню */
 .category-menu .current a, .category-menu li:hover > a {
-  background: #24b919 url(../images/bg.png) repeat-x 0 -20px;
-  color: #343a40;
+  background: #b9b4b4 url(../images/bg.png) repeat-x 0 -20px;
+  color: #eeeeee;
   border-top: 1px solid #f8f8f8;
   box-shadow: 0 2px 2px rgba(0, 0, 0, .7); /*немного css3*/
 }
@@ -35,11 +39,11 @@
 .category-menu ul li:hover a, .category-menu li:hover li a {
   background: none;
   border: none;
-  color: #343a40;
+  color: #f0f0f0;
 }
 
 .category-menu ul li a:hover {
-  background: #24b919 url(../images/bg.png) repeat-x 0 -100px;
+  background: #b9b4b4 url(../images/bg.png) repeat-x 0 -100px;
   color: #343a40;
 
   border-radius: 10px;
@@ -57,7 +61,7 @@
   padding: 0;
   width: 175px;
   position: absolute;
-  background: #aabbcc url(../images/bg.png) repeat-x 0 0;
+  background: #918c8c url(../images/bg.png) repeat-x 0 0;
   border: 1px solid #7788aa;
 
   border-radius: 10px; /*немного css3*/

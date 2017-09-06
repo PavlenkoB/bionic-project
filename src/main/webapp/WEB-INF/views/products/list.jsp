@@ -14,8 +14,6 @@
 </head>
 <body>
 <jsp:include page="../parts/header.jsp"/>
-
-<h1>${attribute.name}</h1>
 <table class="table table-striped">
     <thead>
     <tr>
@@ -26,13 +24,12 @@
     </tr>
     </thead>
     <tbody>
-    <c:forEach items="${variants}" var="variant">
-        <jsp:useBean id="variant" type="ua.ho.godex.domain.Variant"/>
+    <c:forEach items="${products}" var="variant">
+        <jsp:useBean id="variant" type="ua.ho.godex.domain.Product"/>
         <tr>
             <th scope="row">${variant.id}</th>
-            <td>${variant.attribute.name}</td>
             <td>${variant.name}</td>
-            <td>${variant.description}</td>
+            <td>${variant.category}</td>
             <td>
                 <form method="post" action="/admin/variants/${variant.id}/edit">
                     <button class="btn btn-secondary">

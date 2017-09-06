@@ -24,7 +24,7 @@ public class Product implements AbstaractGenericDomainObj {
     @Column(name = "moderated")
     private Boolean moderated = false;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "categorys_id", nullable = false)
     private Category category;
     @ManyToMany(fetch = FetchType.LAZY)
