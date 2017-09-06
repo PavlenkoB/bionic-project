@@ -14,7 +14,6 @@
 </head>
 <body>
 <jsp:include page="../parts/header.jsp"/>
-<ul>
     <table class="table table-striped">
         <thead>
         <tr>
@@ -51,6 +50,30 @@
         </c:forEach>
         </tbody>
     </table>
-</ul>
+<%--@elvariable id="newUser" type="ua.ho.godex.domain.User"--%>
+<form:form modelAttribute="newUser" method="post">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <form:input type="text" class="form-control" id="name" path="name"/>
+    </div>
+    <div class="form-group">
+        <label for="email">email</label>
+        <form:input type="text" class="form-control" id="email" path="email"/>
+    </div>
+    <div class="form-group">
+        <label for="password">password</label>
+        <form:input type="text" class="form-control" id="password" path="password"/>
+    </div>
+    <div class="form-group">
+        <label for="role">FieldType</label>
+        <form:select id="role" path="role" class="form-control">
+            <c:forEach items="${userRoles}" var="userRole">
+                <jsp:useBean id="userRole" type="ua.ho.godex.domain.Role"/>
+                <form:option value="${userRole.name()}"/>
+            </c:forEach>
+        </form:select>
+    </div>
+    <button type="submit" class="btn btn-primary">Add</button>
+</form:form>
 </body>
 </html>

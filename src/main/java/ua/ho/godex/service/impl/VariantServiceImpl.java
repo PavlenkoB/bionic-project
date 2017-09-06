@@ -5,40 +5,17 @@ import org.springframework.stereotype.Service;
 import ua.ho.godex.dao.VariantDao;
 import ua.ho.godex.domain.Variant;
 import ua.ho.godex.service.VariantService;
-import ua.ho.godex.util.exception.NotFoundException;
 
 import java.util.List;
 
 @Service
-public class VariantServiceImpl implements VariantService {
+public class VariantServiceImpl extends GenericServiceImpl<Variant> implements VariantService {
+    private VariantDao variantDao;
 
     @Autowired
-    VariantDao variantDao;
-
-    @Override
-    public List<Variant> getAll() {
-        return variantDao.getAll();
-    }
-
-    @Override
-    public Variant getById(int variantId) {
-        return variantDao.getById(variantId).
-                orElseThrow(() -> new NotFoundException(String.format("VARIANT с id=%d не найден", variantId)));
-    }
-
-    @Override
-    public Variant create(Variant variant) {
-        return variantDao.save(variant);
-    }
-
-    @Override
-    public void update(Variant variant) {
-        variantDao.save(variant);
-    }
-
-    @Override
-    public boolean delete(Integer variantId) {
-        return variantDao.delete(variantId);
+    public VariantServiceImpl(VariantDao variantDao) {
+        super(Variant.class, variantDao);
+        this.variantDao = (VariantDao) genericDao;
     }
 
     @Override

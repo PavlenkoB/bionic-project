@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ua.ho.godex.domain.Category;
 import ua.ho.godex.service.CategoryService;
@@ -14,8 +16,11 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Controller
-@RequestMapping("categorys")
+@RequestMapping(CategoryController.MAIN_URL)
 public class CategoryController {
+    final static String MAIN_URL = "/admin/categorys";
+    final static String DELETE_URL = "/{categoryId}/delete";
+    final static String DELETE_URL_PV = "categoryId";
     final private CategoryService categoryService;
 
     @Autowired
@@ -44,4 +49,9 @@ public class CategoryController {
         return "/category/category-list";
     }
 
+    @PostMapping(DELETE_URL)
+    String deleteCategory(Model model, @PathVariable(DELETE_URL_PV) Integer categoryId) {
+        categoryService.delete(categoryId);
+        return "redirect:" + AttributeController.MAIN_URL;
+    }
 }

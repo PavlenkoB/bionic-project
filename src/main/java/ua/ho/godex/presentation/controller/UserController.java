@@ -4,7 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import ua.ho.godex.domain.Role;
 import ua.ho.godex.domain.User;
 import ua.ho.godex.service.UserService;
 
@@ -28,7 +31,20 @@ public class UserController {
     @GetMapping
     public String showUsers(Model model) {
         List<User> userList = userService.getAll();
+        if (!model.containsAttribute("newUser")) {
+            model.addAttribute("newUser", new User());
+        }
         model.addAttribute("users", userList);
+        model.addAttribute("userRoles", Role.values());
         return "/users/users-list";
     }
+
+    @PostMapping
+    String addUser(Model model,
+                   @ModelAttribute("newUser") User newUser) {
+        //todo cheack input date
+        userService.create(newUser);
+        return "redirect:" + UserController.MAIN_URL;
+    }
+
 }

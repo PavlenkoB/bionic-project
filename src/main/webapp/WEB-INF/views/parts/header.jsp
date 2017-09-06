@@ -42,13 +42,8 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link btn btn-secondary" href="<c:url value="/categorys"/>">
+                <a class="nav-link btn btn-secondary" href="<c:url value="admin/categorys"/>">
                     Категории товаров
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link btn btn-secondary" href="<c:url value="/admin/variants"/>">
-                    Варианты товаров
                 </a>
             </li>
             <li class="nav-item">

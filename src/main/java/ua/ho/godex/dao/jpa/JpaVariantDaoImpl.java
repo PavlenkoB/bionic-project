@@ -3,6 +3,7 @@ package ua.ho.godex.dao.jpa;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import ua.ho.godex.dao.VariantDao;
+import ua.ho.godex.domain.Attribute;
 import ua.ho.godex.domain.Variant;
 
 import java.util.List;
@@ -16,7 +17,6 @@ public class JpaVariantDaoImpl extends JpaGenericDaoImpl<Variant> implements Var
 
     @Override
     public List<Variant> getForAttribute(Integer attributeId) {
-//        Query query=entityManager.createQuery("SELECT * FROM Variant V WHERE V.")
-        return null;
+        return entityManager.find(Attribute.class, attributeId).getVariantList();
     }
 }
