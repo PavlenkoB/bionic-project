@@ -9,7 +9,7 @@
     width: 100%;
     margin: 0 auto;
     padding: 0;
-    background: #359 url(../images/bg.png) repeat-x 0 -110px;
+    background: #249919 repeat-x 0 -110px;
     border-radius: 10px;
     box-shadow: 0 2px 2px rgba(0, 0, 0, .5)
 }
@@ -21,32 +21,29 @@
 }
 .category-menu a {
     font-weight: 700;
-    color: #e7e5e5;
+    color: #343a40;
     text-decoration: none;
     display: block;
     padding: 8px 20px;
-    border-radius: 10px;
-    text-shadow: 0 2px 2px rgba(0, 0, 0, .7)
+    border-radius: 10px
 }
 .category-menu .current a,
 .category-menu li:hover > a {
-    background: #78a url(../images/bg.png) repeat-x 0 -20px;
-    color: #000;
+    background: #24b919 url(../images/bg.png) repeat-x 0 -20px;
+    color: #343a40;
     border-top: 1px solid #f8f8f8;
-    box-shadow: 0 2px 2px rgba(0, 0, 0, .7);
-    text-shadow: 0 2px 2px rgba(255, 255, 255, .7)
+    box-shadow: 0 2px 2px rgba(0, 0, 0, .7)
 }
 .category-menu li:hover li a,
 .category-menu ul li:hover a {
     background: 0 0;
     border: none;
-    color: #000
+    color: #343a40
 }
 .category-menu ul li a:hover {
-    background: #359 url(../images/bg.png) repeat-x 0 -100px;
-    color: #fff;
-    border-radius: 10px;
-    text-shadow: 0 2px 2px rgba(0, 0, 0, .7)
+    background: #24b919 url(../images/bg.png) repeat-x 0 -100px;
+    color: #343a40;
+    border-radius: 10px
 }
 .category-menu li:hover > ul {
     opacity: 1;
@@ -69,8 +66,7 @@
     margin: 0
 }
 .category-menu ul a {
-    font-weight: 400;
-    text-shadow: 0 2px 2px rgba(255, 255, 255, .7)
+    font-weight: 400
 }
 .category-menu ul ul {
     left: 160px;

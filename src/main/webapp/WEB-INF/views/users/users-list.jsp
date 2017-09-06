@@ -52,6 +52,7 @@
     </table>
 <%--@elvariable id="newUser" type="ua.ho.godex.domain.User"--%>
 <form:form modelAttribute="newUser" method="post">
+    <form:input path="id" type="hidden"/>
     <div class="form-group">
         <label for="name">Name</label>
         <form:input type="text" class="form-control" id="name" path="name"/>
@@ -73,7 +74,7 @@
             </c:forEach>
         </form:select>
     </div>
-    <button type="submit" class="btn btn-primary">Add</button>
+    <button type="submit" class="btn btn-primary">Save</button>
 </form:form>
 </body>
 </html>

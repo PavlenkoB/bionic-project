@@ -21,7 +21,7 @@
     <title>header</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg fixed-top head-menu">
+<nav class="navbar navbar-expand-lg  navbar-dark bg-dark fixed-top head-menu">
     <a class="navbar-brand" href="/">
         <i class="fa fa-beer fa-3x"></i>
     </a>
@@ -32,17 +32,17 @@
     <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link btn btn-secondary" href="<c:url value="/"/>">
+                <a class="nav-link btn btn-secondary " href="<c:url value="/"/>">
                     Main
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link btn btn-secondary" href="<c:url value="admin/attributes"/>">
+                <a class="nav-link btn btn-secondary " href="<c:url value="/admin/attributes"/>">
                     Атрибуты
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link btn btn-secondary" href="<c:url value="admin/categorys"/>">
+                <a class="nav-link btn btn-secondary" href="<c:url value="/admin/categorys"/>">
                     Категории товаров
                 </a>
             </li>

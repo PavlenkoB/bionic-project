@@ -3,10 +3,7 @@ package ua.ho.godex.presentation.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import ua.ho.godex.domain.Role;
 import ua.ho.godex.domain.User;
 import ua.ho.godex.service.UserService;
@@ -21,6 +18,7 @@ public class UserController {
     final static String DELETE_URL_PV = "userId";
     final static String EDIT_URL = "/{userId}/edit";
     final static String EDIT_URL_PV = "userId";
+    final static String LIST_JSP_FILE = "/users/users-list";
     final private UserService userService;
 
     @Autowired
@@ -36,7 +34,24 @@ public class UserController {
         }
         model.addAttribute("users", userList);
         model.addAttribute("userRoles", Role.values());
-        return "/users/users-list";
+
+        return LIST_JSP_FILE;
+    }
+
+    @PostMapping(EDIT_URL)
+    public String editUsers(Model model,
+                            @PathVariable(EDIT_URL_PV) Integer userId,
+                            @ModelAttribute("newUser") User newUser) {
+        boolean saveUser = newUser.getId() != null;
+        User user = userService.getById(userId);
+        model.addAttribute("newUser", user);
+        model.addAttribute("userRoles", Role.values());
+        if (!saveUser) {
+            return LIST_JSP_FILE;
+        } else {
+            userService.update(newUser);
+            return "redirect:" + UserController.MAIN_URL;
+        }
     }
 
     @PostMapping
@@ -44,6 +59,14 @@ public class UserController {
                    @ModelAttribute("newUser") User newUser) {
         //todo cheack input date
         userService.create(newUser);
+        return "redirect:" + UserController.MAIN_URL;
+    }
+
+    @PostMapping(DELETE_URL)
+    String addUser(Model model,
+                   @PathVariable(DELETE_URL_PV) Integer userId) {
+        //todo cheack input date
+        userService.delete(userId);
         return "redirect:" + UserController.MAIN_URL;
     }
 

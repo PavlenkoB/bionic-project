@@ -15,8 +15,7 @@ import java.util.List;
  */
 public abstract class GenericServiceImpl<T extends AbstaractGenericDomainObj> implements GenericService<T> {
     private final Class<T> attributeClass;
-    protected GenericDao genericDao;
-    ;
+    GenericDao genericDao;
 
     public GenericServiceImpl(Class<T> attributeClass, GenericDao genericDao) {
         this.attributeClass = attributeClass;
