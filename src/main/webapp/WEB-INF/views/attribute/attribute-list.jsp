@@ -9,11 +9,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Attributes</title>
-</head>
-<body>
 <jsp:include page="../parts/header.jsp"/>
 <ul>
     <table class="table table-striped">
@@ -94,5 +89,4 @@
         <button type="submit" class="btn btn-primary">Add</button>
     </form:form>
 </ul>
-</body>
-</html>
+<jsp:include page="../parts/footer.jsp"/>

@@ -8,16 +8,10 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Categorys</title>
-</head>
-<body>
 <jsp:include page="../parts/header.jsp"/>
 <div class="category-list">
     <ul>
         <jsp:include page="category-row.jsp"/>
     </ul>
 </div>
-</body>
-</html>
+<jsp:include page="../parts/footer.jsp"/>

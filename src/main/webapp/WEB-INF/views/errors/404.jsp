@@ -7,11 +7,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>error</title>
-</head>
-<body>
 <jsp:include page="../parts/header.jsp"/>
 <div class="text-center error-404">
     <h1>
@@ -26,5 +21,4 @@
         <a class="btn btn-info" onclick="window.history.back();"> Back to previos page</a>
     </p>
 </div>
-</body>
-</html>
+<jsp:include page="../parts/footer.jsp"/>

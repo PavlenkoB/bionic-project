@@ -8,11 +8,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>users</title>
-</head>
-<body>
 <jsp:include page="../parts/header.jsp"/>
     <table class="table table-striped">
         <thead>
@@ -76,5 +71,4 @@
     </div>
     <button type="submit" class="btn btn-primary">Save</button>
 </form:form>
-</body>
-</html>
+<jsp:include page="../parts/footer.jsp"/>
