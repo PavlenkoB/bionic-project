@@ -24,18 +24,18 @@
         </tr>
         </thead>
         <tbody>
-        <c:forEach items="${attributes}" var="variant">
+        <c:forEach items="${attributes}" var="attribute">
             <jsp:useBean id="attribute" type="ua.ho.godex.domain.Attribute"/>
             <tr>
-                <th scope="row">${variant.id}</th>
-                <td>${variant.category.name}</td>
-                <td>${variant.name}</td>
-                <td>${variant.fieldType}</td>
-                <td>${variant.description}</td>
+                <th scope="row">${attribute.id}</th>
+                <td>${attribute.category.name}</td>
+                <td>${attribute.name}</td>
+                <td>${attribute.fieldType}</td>
+                <td>${attribute.description}</td>
                 <td>
-                    <pre>${variant.variantsInString}</pre>
+                    <pre>${attribute.variantsInString}</pre>
                     <% if (attribute.getFieldType() == FieldType.DROP_BOX) {%>
-                    <form method="get" action="/admin/variants/${variant.id}/">
+                    <form method="get" action="/admin/variants/${attribute.id}/">
                         <button class="btn btn-secondary">
                             <i class="fa fa-edit"></i>
                         </button>
@@ -43,12 +43,12 @@
                     <% } %>
                 </td>
                 <td>
-                    <form method="post" action="/admin/attributes/${variant.id}/edit">
+                    <form method="post" action="/admin/attributes/${attribute.id}/edit">
                         <button class="btn btn-secondary">
                             <i class="fa fa-edit"></i>
                         </button>
                     </form>
-                    <form method="post" action="/admin/attributes/${variant.id}/delete">
+                    <form method="post" action="/admin/attributes/${attribute.id}/delete">
                         <button class="btn btn-danger">
                             <i class="fa fa-remove"></i>
                         </button>

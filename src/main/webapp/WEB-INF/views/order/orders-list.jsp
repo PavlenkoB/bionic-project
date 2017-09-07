@@ -9,7 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:include page="../parts/header.jsp"/>
 <ul>
-    <c:forEach items="${orders}" var="variant">
+    <c:forEach items="${orders}" var="attribute">
     </c:forEach>
 </ul>
 <jsp:include page="../parts/footer.jsp"/>

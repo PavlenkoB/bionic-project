@@ -20,20 +20,20 @@
     </tr>
     </thead>
     <tbody>
-    <c:forEach items="${variants}" var="variant">
+    <c:forEach items="${variants}" var="attribute">
         <jsp:useBean id="variant" type="ua.ho.godex.domain.Variant"/>
         <tr>
-            <th scope="row">${variant.id}</th>
-            <td>${variant.attribute.name}</td>
-            <td>${variant.name}</td>
-            <td>${variant.description}</td>
+            <th scope="row">${attribute.id}</th>
+            <td>${attribute.attribute.name}</td>
+            <td>${attribute.name}</td>
+            <td>${attribute.description}</td>
             <td>
-                <form method="post" action="/admin/variants/${variant.id}/edit">
+                <form method="post" action="/admin/variants/${attribute.id}/edit">
                     <button class="btn btn-secondary">
                         <i class="fa fa-edit"></i>
                     </button>
                 </form>
-                <form method="post" action="/admin/variants/${variant.id}/delete">
+                <form method="post" action="/admin/variants/${attribute.id}/delete">
                     <button class="btn btn-danger">
                         <i class="fa fa-remove"></i>
                     </button>

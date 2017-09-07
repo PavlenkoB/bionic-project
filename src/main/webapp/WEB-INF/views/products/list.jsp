@@ -27,9 +27,9 @@
             <td>${product.category.name}</td>
             <td>${product.name}</td>
             <td>
-                <c:forEach items="${product.variants}" var="variant">
+                <c:forEach items="${product.variants}" var="attribute">
                     <jsp:useBean id="variant" type="ua.ho.godex.domain.Variant"/>
-                    <p>${variant.attribute.name}:${variant.name}</p>
+                    <p>${attribute.attribute.name}:${attribute.name}</p>
                 </c:forEach>
 
             </td>
@@ -61,4 +61,4 @@
     </div>
     <button type="submit" class="btn btn-primary">Add</button>
 </form>
-<jsp:include page="../parts/footer.jsp"
+<jsp:include page="../parts/footer.jsp"/>
