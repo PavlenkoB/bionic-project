@@ -5,7 +5,6 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "products")
@@ -27,12 +26,6 @@ public class Product implements AbstaractGenericDomainObj {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "categorys_id", nullable = false)
     private Category category;
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "products_users",
-            joinColumns = @JoinColumn(name = "products_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_id")
-    )
-    private List<User> usersWhoHaveThisProduct;
 
     public Product() {
     }

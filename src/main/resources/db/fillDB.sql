@@ -28,8 +28,8 @@ INSERT INTO products (id, name, description, categorys_id)
 VALUES (1, 'LG g 1000', 'очень крутой телефоы', 2);
 
 
-INSERT INTO attributes (id, name, description, moderated, categorys_id, type)
-VALUES (1, 'RAM', 'mobile phone RAM', 1, 1, 'DROP_BOX');
+INSERT INTO attributes (id, name, description, categorys_id, type)
+VALUES (1, 'RAM', 'mobile phone RAM', 1, 'DROP_BOX');
 
 
 INSERT INTO VARIANTS (ID, NAME, DESCRIPTION, ATTRIBUTE_ID)
