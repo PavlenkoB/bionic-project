@@ -31,14 +31,6 @@ public class User implements AbstaractGenericDomainObj {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     private List<Order> orderList;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "products_users",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "products_id")
-    )
-    private List<Product> ownProducts;
-
-
     public User() {
     }
 

@@ -34,12 +34,12 @@ public class Order implements AbstaractGenericDomainObj {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "users_id", nullable = false)
+
     private User user;
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "products_orders",
             joinColumns = @JoinColumn(name = "orders_id"),
             inverseJoinColumns = @JoinColumn(name = "products_id")
     )
-    //todo связь продукта с конкретным продажой пльзователя
     private List<Product> products;
 }
