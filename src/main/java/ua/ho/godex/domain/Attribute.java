@@ -22,8 +22,6 @@ public class Attribute implements AbstaractGenericDomainObj {
     private String name;
     @Column(name = "description")
     private String description;
-    @Column(name = "moderated")
-    private Boolean moderated = false;
     @Column(name = "type")
     @Enumerated(value = EnumType.STRING)
     private FieldType fieldType;
@@ -31,7 +29,7 @@ public class Attribute implements AbstaractGenericDomainObj {
     @OneToMany(mappedBy = "attribute", fetch = FetchType.EAGER)
     private List<Variant> variantList;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "categorys_id", nullable = false)
     private Category category;
 
@@ -63,8 +61,9 @@ public class Attribute implements AbstaractGenericDomainObj {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", moderated=" + moderated +
                 ", fieldType=" + fieldType +
                 '}';
     }
+
+
 }

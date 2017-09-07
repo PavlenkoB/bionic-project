@@ -20,6 +20,7 @@
         <thead>
         <tr>
             <th>#</th>
+            <th>category</th>
             <th>Name</th>
             <th>Type</th>
             <th>Description</th>
@@ -32,6 +33,7 @@
             <jsp:useBean id="attribute" type="ua.ho.godex.domain.Attribute"/>
             <tr>
                 <th scope="row">${attribute.id}</th>
+                <td>${attribute.category.name}</td>
                 <td>${attribute.name}</td>
                 <td>${attribute.fieldType}</td>
                 <td>${attribute.description}</td>

@@ -23,8 +23,10 @@ public class Order implements AbstaractGenericDomainObj {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name = "datetime", columnDefinition = "DATETIME")
-    private LocalDateTime localDateTime;
+    @Column(name = "datetime_open", columnDefinition = "DATETIME")
+    private LocalDateTime localDateTimeOpen;
+    @Column(name = "datetime_closed", columnDefinition = "DATETIME")
+    private LocalDateTime localDateTimeClosed;
     @Column(name = "description")
     private String description;
     @Column(name = "sum")

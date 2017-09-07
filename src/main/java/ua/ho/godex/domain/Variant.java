@@ -21,8 +21,6 @@ public class Variant implements AbstaractGenericDomainObj {
     private String name;
     @Column(name = "description")
     private String description;
-    @Column(name = "moderated")
-    private Boolean moderated = false;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "attribute_id",nullable = false)

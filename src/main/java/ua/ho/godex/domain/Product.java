@@ -20,8 +20,6 @@ public class Product implements AbstaractGenericDomainObj {
     private String name;
     @Column(name = "description")
     private String description;
-    @Column(name = "moderated")
-    private Boolean moderated = false;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "categorys_id", nullable = false)

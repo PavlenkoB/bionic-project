@@ -16,11 +16,13 @@ import java.util.Optional;
  * Date: 03.09.2017
  * Project: supStore
  */
+
+@Transactional
 public abstract class JpaGenericDaoImpl<T extends AbstaractGenericDomainObj> implements GenericDao<T> {
 
-    private final Class<T> attributeClass;
+    final Class<T> attributeClass;
     @PersistenceContext
-    protected EntityManager entityManager;
+    EntityManager entityManager;
 
     public JpaGenericDaoImpl(Class<T> attributeClass) {
         this.attributeClass = attributeClass;
