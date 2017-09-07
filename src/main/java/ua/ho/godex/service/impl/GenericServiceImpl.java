@@ -28,7 +28,7 @@ public abstract class GenericServiceImpl<T extends AbstaractGenericDomainObj> im
     }
 
     @Override
-    @Transactional
+
     public T getById(Integer domainObjectId) {
         //todo cheack this
         try {
@@ -42,11 +42,13 @@ public abstract class GenericServiceImpl<T extends AbstaractGenericDomainObj> im
     }
 
     @Override
+    @Transactional
     public T create(T domainObject) {
         return (T) genericDao.save(domainObject);
     }
 
     @Override
+    @Transactional
     public void update(T domainObject) {
         genericDao.save(domainObject);
     }

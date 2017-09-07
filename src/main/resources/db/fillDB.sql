@@ -31,8 +31,9 @@ VALUES (1, 'LG g 1000', 'очень крутой телефоы', 2);
 
 
 INSERT INTO `attributes` (`id`, `name`, `description`, `type`, `categorys_id`)
-VALUES (1, 'RAM', 'mobile phone RAM', 'DROP_BOX', 1);
-INSERT INTO `attributes` (`id`, `name`, `description`, `type`, `categorys_id`) VALUES (2, 'ROM', 'ROM', 'DROP_BOX', 1);
+VALUES (1, 'RAM', 'mobile phone RAM', 'DROP_BOX', 2);
+INSERT INTO `attributes` (`id`, `name`, `description`, `type`, `categorys_id`) VALUES (2, 'ROM', 'ROM', 'DROP_BOX', 2);
+INSERT INTO `attributes` (`id`, `name`, `description`, `type`, `categorys_id`) VALUES (3, '3G', NULL, 'CHECK_BOX', 2);
 
 INSERT INTO `variants` (`id`, `name`, `description`, `attribute_id`) VALUES (1, '1 GB', NULL, 1);
 INSERT INTO `variants` (`id`, `name`, `description`, `attribute_id`) VALUES (2, '2 GB', NULL, 1);
@@ -40,6 +41,9 @@ INSERT INTO `variants` (`id`, `name`, `description`, `attribute_id`) VALUES (3, 
 INSERT INTO `variants` (`id`, `name`, `description`, `attribute_id`) VALUES (4, '4 GB', NULL, 1);
 INSERT INTO `variants` (`id`, `name`, `description`, `attribute_id`) VALUES (5, '16 GB', NULL, 2);
 INSERT INTO `variants` (`id`, `name`, `description`, `attribute_id`) VALUES (6, '32 GB', NULL, 2);
+INSERT INTO `variants` (`id`, `name`, `description`, `attribute_id`) VALUES (8, '0', NULL, 3);
+INSERT INTO `variants` (`id`, `name`, `description`, `attribute_id`) VALUES (9, '1', NULL, 3);
+
 
 INSERT INTO `orders` (`id`, `datetime_open`, `datetime_closed`, `description`, `sum`, `users_id`)
 VALUES (1, '2017-09-07 23:05:23', NULL, 'TEstOrder', 1000, 2);
@@ -49,5 +53,7 @@ INSERT INTO `products_orders` (`id`, `orders_id`, `products_id`) VALUES (3, 1, 1
 
 INSERT INTO `products_variants` (`products_id`, `variants_id`, `attributes_id`) VALUES (1, 1, 1);
 INSERT INTO `products_variants` (`products_id`, `variants_id`, `attributes_id`) VALUES (1, 5, 2);
+INSERT INTO `products_variants` (`products_id`, `variants_id`, `attributes_id`) VALUES (1, 9, 2);
+
 
 

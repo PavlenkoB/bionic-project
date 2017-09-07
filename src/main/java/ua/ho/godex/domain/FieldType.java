@@ -7,6 +7,5 @@ package ua.ho.godex.domain;
  */
 public enum FieldType {
     CHECK_BOX,
-    DROP_BOX,
-    TEXT
+    DROP_BOX
 }

@@ -40,4 +40,15 @@ public class Category implements AbstaractGenericDomainObj {
     public Category getSelf() {
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "Category{" +
+                "id=" + id +
+                ", parentCatId=" + parentCatId +
+                ", name='" + name + '\'' +
+                ", order=" + order +
+                ", attributes=" + attributes +
+                '}';
+    }
 }
