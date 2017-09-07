@@ -1,9 +1,3 @@
-<html>
-<head>
-    <title>index</title>
-    <link rel="icon" type="image/x-icon" href="find-favicon.ico">
-</head>
-<body>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
@@ -29,5 +23,4 @@ ${users.size()}
         </ul>
     </ul>
 </c:forEach>
-</body>
-</html>
+<jsp:include page="parts/footer.jsp"/>

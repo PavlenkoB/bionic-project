@@ -12,6 +12,7 @@ import ua.ho.godex.config.AppConfig;
 public class PlaceHolder extends SpringBootServletInitializer {
     public static void main(String[] args) throws Exception {
         System.setProperty("spring.thymeleaf.cache", "false");
+        System.setProperty("spring.mvc.favicon.enabled", "false");
         System.setProperty("spring.profiles.active","jpa,mysql");//todo move
         System.setProperty("current.session.context.class", "thread");//todo move use for lazy load works
         System.setProperty("spring.jpa.properties.hibernate.enable.lazy.load.no.trans", "true");//todo move

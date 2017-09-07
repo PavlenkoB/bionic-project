@@ -4,9 +4,9 @@ add to fill DB
 
 add favicon
 
-move to spring-boot
-
 rename Attribute to Property
 
 
-    Variant getById(int variantId); VS Variant getById(Integer variantId);
+    Variant getById(int variantId);
+    VS Variant getById(Integer variantId);
+

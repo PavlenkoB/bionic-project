@@ -9,6 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <link rel="icon" type="img/ico" href="/res/favicon.ico">
     <script src="/res/js/jquery-3.2.1.min.js"></script>
     <%--todo download lib--%>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
@@ -18,7 +19,7 @@
     <link rel="stylesheet" href="/res/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/res/css/style.css">
     <link rel="stylesheet" href="/res/font-awesome/css/font-awesome.min.css">
-    <title>header</title>
+    <title>Supliers</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg  navbar-dark bg-dark fixed-top head-menu">
