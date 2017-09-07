@@ -14,7 +14,7 @@
 <body>
 <jsp:include page="../parts/header.jsp"/>
 <ul>
-    <c:forEach items="${orders}" var="attribute">
+    <c:forEach items="${orders}" var="variant">
     </c:forEach>
 </ul>
 </body>

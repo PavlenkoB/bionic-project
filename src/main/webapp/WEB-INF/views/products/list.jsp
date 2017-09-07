@@ -18,25 +18,33 @@
     <thead>
     <tr>
         <th>#</th>
+        <th>Category</th>
+        <th>Name</th>
         <th>Attribute</th>
-        <th>Description</th>
         <th>Action</th>
     </tr>
     </thead>
     <tbody>
-    <c:forEach items="${products}" var="variant">
-        <jsp:useBean id="variant" type="ua.ho.godex.domain.Product"/>
+    <c:forEach items="${products}" var="product">
+        <jsp:useBean id="product" type="ua.ho.godex.domain.Product"/>
         <tr>
-            <th scope="row">${variant.id}</th>
-            <td>${variant.name}</td>
-            <td>${variant.category}</td>
+            <th scope="row">${product.id}</th>
+            <td>${product.category.name}</td>
+            <td>${product.name}</td>
             <td>
-                <form method="post" action="/admin/variants/${variant.id}/edit">
+                <c:forEach items="${product.variants}" var="variant">
+                    <jsp:useBean id="variant" type="ua.ho.godex.domain.Variant"/>
+                    <p>${variant.attribute.name}:${variant.name}</p>
+                </c:forEach>
+
+            </td>
+            <td>
+                <form method="post" action="/admin/variants/${product.id}/edit">
                     <button class="btn btn-secondary">
                         <i class="fa fa-edit"></i>
                     </button>
                 </form>
-                <form method="post" action="/admin/variants/${variant.id}/delete">
+                <form method="post" action="/admin/variants/${product.id}/delete">
                     <button class="btn btn-danger">
                         <i class="fa fa-remove"></i>
                     </button>

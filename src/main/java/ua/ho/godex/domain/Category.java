@@ -2,7 +2,6 @@ package ua.ho.godex.domain;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.ToString;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
@@ -12,7 +11,6 @@ import java.util.List;
 @Entity
 @Table(name = "categorys")
 @Data
-@ToString
 @EqualsAndHashCode
 public class Category implements AbstaractGenericDomainObj {
     @Id

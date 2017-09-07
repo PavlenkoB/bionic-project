@@ -15,7 +15,7 @@ public class PlaceHolder extends SpringBootServletInitializer {
         System.setProperty("spring.mvc.favicon.enabled", "false");
         System.setProperty("spring.profiles.active","jpa,mysql");//todo move
         System.setProperty("current.session.context.class", "thread");//todo move use for lazy load works
-        System.setProperty("spring.jpa.properties.hibernate.enable.lazy.load.no.trans", "true");//todo move
+        System.setProperty("hibernate.enable_lazy_load_no_trans", "true");//todo move
         SpringApplication.run(AppConfig.class, args);
     }
 }

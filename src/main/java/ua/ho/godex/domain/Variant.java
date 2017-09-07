@@ -6,6 +6,7 @@ import lombok.ToString;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "variants")
@@ -25,6 +26,13 @@ public class Variant implements AbstaractGenericDomainObj {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "attribute_id",nullable = false)
     private Attribute attribute;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "products_variants",
+            joinColumns = @JoinColumn(name = "variants_id"),
+            inverseJoinColumns = @JoinColumn(name = "products_id")
+    )
+    private List<Product> productList;
 
     public Variant() {
     }

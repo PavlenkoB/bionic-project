@@ -2,7 +2,6 @@ package ua.ho.godex.domain;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.ToString;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
@@ -11,7 +10,6 @@ import java.util.List;
 @Entity
 @Table(name = "attributes")
 @Data
-@ToString
 @EqualsAndHashCode
 public class Attribute implements AbstaractGenericDomainObj {
     @Id
@@ -26,10 +24,10 @@ public class Attribute implements AbstaractGenericDomainObj {
     @Enumerated(value = EnumType.STRING)
     private FieldType fieldType;
 
-    @OneToMany(mappedBy = "attribute", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "attribute", fetch = FetchType.LAZY)
     private List<Variant> variantList;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "categorys_id", nullable = false)
     private Category category;
 

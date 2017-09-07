@@ -1,5 +1,7 @@
-DELETE FROM products_users;
-DELETE FROM VARIANTS;
+DELETE FROM products_variants;
+DELETE FROM products_orders;
+DELETE FROM orders;
+DELETE FROM variants;
 DELETE FROM attributes;
 DELETE FROM products;
 DELETE FROM categorys;
@@ -28,19 +30,24 @@ INSERT INTO products (id, name, description, categorys_id)
 VALUES (1, 'LG g 1000', 'очень крутой телефоы', 2);
 
 
-INSERT INTO attributes (id, name, description, categorys_id, type)
-VALUES (1, 'RAM', 'mobile phone RAM', 1, 'DROP_BOX');
+INSERT INTO `attributes` (`id`, `name`, `description`, `type`, `categorys_id`)
+VALUES (1, 'RAM', 'mobile phone RAM', 'DROP_BOX', 1);
+INSERT INTO `attributes` (`id`, `name`, `description`, `type`, `categorys_id`) VALUES (2, 'ROM', 'ROM', 'DROP_BOX', 1);
 
+INSERT INTO `variants` (`id`, `name`, `description`, `attribute_id`) VALUES (1, '1 GB', NULL, 1);
+INSERT INTO `variants` (`id`, `name`, `description`, `attribute_id`) VALUES (2, '2 GB', NULL, 1);
+INSERT INTO `variants` (`id`, `name`, `description`, `attribute_id`) VALUES (3, '3 GB', NULL, 1);
+INSERT INTO `variants` (`id`, `name`, `description`, `attribute_id`) VALUES (4, '4 GB', NULL, 1);
+INSERT INTO `variants` (`id`, `name`, `description`, `attribute_id`) VALUES (5, '16 GB', NULL, 2);
+INSERT INTO `variants` (`id`, `name`, `description`, `attribute_id`) VALUES (6, '32 GB', NULL, 2);
 
-INSERT INTO VARIANTS (ID, NAME, DESCRIPTION, ATTRIBUTE_ID)
-VALUES (1, '1 GB', NULL, 1);
-INSERT INTO VARIANTS (ID, NAME, DESCRIPTION, ATTRIBUTE_ID)
-VALUES (2, '2 GB', NULL, 1);
-INSERT INTO VARIANTS (ID, NAME, DESCRIPTION, ATTRIBUTE_ID)
-VALUES (3, '3 GB', NULL, 1);
-INSERT INTO VARIANTS (ID, NAME, DESCRIPTION, ATTRIBUTE_ID)
-VALUES (4, '4 GB', NULL, 1);
+INSERT INTO `orders` (`id`, `datetime_open`, `datetime_closed`, `description`, `sum`, `users_id`)
+VALUES (1, '2017-09-07 23:05:23', NULL, 'TEstOrder', 1000, 2);
 
-INSERT INTO products_users (id, user_id, products_id, counter, price)
-  VALUE (1, 1, 1, 100, 150);
+INSERT INTO `products_orders` (`id`, `orders_id`, `products_id`) VALUES (2, 1, 1);
+INSERT INTO `products_orders` (`id`, `orders_id`, `products_id`) VALUES (3, 1, 1);
+
+INSERT INTO `products_variants` (`products_id`, `variants_id`, `attributes_id`) VALUES (1, 1, 1);
+INSERT INTO `products_variants` (`products_id`, `variants_id`, `attributes_id`) VALUES (1, 5, 2);
+
 
