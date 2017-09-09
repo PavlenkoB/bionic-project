@@ -22,8 +22,7 @@ import ua.ho.godex.service.ProductService;
 @Controller
 @SessionAttributes("categorysMenu")
 public class RootController {
-
-
+    final static String MAIN_URL = "/";
     ProductService productService;
 
     @Autowired
@@ -31,7 +30,7 @@ public class RootController {
         this.productService = productService;
     }
 
-    @GetMapping("/")
+    @GetMapping(MAIN_URL)
     public String showMainPage(Model model) {
         model.addAttribute("products", productService.getAll());
         return "index";

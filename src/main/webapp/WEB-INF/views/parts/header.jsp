@@ -72,6 +72,11 @@
                     Orders
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link btn btn-secondary" href="<c:url value="/users/register/"/>">
+                    Register
+                </a>
+            </li>
         </ul>
     </div>
 </nav>
