@@ -1,5 +1,6 @@
 package ua.ho.godex.presentation.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
 import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
 import org.springframework.boot.web.servlet.ErrorPage;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import ua.ho.godex.service.ProductService;
 
 /**
  * Creator: Pavlenko Bohdan
@@ -21,8 +23,17 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 @SessionAttributes("categorysMenu")
 public class RootController {
 
+
+    ProductService productService;
+
+    @Autowired
+    public RootController(ProductService productService) {
+        this.productService = productService;
+    }
+
     @GetMapping("/")
     public String showMainPage(Model model) {
+        model.addAttribute("products", productService.getAll());
         return "index";
     }
 

@@ -14,12 +14,14 @@ import java.util.List;
 @Controller
 @RequestMapping(OrderController.MAIN_URL)
 public class OrderController {
+    final static String MAIN_URL = "orders/";
+    final static String ADMIN_URL = "admin/orders/";
     final static String BASKET_URL = "/basket";
-    final static String BASKET_PASE = "/order/basket";
-
-    final static String MAIN_URL = "/admin/orders/";
     final static String DELETE_URL = "{orderId}/delete";
     final static String DELETE_URL_PV = "orderId";
+
+
+    final static String BASKET_PASE = "/order/basket";
     final static String LIST_PAGE = "/order/orders-list";
     final private OrderService orderService;
 

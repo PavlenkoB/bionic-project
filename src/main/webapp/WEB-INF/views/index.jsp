@@ -8,19 +8,14 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:include page="parts/header.jsp"/>
-${users.size()}
-<c:forEach var="user" items="${users}">
-    <jsp:useBean id="user" type="ua.ho.godex.domain.User"/>
-    <ul>
-        <li>${user.name}</li>
-        <ul>
-            <c:forEach var="product" items="${user.ownProducts}">
-                <jsp:useBean id="product" type="ua.ho.godex.domain.Product"/>
-                <li>
-                        ${product.name}
-                </li>
-            </c:forEach>
-        </ul>
-    </ul>
-</c:forEach>
+<ul>
+    <c:forEach var="product" items="${products}">
+        <jsp:useBean id="product" type="ua.ho.godex.domain.Product"/>
+        <li>
+            <a href="<c:url value="/products/${product.id}/"/>">
+                    ${product.category.name}-> ${product.name}
+            </a>
+        </li>
+    </c:forEach>
+</ul>
 <jsp:include page="parts/footer.jsp"/>

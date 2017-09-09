@@ -22,15 +22,22 @@ import java.util.stream.Collectors;
 @Controller
 @RequestMapping(ProductController.MAIN_URL)
 public class ProductController {
-    final static String MAIN_URL = "admin/products/";
+    final static String MAIN_URL = "products/";
+    final static String ADMIN_URL = "admin/products/";
+    final static String VIEW_URL = "{productId}/";
+    final static String VIEW_URL_PV = "productId";
     final static String EDIT_URL = "{productId}/edit";
     final static String EDIT_URL_PV = "productId";
     final static String DELETE_URL = "{productId}/delete";
     final static String DELETE_URL_PV = "productId";
+    final static String SAVE_URL = "save";
+    final static String ADD_URL = "add";
+    final static String ADD_URL_RP = "categotyId";
 
     final static String EDIT_PAGE = "/products/edit_product";
     final static String LIST_PAGE = "/products/list";
     final static String ADD_PAGE = "/products/add_product";
+    final static String VIEW_PAGE = "/products/info_page";
 
     final private ProductService productService;
     final private CategoryService categoryService;
@@ -53,16 +60,23 @@ public class ProductController {
         return LIST_PAGE;
     }
 
-    @PostMapping("add")
+    @GetMapping(VIEW_URL)
+    public String showProduct(Model model,
+                              @PathVariable(value = VIEW_URL_PV) Integer productId) {
+        model.addAttribute("product", productService.getById(productId));
+        return VIEW_PAGE;
+    }
+
+    @PostMapping(ADD_URL)
     public String addProduct(Model model,
-                             @RequestParam(value = "categotyId") Integer categoryId) {
+                             @RequestParam(value = ADD_URL_RP) Integer categoryId) {
         Category category = categoryService.getById(categoryId);
         model.addAttribute("category", category);
         model.addAttribute("newProduct", new Product());
         return ADD_PAGE;
     }
 
-    @PostMapping({"save"})
+    @PostMapping(SAVE_URL)
     @Transactional
     public String saveProduct(Model model,
                               @RequestParam Map<String, String> allRequestParams,
@@ -79,7 +93,7 @@ public class ProductController {
         newProduct.setCategory(categoryService.getById(categoryId));
         newProduct.setVariants(variants);
         productService.update(newProduct);
-        return "redirect:/categorys/" + categoryId;
+        return "redirect:" + CategoryController.MAIN_URL + categoryId;
     }
 
     @RequestMapping(EDIT_URL)
@@ -107,6 +121,6 @@ public class ProductController {
 
         orderService.addProductToOrder(currentOrder, productId);
 
-        return "redirect:/products/" + productId;
+        return "redirect:/products/" + ProductController.MAIN_URL + productId;
     }
 }

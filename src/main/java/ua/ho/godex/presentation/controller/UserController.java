@@ -13,10 +13,11 @@ import java.util.List;
 @Controller
 @RequestMapping(UserController.MAIN_URL)
 public class UserController {
-    final static String MAIN_URL = "/admin/users/";
-    final static String DELETE_URL = "/{userId}/delete";
+    final static String MAIN_URL = "users/";
+    final static String ADMIN_URL = "admin/users/";
+    final static String DELETE_URL = ADMIN_URL + "/{userId}/delete";
     final static String DELETE_URL_PV = "userId";
-    final static String EDIT_URL = "/{userId}/edit";
+    final static String EDIT_URL = ADMIN_URL + "/{userId}/edit";
     final static String EDIT_URL_PV = "userId";
     final static String LIST_JSP_FILE = "/users/users-list";
     final private UserService userService;

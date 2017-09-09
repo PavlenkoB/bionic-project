@@ -14,11 +14,23 @@ import java.util.List;
 @Controller
 @RequestMapping(VariantController.MAIN_URL)
 public class VariantController {
-    final static String MAIN_URL = "/admin/variants/";
-    final static String DELETE_URL = "/{variantId}/delete";
+    final static String MAIN_URL = "/variants/";
+    final static String ADMIN_URL = "/admin/variants/";
+    final static String DELETE_URL = ADMIN_URL + "/{variantId}/delete";
     final static String DELETE_URL_PV = "variantId";
-    final static String EDIT_URL = "/{variantId}/edit";
+    final static String EDIT_URL = ADMIN_URL + "/{variantId}/edit";
     final static String EDIT_URL_PV = "variantId";
+
+    final static String ATTRIBUTE_ADD_URL = "/{attributeId}/add";
+    final static String ATTRIBUTE_ADD_URL_PV = "attributeId";
+    final static String showVariantsForAttribute_URL = "/{attributeId}/add";
+    final static String showVariantsForAttribute_URL_PV = "attributeId";
+    final static String showVariantsForAttribute_PAGE = "/variant/variant-list";
+
+
+    final static String showVariants_PAGE = "/variant/variant-list";
+
+
     final private VariantService variantService;
     final private AttributeService attributeService;
 
@@ -35,23 +47,23 @@ public class VariantController {
         if (!model.containsAttribute("newVariant")) {
             model.addAttribute("newVariant", new Variant());
         }
-        return "/variant/variant-list";
+        return showVariants_PAGE;
     }
 
-    @GetMapping("/{attributeId}/")
-    public String showVariantsForAttribute(Model model, @PathVariable("attributeId") Integer attributeId) {
+    @GetMapping(showVariantsForAttribute_URL)
+    public String showVariantsForAttribute(Model model, @PathVariable(showVariantsForAttribute_URL_PV) Integer attributeId) {
         if (!model.containsAttribute("newVariant")) {
             model.addAttribute("newVariant", new Variant());
         }
         Attribute attributeServiceById = attributeService.getById(attributeId);
         model.addAttribute("attribute", attributeServiceById);
         model.addAttribute("variants", attributeServiceById.getVariantList());
-        return "/variant/variant-list";
+        return showVariantsForAttribute_PAGE;
     }
 
-    @PostMapping("/{attributeId}/add")
+    @PostMapping(ATTRIBUTE_ADD_URL)
     public String addVariantForAttribute(Model model,
-                                         @PathVariable("attributeId") Integer attributeId,
+                                         @PathVariable(ATTRIBUTE_ADD_URL_PV) Integer attributeId,
                                          @RequestParam(value = "name", required = true) String name,
                                          @RequestParam(value = "description", required = true) String description
     ) {

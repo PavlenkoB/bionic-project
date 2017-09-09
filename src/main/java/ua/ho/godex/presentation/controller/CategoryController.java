@@ -18,9 +18,10 @@ import java.util.stream.Collectors;
 @Controller
 @RequestMapping(CategoryController.MAIN_URL)
 public class CategoryController {
-    final static String MAIN_URL = "/categorys/";
+    final static String MAIN_URL = "categorys/";
+    final static String ADMIN_URL = "admin/categorys/";
 
-    final static String DELETE_URL = "/admin/{categoryId}/delete";
+    final static String DELETE_URL = ADMIN_URL + "/{categoryId}/delete";
     final static String DELETE_URL_PV = "categoryId";
 
     final static String CATEGORY_LIST = "{categoryId}";

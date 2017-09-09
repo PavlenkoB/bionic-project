@@ -20,6 +20,11 @@
     <link rel="stylesheet" href="/res/css/style.css">
     <link rel="stylesheet" href="/res/font-awesome/css/font-awesome.min.css">
     <title>Supliers</title>
+    <script>
+        function update_tittle(text) {
+            document.title = text + '-' + document.title;
+        }
+    </script>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg  navbar-dark bg-dark fixed-top head-menu">
@@ -43,27 +48,27 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link btn btn-secondary " href="<c:url value="/admin/attributes/"/>">
+                <a class="nav-link btn btn-secondary " href="<c:url value="/attributes/"/>">
                     Атрибуты
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link btn btn-secondary" href="<c:url value="/admin/categorys/"/>">
+                <a class="nav-link btn btn-secondary" href="<c:url value="/categorys/"/>">
                     Категории товаров
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link btn btn-secondary" href="<c:url value="/admin/users/"/>">
+                <a class="nav-link btn btn-secondary" href="<c:url value="/users/"/>">
                     Users
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link btn btn-secondary" href="<c:url value="/admin/products/"/>">
+                <a class="nav-link btn btn-secondary" href="<c:url value="/products/"/>">
                     Products
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link btn btn-secondary" href="<c:url value="/admin/orders/"/>">
+                <a class="nav-link btn btn-secondary" href="<c:url value="/orders/"/>">
                     Orders
                 </a>
             </li>

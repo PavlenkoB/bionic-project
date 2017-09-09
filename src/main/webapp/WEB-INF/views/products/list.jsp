@@ -10,15 +10,18 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:include page="../parts/header.jsp"/>
 <%--@elvariable id="category" type="ua.ho.godex.domain.Category"--%>
-<form method="post" class="d-inline-block" action="/admin/products/add">
+<form method="post" class="d-inline-block" action="<c:url value="/admin/products/add"/>">
     <input type="hidden" name="categotyId" value="${category.id}">
     <button type="submit" class="btn btn-primary">Add prod</button>
 </form>
+<script>
+    update_tittle('${category.name}');
+</script>
+<h1 class="text-center">${category.name}</h1>
 <table class="table table-striped">
     <thead>
     <tr>
         <th>#</th>
-        <th>Category</th>
         <th>Name</th>
         <th>Attribute</th>
         <th>Action</th>
@@ -27,10 +30,14 @@
     <tbody>
     <c:forEach items="${products}" var="product">
         <jsp:useBean id="product" type="ua.ho.godex.domain.Product"/>
+
         <tr>
             <th scope="row">${product.id}</th>
-            <td>${product.category.name}</td>
-            <td>${product.name}</td>
+            <td>
+                <a href="/products/${product.id}/">
+                        ${product.name}
+                </a>
+            </td>
             <td>
                 <c:forEach items="${product.variants}" var="variant">
                     <jsp:useBean id="variant" type="ua.ho.godex.domain.Variant"/>
@@ -39,7 +46,7 @@
                 </c:forEach>
             </td>
             <td>
-                <form method="post" action="${product.id}/edit">
+                <form method="post" action="<c:url value="/admin/products/${product.id}/edit"/>">
                     <button class="btn btn-secondary">
                         <i class="fa fa-edit"></i>
                     </button>
@@ -49,6 +56,9 @@
                         <i class="fa fa-remove"></i>
                     </button>
                 </form>
+                <a href="#">
+                    add to baske need to do
+                </a>
             </td>
         </tr>
     </c:forEach>
