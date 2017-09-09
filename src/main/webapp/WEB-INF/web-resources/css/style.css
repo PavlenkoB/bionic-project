@@ -4,6 +4,10 @@
 .category-list .category-list-item .category-actions {
   display: flex
 }
+.categorys-menu {
+  width: 100%;
+  position: fixed
+}
 .category-menu {
   display: inline-block;
   width: 100%;
@@ -32,7 +36,7 @@
 }
 .category-menu .current a,
 .category-menu li:hover > a {
-  background: #b9b4b4 url(../images/bg.png) repeat-x 0 -20px;
+  background: #b9b4b4;
   color: #eee;
   border-top: 1px solid #f8f8f8;
   box-shadow: 0 2px 2px rgba(0,0,0,.7)
@@ -44,7 +48,7 @@
   color: #f0f0f0
 }
 .category-menu ul li a:hover {
-  background: #b9b4b4 url(../images/bg.png) repeat-x 0 -100px;
+  background: #b9b4b4;
   color: #343a40;
   border-radius: 10px
 }
@@ -58,7 +62,7 @@
   padding: 0;
   width: 175px;
   position: absolute;
-  background: #918c8c url(../images/bg.png) repeat-x 0 0;
+  background: #918c8c;
   border: 1px solid #78a;
   border-radius: 10px;
   box-shadow: 0 2px 2px rgba(0,0,0,.5);
@@ -79,6 +83,7 @@
   margin-top: 80px
 }
 .btn {
+  margin-left: 5px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0,0,0,.5)
 }

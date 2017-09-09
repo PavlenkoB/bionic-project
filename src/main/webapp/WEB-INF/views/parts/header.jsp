@@ -70,10 +70,10 @@
         </ul>
     </div>
 </nav>
-
+<div class="categorys-menu">
+    <ul class="category-menu">
+        <jsp:include page="node.jsp"/>
+    </ul>
+</div>
 <div class="content container-fluid">
-    <div class="row">
-        <ul id="nav" class="category-menu">
-            <jsp:include page="node.jsp"/>
-        </ul>
-    </div>
+
