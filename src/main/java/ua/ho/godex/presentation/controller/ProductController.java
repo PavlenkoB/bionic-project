@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 @Controller
 @RequestMapping(ProductController.MAIN_URL)
 public class ProductController {
-    final static String MAIN_URL = "/admin/products/";
+    final static String MAIN_URL = "admin/products/";
     final static String EDIT_URL = "{productId}/edit";
     final static String EDIT_URL_PV = "productId";
     final static String DELETE_URL = "{productId}/delete";
@@ -53,16 +53,16 @@ public class ProductController {
         return LIST_PAGE;
     }
 
-    @PostMapping("/add")
+    @PostMapping("add")
     public String addProduct(Model model,
-                             @RequestParam(value = "categoryId") Integer categoryId) {
+                             @RequestParam(value = "categotyId") Integer categoryId) {
         Category category = categoryService.getById(categoryId);
         model.addAttribute("category", category);
         model.addAttribute("newProduct", new Product());
         return ADD_PAGE;
     }
 
-    @PostMapping({"/save", "{pridId}/save"})
+    @PostMapping({"save"})
     @Transactional
     public String saveProduct(Model model,
                               @RequestParam Map<String, String> allRequestParams,
@@ -79,7 +79,7 @@ public class ProductController {
         newProduct.setCategory(categoryService.getById(categoryId));
         newProduct.setVariants(variants);
         productService.update(newProduct);
-        return "redirect:" + MAIN_URL;
+        return "redirect:/categorys/" + categoryId;
     }
 
     @RequestMapping(EDIT_URL)

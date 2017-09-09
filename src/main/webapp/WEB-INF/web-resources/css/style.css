@@ -6,7 +6,8 @@
 }
 .categorys-menu {
   width: 100%;
-  position: fixed
+    position: fixed;
+    top: 80px
 }
 .category-menu {
   display: inline-block;
@@ -80,7 +81,7 @@
   top: 0
 }
 .content {
-  margin-top: 80px
+    margin-top: 145px
 }
 .btn {
   margin-left: 5px;

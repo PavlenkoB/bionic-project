@@ -9,18 +9,10 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:include page="../parts/header.jsp"/>
-<%--@elvariable id="categorys" type="ua.ho.godex.domain.Category"--%>
-<form method="post" class="d-inline-block" action="add">
-    <div class="form-group">
-        <label for="category">Category</label>
-        <select class="form-control" id="category" name="categoryId">
-            <c:forEach items="${categorys}" var="category">
-                <jsp:useBean id="category" type="ua.ho.godex.domain.Category"/>
-                <option value="${category.id}">${category.name}</option>
-            </c:forEach>
-        </select>
-    </div>
-    <button type="submit" class="btn btn-primary">Add</button>
+<%--@elvariable id="category" type="ua.ho.godex.domain.Category"--%>
+<form method="post" class="d-inline-block" action="/admin/products/add">
+    <input type="hidden" name="categotyId" value="${category.id}">
+    <button type="submit" class="btn btn-primary">Add prod</button>
 </form>
 <table class="table table-striped">
     <thead>
@@ -42,7 +34,8 @@
             <td>
                 <c:forEach items="${product.variants}" var="variant">
                     <jsp:useBean id="variant" type="ua.ho.godex.domain.Variant"/>
-                    <p>${variant.attribute.name}:${variant.name}</p>
+                    <i title="${variant.attribute.description}"
+                       class="badge badge-info">${variant.attribute.name}:${variant.name}</i>
                 </c:forEach>
             </td>
             <td>

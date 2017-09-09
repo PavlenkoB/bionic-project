@@ -18,14 +18,14 @@ import java.util.stream.Collectors;
 @Controller
 @RequestMapping(CategoryController.MAIN_URL)
 public class CategoryController {
-    final static String MAIN_URL = "/admin/categorys/";
+    final static String MAIN_URL = "/categorys/";
 
-    final static String DELETE_URL = "/{categoryId}/delete";
+    final static String DELETE_URL = "/admin/{categoryId}/delete";
     final static String DELETE_URL_PV = "categoryId";
 
-    final static String CATEGORY_LIST = "/category/{categoryId}/";
-    final static String CATEGORY_LIST_PV = "{categoryId}";
-    final static String CATEGORY_PAGE = "/category/category-products";
+    final static String CATEGORY_LIST = "{categoryId}";
+    final static String CATEGORY_LIST_PV = "categoryId";
+    final static String CATEGORY_PAGE = "/products/list";
 
     final private CategoryService categoryService;
 
@@ -67,6 +67,7 @@ public class CategoryController {
     ) {
         Category category = categoryService.getById(categoryId);
         model.addAttribute("category", category);
+        model.addAttribute("products", category.getProductList());
         return CATEGORY_PAGE;
     }
 }
