@@ -14,6 +14,7 @@ import ua.ho.godex.service.OrderService;
 import ua.ho.godex.service.ProductService;
 import ua.ho.godex.service.VariantService;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -21,6 +22,7 @@ import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping(ProductController.MAIN_URL)
+@SessionAttributes("currentOrder")
 public class ProductController {
     final static String MAIN_URL = "products/";
     final static String ADMIN_URL = "admin/products/";
@@ -38,6 +40,10 @@ public class ProductController {
     final static String LIST_PAGE = "/products/list";
     final static String ADD_PAGE = "/products/add_product";
     final static String VIEW_PAGE = "/products/info_page";
+
+    final static String ADD_TO_BASKET_URL = "{productId}/addToBasket";
+    final static String ADD_TO_BASKET_URL_PV = "productId";
+
 
     final private ProductService productService;
     final private CategoryService categoryService;
@@ -115,12 +121,11 @@ public class ProductController {
         return "redirect:" + MAIN_URL;
     }
 
-    @PostMapping("{productId}/addToBasket")
-    public String addToBasket(@PathVariable("productId") Integer productId,
-                              @SessionAttribute("currentOrder") Order currentOrder) {
-
+    @RequestMapping(ADD_TO_BASKET_URL)
+    public String addToBasket(@PathVariable(ADD_TO_BASKET_URL_PV) Integer productId,
+                              @SessionAttribute("currentOrder") Order currentOrder, HttpServletRequest request) {
+        String referrer = request.getHeader("referer");
         orderService.addProductToOrder(currentOrder, productId);
-
-        return "redirect:/products/" + ProductController.MAIN_URL + productId;
+        return "redirect:" + referrer;
     }
 }

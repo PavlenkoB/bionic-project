@@ -46,6 +46,7 @@ public class Order implements AbstaractGenericDomainObj {
 
     public Order() {
         this.products = new ArrayList<>();
+        this.totalAmount = new BigDecimal(0);
     }
 
     public void addProduct(Product product) {

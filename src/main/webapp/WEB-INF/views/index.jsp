@@ -18,4 +18,5 @@
         </li>
     </c:forEach>
 </ul>
+${session.getAttribute("currentOrder")}
 <jsp:include page="parts/footer.jsp"/>

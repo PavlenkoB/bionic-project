@@ -25,10 +25,8 @@ INSERT INTO `categorys` (`id`, `parent_cat_id`, `name`, `order`) VALUES (10, 9, 
 INSERT INTO `categorys` (`id`, `parent_cat_id`, `name`, `order`) VALUES (11, NULL, 'Сантехника, Стройматериалы', 0);
 
 
-
-INSERT INTO products (id, name, description, categorys_id)
-VALUES (1, 'LG g 1000', 'очень крутой телефоы', 2);
-
+INSERT INTO `products` (`id`, `name`, `description`, `categorys_id`, `price`, `count`)
+VALUES (1, 'LG g 1000', 'очень крутой телефоы', 2, 895, 200);
 
 INSERT INTO `attributes` (`id`, `name`, `description`, `type`, `categorys_id`)
 VALUES (1, 'RAM', 'mobile phone RAM', 'DROP_BOX', 2);

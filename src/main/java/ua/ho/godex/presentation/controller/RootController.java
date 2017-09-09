@@ -14,13 +14,15 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import ua.ho.godex.service.ProductService;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * Creator: Pavlenko Bohdan
  * Date: 23.08.2017
  * Project: istore
  */
 @Controller
-@SessionAttributes("categorysMenu")
+@SessionAttributes({"categorysMenu", "currentOrder"})
 public class RootController {
     final static String MAIN_URL = "/";
     ProductService productService;
@@ -31,7 +33,8 @@ public class RootController {
     }
 
     @GetMapping(MAIN_URL)
-    public String showMainPage(Model model) {
+    public String showMainPage(Model model,
+                               HttpServletRequest request) {
         model.addAttribute("products", productService.getAll());
         return "index";
     }

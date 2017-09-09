@@ -1,3 +1,4 @@
+<%@ page import="ua.ho.godex.domain.FieldType" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%--
@@ -41,11 +42,29 @@
             <td>
                 <c:forEach items="${product.variants}" var="variant">
                     <jsp:useBean id="variant" type="ua.ho.godex.domain.Variant"/>
+                    <% if (variant.getAttribute().getFieldType().equals(FieldType.CHECK_BOX) && variant.getName().equals("0")) {
+                    %>
+                    <i title="${variant.attribute.description}"
+                       class="badge badge-danger"><i class="fa fa-times"></i>${variant.attribute.name}</i>
+                    <%
+                    } else {
+                        if (variant.getAttribute().getFieldType().equals(FieldType.CHECK_BOX)) {
+                    %>
+                    <i title="${variant.attribute.description}"
+                       class="badge badge-success"><i class="fa fa-check"></i>${variant.attribute.name}</i>
+                    <%
+                    } else {
+                    %>
                     <i title="${variant.attribute.description}"
                        class="badge badge-info">${variant.attribute.name}:${variant.name}</i>
+                    <% }
+                    }%>
                 </c:forEach>
             </td>
             <td>
+                <a class="btn btn-primary" href="/products/${product.id}/addToBasket">
+                    <i class="fa  fa-shopping-cart "></i>add to basket
+                </a>
                 <form method="post" action="<c:url value="/admin/products/${product.id}/edit"/>">
                     <button class="btn btn-secondary">
                         <i class="fa fa-edit"></i>
@@ -56,9 +75,6 @@
                         <i class="fa fa-remove"></i>
                     </button>
                 </form>
-                <a href="#">
-                    add to baske need to do
-                </a>
             </td>
         </tr>
     </c:forEach>

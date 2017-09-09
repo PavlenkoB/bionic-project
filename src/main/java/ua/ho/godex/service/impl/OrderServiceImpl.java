@@ -8,8 +8,6 @@ import ua.ho.godex.domain.Product;
 import ua.ho.godex.service.OrderService;
 import ua.ho.godex.service.ProductService;
 
-import java.math.BigDecimal;
-
 /**
  * Creator: Pavlenko Bohdan
  * Date: 02.09.2017
@@ -29,12 +27,6 @@ public class OrderServiceImpl extends GenericServiceImpl<Order> implements Order
     public void addProductToOrder(Order order, Integer productId) {
         Product newProduct = productService.getById(productId);
         order.addProduct(newProduct);
-        order.setTotalAmount(
-                order.getProducts()
-                        .stream()
-                        .map(Product::getPrice)
-                        .reduce(BigDecimal::add)
-                        .orElse(BigDecimal.ZERO)
-        );
+        order.setTotalAmount(order.getTotalAmount().add(newProduct.getPrice()));
     }
 }

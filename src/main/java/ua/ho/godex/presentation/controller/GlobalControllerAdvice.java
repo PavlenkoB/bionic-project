@@ -22,14 +22,12 @@ import java.util.stream.Collectors;
 @ControllerAdvice
 public class GlobalControllerAdvice {
 
-
     private final CategoryService categoryService;
 
     @Autowired
     public GlobalControllerAdvice(CategoryService categoryService, VariantService variantService) {
         this.categoryService = categoryService;
     }
-
 
     @ModelAttribute("currentOrder")
     public Order createBasket() {

@@ -24,6 +24,8 @@ public class Product implements AbstaractGenericDomainObj {
     private String description;
     @Column(name = "price")
     private BigDecimal price;
+    @Column(name = "count")
+    private Integer count;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "products_variants",
