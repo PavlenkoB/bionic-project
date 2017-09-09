@@ -12,7 +12,6 @@
 <jsp:include page="../parts/header.jsp"/>
 <h1>Add product to ${category.name}</h1>
 <form:form action="save" modelAttribute="newProduct" method="post">
-    <jsp:useBean id="newProduct" type="ua.ho.godex.domain.Product"/>
     <c:forEach items="${category.attributes}" var="attribute">
         <jsp:useBean id="attribute" type="ua.ho.godex.domain.Attribute"/>
         <div class="form-group">

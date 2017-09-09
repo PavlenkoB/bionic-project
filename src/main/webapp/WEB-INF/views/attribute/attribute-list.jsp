@@ -33,7 +33,12 @@
                 <td>${attribute.fieldType}</td>
                 <td>${attribute.description}</td>
                 <td>
-                    <pre>${attribute.variantsInString}</pre>
+                    <p>
+                        <c:forEach items="${attribute.variantList}" var="variant">
+                            <jsp:useBean id="variant" type="ua.ho.godex.domain.Variant"/>
+                            ${variant.name}|
+                        </c:forEach>
+                    </p>
                     <% if (attribute.getFieldType() == FieldType.DROP_BOX) {%>
                     <form method="get" action="/admin/variants/${attribute.id}/">
                         <button class="btn btn-secondary">

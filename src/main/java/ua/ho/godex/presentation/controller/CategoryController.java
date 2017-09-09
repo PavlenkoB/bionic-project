@@ -19,8 +19,14 @@ import java.util.stream.Collectors;
 @RequestMapping(CategoryController.MAIN_URL)
 public class CategoryController {
     final static String MAIN_URL = "/admin/categorys/";
+
     final static String DELETE_URL = "/{categoryId}/delete";
     final static String DELETE_URL_PV = "categoryId";
+
+    final static String CATEGORY_LIST = "/category/{categoryId}/";
+    final static String CATEGORY_LIST_PV = "{categoryId}";
+    final static String CATEGORY_PAGE = "/category/category-products";
+
     final private CategoryService categoryService;
 
     @Autowired
@@ -53,5 +59,14 @@ public class CategoryController {
     String deleteCategory(Model model, @PathVariable(DELETE_URL_PV) Integer categoryId) {
         categoryService.delete(categoryId);
         return "redirect:" + AttributeController.MAIN_URL;
+    }
+
+    @GetMapping(CATEGORY_LIST)
+    String productsInCategory(Model model,
+                              @PathVariable(CATEGORY_LIST_PV) Integer categoryId
+    ) {
+        Category category = categoryService.getById(categoryId);
+        model.addAttribute("category", category);
+        return CATEGORY_PAGE;
     }
 }

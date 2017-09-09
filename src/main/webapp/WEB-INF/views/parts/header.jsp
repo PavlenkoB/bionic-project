@@ -33,6 +33,11 @@
     <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
+                <a class="nav-link btn btn-secondary " href="<c:url value="/basket"/>">
+                    <jsp:include page="basket.jsp"/>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link btn btn-secondary " href="<c:url value="/"/>">
                     Main
                 </a>

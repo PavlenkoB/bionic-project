@@ -5,6 +5,7 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.List;
 
 @Entity
@@ -21,6 +22,8 @@ public class Product implements AbstaractGenericDomainObj {
     private String name;
     @Column(name = "description")
     private String description;
+    @Column(name = "price")
+    private BigDecimal price;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "products_variants",

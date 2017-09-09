@@ -6,9 +6,11 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ua.ho.godex.domain.Category;
+import ua.ho.godex.domain.Order;
 import ua.ho.godex.domain.Product;
 import ua.ho.godex.domain.Variant;
 import ua.ho.godex.service.CategoryService;
+import ua.ho.godex.service.OrderService;
 import ua.ho.godex.service.ProductService;
 import ua.ho.godex.service.VariantService;
 
@@ -33,12 +35,14 @@ public class ProductController {
     final private ProductService productService;
     final private CategoryService categoryService;
     final private VariantService variantService;
+    final private OrderService orderService;
 
     @Autowired
-    public ProductController(ProductService productService, CategoryService categoryService, VariantService variantService) {
+    public ProductController(ProductService productService, CategoryService categoryService, VariantService variantService, OrderService orderService) {
         this.productService = productService;
         this.categoryService = categoryService;
         this.variantService = variantService;
+        this.orderService = orderService;
     }
 
     @GetMapping
@@ -95,5 +99,14 @@ public class ProductController {
                                @PathVariable(DELETE_URL_PV) Integer productId) {
         productService.delete(productId);
         return "redirect:" + MAIN_URL;
+    }
+
+    @PostMapping("{productId}/addToBasket")
+    public String addToBasket(@PathVariable("productId") Integer productId,
+                              @SessionAttribute("currentOrder") Order currentOrder) {
+
+        orderService.addProductToOrder(currentOrder, productId);
+
+        return "redirect:/products/" + productId;
     }
 }

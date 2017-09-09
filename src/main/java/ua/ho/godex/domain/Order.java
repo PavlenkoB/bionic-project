@@ -7,6 +7,7 @@ import lombok.ToString;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -30,16 +31,28 @@ public class Order implements AbstaractGenericDomainObj {
     @Column(name = "description")
     private String description;
     @Column(name = "sum")
-    private BigDecimal sum;
+    private BigDecimal totalAmount;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "users_id", nullable = false)
-
     private User user;
+
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "products_orders",
             joinColumns = @JoinColumn(name = "orders_id"),
             inverseJoinColumns = @JoinColumn(name = "products_id")
     )
     private List<Product> products;
+
+    public Order() {
+        this.products = new ArrayList<>();
+    }
+
+    public void addProduct(Product product) {
+        products.add(product);
+    }
+
+    public void setTotalAmount(BigDecimal totalAmount) {
+        this.totalAmount = totalAmount.setScale(2, BigDecimal.ROUND_HALF_UP);
+    }
 }

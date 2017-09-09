@@ -4,7 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ua.ho.godex.dao.OrderDao;
 import ua.ho.godex.domain.Order;
+import ua.ho.godex.domain.Product;
 import ua.ho.godex.service.OrderService;
+import ua.ho.godex.service.ProductService;
+
+import java.math.BigDecimal;
 
 /**
  * Creator: Pavlenko Bohdan
@@ -13,9 +17,24 @@ import ua.ho.godex.service.OrderService;
  */
 @Service
 public class OrderServiceImpl extends GenericServiceImpl<Order> implements OrderService {
+    final private ProductService productService;
 
     @Autowired
-    public OrderServiceImpl(OrderDao orderDao) {
+    public OrderServiceImpl(OrderDao orderDao, ProductService productService) {
         super(Order.class, orderDao);
+        this.productService = productService;
+    }
+
+    @Override
+    public void addProductToOrder(Order order, Integer productId) {
+        Product newProduct = productService.getById(productId);
+        order.addProduct(newProduct);
+        order.setTotalAmount(
+                order.getProducts()
+                        .stream()
+                        .map(Product::getPrice)
+                        .reduce(BigDecimal::add)
+                        .orElse(BigDecimal.ZERO)
+        );
     }
 }
