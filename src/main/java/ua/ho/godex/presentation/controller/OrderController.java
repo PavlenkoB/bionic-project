@@ -16,6 +16,7 @@ public class OrderController {
     final static String MAIN_URL = "/admin/orders/";
     final static String DELETE_URL = "{orderId}/delete";
     final static String DELETE_URL_PV = "orderId";
+    final static String LIST_PAGE = "/order/orders-list";
     final private OrderService orderService;
 
     @Autowired
@@ -27,7 +28,7 @@ public class OrderController {
     public String showOrders(Model model) {
         List<Order> orderList = orderService.getAll();
         model.addAttribute("orders", orderList);
-        return "/orders/orders-list";
+        return LIST_PAGE;
     }
 
 }

@@ -8,8 +8,33 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:include page="../parts/header.jsp"/>
-<ul>
-    <c:forEach items="${orders}" var="attribute">
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Date-open</th>
+        <th>Date-close</th>
+        <th>Descripiton</th>
+        <th>Sum</th>
+        <th>User data</th>
+    </tr>
+    </thead>
+    <tbody>
+    <c:forEach items="${orders}" var="order">
+
+        <tr>
+            <td>${order.id}</td>
+            <td>${order.localDateTimeOpen}</td>
+            <td>${order.localDateTimeClosed}</td>
+            <td>${order.description}</td>
+            <td>${order.sum}</td>
+            <td>
+                    ${order.user.name}
+                    ${order.user.email}
+                    ${order.user.telephone}
+            </td>
+        </tr>
     </c:forEach>
-</ul>
+    </tbody>
+</table>
 <jsp:include page="../parts/footer.jsp"/>

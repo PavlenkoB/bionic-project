@@ -25,6 +25,9 @@ public class User implements AbstaractGenericDomainObj {
     private String email;
     @NotBlank(message = "Обязательное поле")
     private String password;
+    @Column(name = "telephone")
+    @NotBlank(message = "Обязательное поле")
+    private String telephone;
     @Enumerated(EnumType.ORDINAL)
     private Role role;
 

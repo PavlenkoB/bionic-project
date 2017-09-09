@@ -7,10 +7,10 @@ DELETE FROM products;
 DELETE FROM categorys;
 DELETE FROM users;
 
-INSERT INTO `users` (id, `name`, `email`, `password`, `role`)
-VALUES (1, 'admin', 'admin@mail.com', 'admin', 0);
-INSERT INTO `users` (id, `name`, `email`, `password`, `role`)
-VALUES (2, 'user', 'user@mail.com', 'user', 1);
+INSERT INTO `users` (id, `name`, `email`, `password`, `role`, `telephone`)
+VALUES (1, 'admin', 'admin@mail.com', 'admin', 0, '+78081234567');
+INSERT INTO `users` (id, `name`, `email`, `password`, `role`, `telephone`)
+VALUES (2, 'user', 'user@mail.com', 'user', 1, '+380641234589');
 
 INSERT INTO `categorys` (`id`, `parent_cat_id`, `name`, `order`) VALUES (1, NULL, 'Техника', 0);
 INSERT INTO `categorys` (`id`, `parent_cat_id`, `name`, `order`) VALUES (2, 6, 'Мобильные телефоны', 0);
@@ -46,7 +46,7 @@ INSERT INTO `variants` (`id`, `name`, `description`, `attribute_id`) VALUES (9, 
 
 
 INSERT INTO `orders` (`id`, `datetime_open`, `datetime_closed`, `description`, `sum`, `users_id`)
-VALUES (1, '2017-09-07 23:05:23', NULL, 'TEstOrder', 1000, 2);
+VALUES (1, '2017-09-07 23:05:23', NULL, 'TEstOrder', 1002.523, 2);
 
 INSERT INTO `products_orders` (`id`, `orders_id`, `products_id`) VALUES (2, 1, 1);
 INSERT INTO `products_orders` (`id`, `orders_id`, `products_id`) VALUES (3, 1, 1);

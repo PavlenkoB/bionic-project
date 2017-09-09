@@ -58,8 +58,8 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link btn btn-secondary" href="<c:url value="/admin/products/"/>">
-                    Products
+                <a class="nav-link btn btn-secondary" href="<c:url value="/admin/orders/"/>">
+                    Orders
                 </a>
             </li>
         </ul>

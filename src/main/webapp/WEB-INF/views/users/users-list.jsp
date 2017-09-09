@@ -15,6 +15,7 @@
             <th>#</th>
             <th>Name</th>
             <th>email</th>
+            <th>telephone</th>
             <th>password</th>
             <th>role</th>
             <th>Actions</th>
@@ -27,6 +28,7 @@
                 <th scope="row">${user.id}</th>
                 <td>${user.name}</td>
                 <td>${user.email}</td>
+                <td>${user.telephone}</td>
                 <td>${user.password}</td>
                 <td>${user.role}</td>
                 <td>
@@ -55,6 +57,10 @@
     <div class="form-group">
         <label for="email">email</label>
         <form:input type="text" class="form-control" id="email" path="email"/>
+    </div>
+    <div class="form-group">
+        <label for="telephone">telephone</label>
+        <form:input type="text" class="form-control" id="telephone" path="telephone"/>
     </div>
     <div class="form-group">
         <label for="password">password</label>
