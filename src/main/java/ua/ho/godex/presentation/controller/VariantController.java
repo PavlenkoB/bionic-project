@@ -14,7 +14,7 @@ import java.util.List;
 @Controller
 @RequestMapping(VariantController.MAIN_URL)
 public class VariantController {
-    final static String MAIN_URL = "/admin/variants";
+    final static String MAIN_URL = "/admin/variants/";
     final static String DELETE_URL = "/{variantId}/delete";
     final static String DELETE_URL_PV = "variantId";
     final static String EDIT_URL = "/{variantId}/edit";

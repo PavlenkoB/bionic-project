@@ -11,8 +11,11 @@ import ua.ho.godex.service.OrderService;
 import java.util.List;
 
 @Controller
-@RequestMapping("orders")
+@RequestMapping(OrderController.MAIN_URL)
 public class OrderController {
+    final static String MAIN_URL = "/admin/orders/";
+    final static String DELETE_URL = "{orderId}/delete";
+    final static String DELETE_URL_PV = "orderId";
     final private OrderService orderService;
 
     @Autowired

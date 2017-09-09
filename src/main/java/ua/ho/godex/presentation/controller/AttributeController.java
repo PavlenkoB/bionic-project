@@ -14,7 +14,7 @@ import java.util.List;
 @Controller
 @RequestMapping(AttributeController.MAIN_URL)
 public class AttributeController {
-    final static String MAIN_URL = "/admin/attributes";
+    final static String MAIN_URL = "/admin/attributes/";
     final static String DELETE_URL = "/{attributeId}/delete";
     final static String DELETE_URL_PV = "attributeId";
     final static String EDIT_URL = "/{attributeId}/edit";
