@@ -21,10 +21,14 @@ import java.util.stream.Collectors;
 @RequestMapping(ProductController.MAIN_URL)
 public class ProductController {
     final static String MAIN_URL = "/admin/products/";
+    final static String EDIT_URL = "{productId}/edit";
+    final static String EDIT_URL_PV = "productId";
     final static String DELETE_URL = "{productId}/delete";
     final static String DELETE_URL_PV = "productId";
-    final static String LIST_URL = "/products/list";
-    final static String ADD_URL = "/products/add_product";
+
+    final static String EDIT_PAGE = "/products/edit_product";
+    final static String LIST_PAGE = "/products/list";
+    final static String ADD_PAGE = "/products/add_product";
 
     final private ProductService productService;
     final private CategoryService categoryService;
@@ -42,7 +46,7 @@ public class ProductController {
         List<Product> productList = productService.getAll();
         model.addAttribute("categorys", categoryService.getAll());
         model.addAttribute("products", productList);
-        return LIST_URL;
+        return LIST_PAGE;
     }
 
     @PostMapping("/add")
@@ -51,10 +55,10 @@ public class ProductController {
         Category category = categoryService.getById(categoryId);
         model.addAttribute("category", category);
         model.addAttribute("newProduct", new Product());
-        return ADD_URL;
+        return ADD_PAGE;
     }
 
-    @PostMapping("/save")
+    @PostMapping({"/save", "{pridId}/save"})
     @Transactional
     public String saveProduct(Model model,
                               @RequestParam Map<String, String> allRequestParams,
@@ -65,7 +69,7 @@ public class ProductController {
                 .filter(stringStringEntry -> stringStringEntry.getKey().contains("attr-"))
                 .collect(Collectors.toList());
         for (Map.Entry<String, String> stringEntry : collect) {
-            Integer variantId = Integer.valueOf(stringEntry.getKey().replaceFirst("attr-", ""));
+            Integer variantId = Integer.valueOf(stringEntry.getValue());
             variants.add(variantService.getById(variantId));
         }
         newProduct.setCategory(categoryService.getById(categoryId));
@@ -74,10 +78,21 @@ public class ProductController {
         return "redirect:" + MAIN_URL;
     }
 
+    @RequestMapping(EDIT_URL)
+    public String editProduct(
+            Model model,
+            @PathVariable(EDIT_URL_PV) Integer productId
+    ) {
+        Product productServiceById = productService.getById(productId);
+        model.addAttribute("newProduct", productServiceById);
+        model.addAttribute("category", productServiceById.getCategory());
+        return ADD_PAGE;
+    }
+
     @PostMapping(DELETE_URL)
     @Transactional
     public String showProducts(Model model,
-                               @PathVariable(DELETE_URL) Integer productId) {
+                               @PathVariable(DELETE_URL_PV) Integer productId) {
         productService.delete(productId);
         return "redirect:" + MAIN_URL;
     }

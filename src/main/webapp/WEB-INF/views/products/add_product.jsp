@@ -10,14 +10,15 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:include page="../parts/header.jsp"/>
-<h1>Add product to${category.name}</h1>
-
+<h1>Add product to ${category.name}</h1>
 <form:form action="save" modelAttribute="newProduct" method="post">
+    <jsp:useBean id="newProduct" type="ua.ho.godex.domain.Product"/>
     <c:forEach items="${category.attributes}" var="attribute">
         <jsp:useBean id="attribute" type="ua.ho.godex.domain.Attribute"/>
         <div class="form-group">
             <label for="${attribute.id}">${attribute.name}</label>
-            <% if (attribute.getFieldType().equals(FieldType.DROP_BOX)) {
+            <% if (attribute.getFieldType().equals(FieldType.DROP_BOX) || attribute.getFieldType().equals(FieldType.CHECK_BOX)) {
+                //todo need help
             %>
             <select class="form-control" id="${attribute.id}" name="attr-${attribute.id}">
                 <c:forEach items="${attribute.variantList}" var="variant">
@@ -40,7 +41,6 @@
     <div class="form-group">
         <label for="name">Name</label>
         <form:input type="text" class="form-control" id="name" path="name"/>
-
     </div>
     <input type="hidden" class="form-control" name="category-id" value="${category.id}"/>
     <div class="form-group">

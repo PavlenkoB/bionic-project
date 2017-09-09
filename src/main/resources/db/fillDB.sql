@@ -51,9 +51,9 @@ VALUES (1, '2017-09-07 23:05:23', NULL, 'TEstOrder', 1000, 2);
 INSERT INTO `products_orders` (`id`, `orders_id`, `products_id`) VALUES (2, 1, 1);
 INSERT INTO `products_orders` (`id`, `orders_id`, `products_id`) VALUES (3, 1, 1);
 
-INSERT INTO `products_variants` (`products_id`, `variants_id`, `attributes_id`) VALUES (1, 1, 1);
-INSERT INTO `products_variants` (`products_id`, `variants_id`, `attributes_id`) VALUES (1, 5, 2);
-INSERT INTO `products_variants` (`products_id`, `variants_id`, `attributes_id`) VALUES (1, 9, 2);
+INSERT INTO `products_variants` (`products_id`, `variants_id`) VALUES (1, 1);
+INSERT INTO `products_variants` (`products_id`, `variants_id`) VALUES (1, 5);
+INSERT INTO `products_variants` (`products_id`, `variants_id`) VALUES (1, 9);
 
 
 
