@@ -53,7 +53,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link btn btn-secondary" href="<c:url value="/categorys/"/>">
+                <a class="nav-link btn btn-secondary" href="<c:url value="/categorys/admin/"/>">
                     Категории товаров
                 </a>
             </li>

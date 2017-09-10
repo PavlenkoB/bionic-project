@@ -11,30 +11,40 @@
 <c:forEach varStatus="loop" var="category" items="${categorys}">
     <jsp:useBean id="category" type="ua.ho.godex.domain.Category"/>
     <li>
-        <div class="category-list-item">
-            <div>${category.id}</div>
-            <div><input disabled type="text" value="${category.order}"/></div>
-            <div>${category.name}</div>
-
-            <div class="category-actions">
-                <form method="post" action="/admin/categorys/${category.id}/edit">
+        <a>
+            (${category.order})
+            <input type="hidden" value="${category.order}"/>
+                ${category.name}
+            <div class="menu-item-actions">
+                <form method="post" action="${category.id}/up">
                     <button class="btn btn-secondary">
-                        <i class="fa fa-edit"></i>
+                        <i class="fa fa-2x fa-arrow-up"></i>
                     </button>
                 </form>
-                <form method="post" action="/admin/categorys/${category.id}/delete">
+                <form method="post" action="${category.id}/down">
+                    <button class="btn btn-secondary">
+                        <i class="fa fa-2x fa-arrow-down"></i>
+                    </button>
+                </form>
+                <form method="post" action="${category.id}/edit">
+                    <button class="btn btn-info">
+                        <i class="fa fa-2x fa-edit"></i>
+                    </button>
+                </form>
+                <form method="post" action="${category.id}/delete">
                     <button class="btn btn-danger">
-                        <i class="fa fa-remove"></i>
+                        <i class="fa fa-2x fa-remove"></i>
                     </button>
                 </form>
+
             </div>
-            <c:if test="${category.children.size() > 0}">
-                <ul>
-                    <c:set var="categorys" value="${category.children}" scope="request"/>
-                    <jsp:include page="category-row.jsp"/>
-                </ul>
-            </c:if>
-        </div>
+        </a>
+        <c:if test="${category.children.size() > 0}">
+            <ul>
+                <c:set var="categorys" value="${category.children}" scope="request"/>
+                <jsp:include page="category-row.jsp"/>
+            </ul>
+        </c:if>
     </li>
 </c:forEach>
 

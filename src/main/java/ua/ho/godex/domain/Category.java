@@ -21,7 +21,7 @@ public class Category implements AbstaractGenericDomainObj {
     @Column(name = "name")
     @NotBlank(message = "Обязательное поле")
     private String name;
-    @Column(name = "order")
+    @Column(name = "`order`")
     private Integer order;
 
     @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
