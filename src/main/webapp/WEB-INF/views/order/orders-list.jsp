@@ -23,7 +23,13 @@
     <c:forEach items="${orders}" var="order">
 
         <tr>
-            <td>${order.id}</td>
+            <td>${order.id}
+                <form action="${order.id}/delete">
+                    <button class="btn btn-danger">
+                        <i class="fa fa-times"></i>delete
+                    </button>
+                </form>
+            </td>
             <td>${order.localDateTimeOpen}</td>
             <td>${order.localDateTimeClosed}</td>
             <td>${order.description}</td>

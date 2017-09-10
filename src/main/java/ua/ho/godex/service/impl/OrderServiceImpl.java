@@ -8,6 +8,8 @@ import ua.ho.godex.domain.Product;
 import ua.ho.godex.service.OrderService;
 import ua.ho.godex.service.ProductService;
 
+import java.util.List;
+
 /**
  * Creator: Pavlenko Bohdan
  * Date: 02.09.2017
@@ -15,12 +17,14 @@ import ua.ho.godex.service.ProductService;
  */
 @Service
 public class OrderServiceImpl extends GenericServiceImpl<Order> implements OrderService {
+    final private OrderDao orderDao;
     final private ProductService productService;
 
     @Autowired
-    public OrderServiceImpl(OrderDao orderDao, ProductService productService) {
+    public OrderServiceImpl(OrderDao orderDao, ProductService productService1) {
         super(Order.class, orderDao);
-        this.productService = productService;
+        this.orderDao = orderDao;
+        this.productService = productService1;
     }
 
     @Override
@@ -28,5 +32,10 @@ public class OrderServiceImpl extends GenericServiceImpl<Order> implements Order
         Product newProduct = productService.getById(productId);
         order.addProduct(newProduct);
         order.setTotalAmount(order.getTotalAmount().add(newProduct.getPrice()));
+    }
+
+    @Override
+    public List<Order> getAllForUser(Integer userId) {
+        return orderDao.getAllForUser(userId);
     }
 }

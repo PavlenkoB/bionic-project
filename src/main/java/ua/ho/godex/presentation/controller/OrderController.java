@@ -19,7 +19,7 @@ import java.util.List;
 @SessionAttributes("currentOrder")
 public class OrderController {
     final static String MAIN_URL = "/orders/";
-    final static String ADMIN_URL = "admin/orders/";
+    final static String ADMIN_URL = "admin/";
 
     final static String DELETE_URL = "{orderId}/delete";
     final static String DELETE_URL_PV = "orderId";
@@ -45,6 +45,15 @@ public class OrderController {
 
     @GetMapping
     public String showOrders(Model model) {
+        //todo user orders
+        Integer userId = 1;
+        List<Order> orderList = orderService.getAllForUser(userId);
+        model.addAttribute("orders", orderList);
+        return LIST_JSP;
+    }
+
+    @GetMapping(ADMIN_URL)
+    public String showOrdersADmin(Model model) {
         List<Order> orderList = orderService.getAll();
         model.addAttribute("orders", orderList);
         return LIST_JSP;
