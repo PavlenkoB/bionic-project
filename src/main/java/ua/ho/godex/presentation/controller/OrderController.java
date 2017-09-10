@@ -21,8 +21,11 @@ public class OrderController {
     final static String MAIN_URL = "/orders/";
     final static String ADMIN_URL = "admin/";
 
-    final static String DELETE_URL = "{orderId}/delete";
+    final static String DELETE_URL = ADMIN_URL + "{orderId}/delete";
     final static String DELETE_URL_PV = "orderId";
+
+    final static String CLOSE_URL = ADMIN_URL + "{orderId}/close";
+    final static String CLOSE_URL_PV = "orderId";
 
 
     final static String BASKET_URL = "basket/";
@@ -53,10 +56,30 @@ public class OrderController {
     }
 
     @GetMapping(ADMIN_URL)
-    public String showOrdersADmin(Model model) {
+    public String showOrdersAdmin(Model model) {
         List<Order> orderList = orderService.getAll();
         model.addAttribute("orders", orderList);
         return LIST_JSP;
+    }
+
+    @GetMapping(DELETE_URL)
+    public String deleteOrdersAdmin(Model model,
+                                    @PathVariable(DELETE_URL_PV) Integer orderId,
+                                    HttpServletRequest request) {
+        orderService.delete(orderId);
+        String referrer = request.getHeader("referer");
+        return "redirect:" + referrer;
+    }
+
+    @GetMapping(CLOSE_URL)
+    public String closeOrdersAdmin(Model model,
+                                   @PathVariable(CLOSE_URL_PV) Integer orderId,
+                                   HttpServletRequest request) {
+        Order order = orderService.getById(orderId);
+        order.setLocalDateTimeClosed(LocalDateTime.now());
+        orderService.update(order);
+        String referrer = request.getHeader("referer");
+        return "redirect:" + referrer;
     }
 
     @GetMapping(BASKET_URL)
