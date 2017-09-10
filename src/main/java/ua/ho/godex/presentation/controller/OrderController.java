@@ -84,7 +84,6 @@ public class OrderController {
             @SessionAttribute("currentOrder") Order currentOrder
     ) {
         currentOrder.setLocalDateTimeOpen(LocalDateTime.now());
-
         orderService.update(currentOrder);
         currentOrder = new Order();
         model.addAttribute("currentOrder", currentOrder);

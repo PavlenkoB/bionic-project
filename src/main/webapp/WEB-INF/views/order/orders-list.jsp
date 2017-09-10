@@ -27,7 +27,7 @@
             <td>${order.localDateTimeOpen}</td>
             <td>${order.localDateTimeClosed}</td>
             <td>${order.description}</td>
-            <td>${order.sum}</td>
+            <td>${order.totalAmount}</td>
             <td>
                     ${order.user.name}
                     ${order.user.email}
