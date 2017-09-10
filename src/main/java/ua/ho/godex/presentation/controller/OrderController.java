@@ -5,9 +5,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ua.ho.godex.domain.Order;
+import ua.ho.godex.domain.Product;
 import ua.ho.godex.service.OrderService;
 
 import javax.servlet.http.HttpServletRequest;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -22,11 +26,13 @@ public class OrderController {
 
 
     final static String BASKET_URL = "basket/";
-    final static String BASKET_JSP = "/order/basket";
     final static String ADD_TO_BASKET_URL = "{productId}/addToBasket";
     final static String ADD_TO_BASKET_URL_PV = "productId";
     final static String BASKET_DEL_URL = "delFromBasket";
+    final static String BASKET_SAVE_URL = "saveBasket";
+    final static String BASKET_CLEANBASKET_URL = "cleanBasket";
 
+    final static String BASKET_JSP = "/order/basket";
     final static String LIST_JSP = "/order/orders-list";
 
 
@@ -55,11 +61,12 @@ public class OrderController {
     @PostMapping(BASKET_URL + BASKET_DEL_URL)
     public String removeProductFromBasket(Model model,
                                           @RequestParam("indexInOrder") int indexInOrder,
-                                          @SessionAttribute("currentOrder") Order currentOrder
-    ) {
+                                          @SessionAttribute("currentOrder") Order currentOrder,
+                                          HttpServletRequest request) {
+        String referrer = request.getHeader("referer");
         currentOrder.getProducts().remove(indexInOrder);
         model.addAttribute("order", currentOrder);
-        return "redirect:" + MAIN_URL + BASKET_URL;
+        return "redirect:" + referrer;
     }
 
     @RequestMapping(ADD_TO_BASKET_URL)
@@ -68,6 +75,29 @@ public class OrderController {
                               HttpServletRequest request) {
         String referrer = request.getHeader("referer");
         orderService.addProductToOrder(currentOrder, productId);
+        return "redirect:" + referrer;
+    }
+
+    @RequestMapping(BASKET_URL + BASKET_SAVE_URL)
+    public String saveBasket(
+            Model model,
+            @SessionAttribute("currentOrder") Order currentOrder
+    ) {
+        currentOrder.setLocalDateTimeOpen(LocalDateTime.now());
+
+        orderService.update(currentOrder);
+        currentOrder = new Order();
+        model.addAttribute("currentOrder", currentOrder);
+        return "redirect:" + MAIN_URL + BASKET_URL + BASKET_CLEANBASKET_URL;
+    }
+
+    @RequestMapping(BASKET_URL + BASKET_CLEANBASKET_URL)
+    public String clanBasket(
+            @SessionAttribute("currentOrder") Order currentOrder,
+            HttpServletRequest request) {
+        String referrer = request.getHeader("referer");
+        currentOrder.setTotalAmount(new BigDecimal(0));
+        currentOrder.setProducts(new ArrayList<Product>());
         return "redirect:" + referrer;
     }
 

@@ -12,6 +12,7 @@
     <title>error</title>
 </head>
 <body>
+<a href="/">Go to main page</a>
 <h1>ERROR</h1>
 <pre>
 <c:forEach items="${errorMap}" var="error">

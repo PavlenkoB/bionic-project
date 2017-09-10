@@ -41,13 +41,26 @@
                         <form method="post" action="delFromBasket">
                             <input type="hidden" value="${iterator.index}" name="indexInOrder">
                             <button class="btn btn-danger" title="Delelete product form basket">
-                                <i class="fa fa-trash"></i>
+                                <i class="fa fa-times"></i>
                             </button>
                         </form>
                     </td>
                 </tr>
             </c:forEach>
         </table>
+
+        <form method="post" action="saveBasket">
+            <button type="submit">
+                <i class="fa fa-money"></i>
+                Save order
+            </button>
+        </form>
+        <form method="post" action="cleanBasket">
+            <button type="submit">
+                <i class="fa fa-trash"></i>
+                Claen Basket
+            </button>
+        </form>
     </c:when>
     <c:otherwise>
         <h2>

@@ -5,7 +5,9 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import ua.ho.godex.domain.Category;
 import ua.ho.godex.domain.Order;
+import ua.ho.godex.domain.User;
 import ua.ho.godex.service.CategoryService;
+import ua.ho.godex.service.UserService;
 import ua.ho.godex.service.VariantService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,15 +25,21 @@ import java.util.stream.Collectors;
 public class GlobalControllerAdvice {
 
     private final CategoryService categoryService;
+    private final UserService userService;
 
     @Autowired
-    public GlobalControllerAdvice(CategoryService categoryService, VariantService variantService) {
+    public GlobalControllerAdvice(CategoryService categoryService, VariantService variantService, UserService userService) {
         this.categoryService = categoryService;
+        this.userService = userService;
     }
 
     @ModelAttribute("currentOrder")
     public Order createBasket() {
-        return new Order();
+        Order order = new Order();
+        //todo rewrite
+        User user = userService.getById(1);
+        order.setUser(user);
+        return order;
     }
 
     @ModelAttribute("categorysMenu")
