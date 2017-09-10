@@ -48,7 +48,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link btn btn-secondary " href="<c:url value="/attributes/"/>">
+                <a class="nav-link btn btn-secondary " href="<c:url value="/admin/attributes/"/>">
                     Атрибуты
                 </a>
             </li>

@@ -12,13 +12,13 @@ import ua.ho.godex.service.CategoryService;
 import java.util.List;
 
 @Controller
-@RequestMapping(AttributeController.MAIN_URL)
+@RequestMapping(AttributeController.ADMIN_URL)
 public class AttributeController {
     final static String MAIN_URL = "attributes/";
     final static String ADMIN_URL = "admin/attributes/";
-    final static String DELETE_URL = "/{attributeId}/delete";
+    final static String DELETE_URL = "{attributeId}/delete";
     final static String DELETE_URL_PV = "attributeId";
-    final static String EDIT_URL = "/{attributeId}/edit";
+    final static String EDIT_URL = ADMIN_URL + "{attributeId}/edit";
     final static String EDIT_URL_PV = "attributeId";
     final private AttributeService attributeService;
     final private CategoryService categoryService;

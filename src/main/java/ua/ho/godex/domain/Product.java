@@ -33,6 +33,7 @@ public class Product implements AbstaractGenericDomainObj {
             inverseJoinColumns = @JoinColumn(name = "variants_id")
     )
     List<Variant> variants;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "categorys_id", nullable = false)
     private Category category;

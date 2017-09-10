@@ -48,12 +48,12 @@
                     <% } %>
                 </td>
                 <td>
-                    <form method="post" action="/admin/attributes/${attribute.id}/edit">
+                    <form method="post" action="${attribute.id}/edit">
                         <button class="btn btn-secondary">
                             <i class="fa fa-edit"></i>
                         </button>
                     </form>
-                    <form method="post" action="/admin/attributes/${attribute.id}/delete">
+                    <form method="post" action="${attribute.id}/delete">
                         <button class="btn btn-danger">
                             <i class="fa fa-remove"></i>
                         </button>

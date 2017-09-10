@@ -20,20 +20,19 @@
     </tr>
     </thead>
     <tbody>
-    <c:forEach items="${variants}" var="attribute">
+    <c:forEach items="${attribute.variantList}" var="variant">
         <jsp:useBean id="variant" type="ua.ho.godex.domain.Variant"/>
         <tr>
-            <th scope="row">${attribute.id}</th>
-            <td>${attribute.attribute.name}</td>
-            <td>${attribute.name}</td>
-            <td>${attribute.description}</td>
+            <th scope="row">${variant.id}</th>
+            <td>${variant.name}</td>
+            <td>${variant.description}</td>
             <td>
-                <form method="post" action="/admin/variants/${attribute.id}/edit">
+                <form method="post" action="${variant.id}/edit">
                     <button class="btn btn-secondary">
                         <i class="fa fa-edit"></i>
                     </button>
                 </form>
-                <form method="post" action="/admin/variants/${attribute.id}/delete">
+                <form method="post" action="${variant.id}/delete">
                     <button class="btn btn-danger">
                         <i class="fa fa-remove"></i>
                     </button>
@@ -47,12 +46,13 @@
 <form method="post" action="add">
     <div class="form-group">
         <label for="name">Name</label>
-        <input type="text" class="form-control" id="name" name="name"/>
+        <input type="text" class="form-control" id="name" name="name" value="${newVariant.name}"/>
     </div>
     <div class="form-group">
         <label for="description">Description</label>
-        <input type="text" class="form-control" id="description" name="description"/>
+        <input type="text" class="form-control" id="description" name="description" value="${newVariant.description}"/>
     </div>
-    <button type="submit" class="btn btn-primary">Add</button>
+    <input type="hidden" class="form-control" name="varId" value="${newVariant.id}"/>
+    <button type="submit" class="btn btn-primary">Save</button>
 </form>
 <jsp:include page="../parts/footer.jsp"/>

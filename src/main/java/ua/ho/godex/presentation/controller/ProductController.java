@@ -40,7 +40,6 @@ public class ProductController {
     final static String VIEW_PAGE = "/products/info_page";
 
 
-
     final private ProductService productService;
     final private CategoryService categoryService;
     final private VariantService variantService;
