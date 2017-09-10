@@ -9,12 +9,10 @@ import ua.ho.godex.domain.User;
 import ua.ho.godex.service.CategoryService;
 import ua.ho.godex.service.UserService;
 import ua.ho.godex.service.VariantService;
+import ua.ho.godex.util.MenuUtils;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 /**
  * Creator: Pavlenko Bohdan
@@ -45,22 +43,9 @@ public class GlobalControllerAdvice {
     @ModelAttribute("categorysMenu")
     public List<Category> categorysMenu(HttpServletRequest request) {
         List<Category> categoryList = categoryService.getAll();
-        //todo use ordering
-        Map<Integer, Category> integerCategoryHashMap = categoryList.stream().collect(Collectors.toMap(Category::getId, Category::getSelf));
-        for (Category category : categoryList) {
-            Integer parentCatId = category.getParentCatId();
-            if (parentCatId != null) {
-                integerCategoryHashMap.get(parentCatId).getChildren().add(category);
-            }
-        }
-        List<Category> categories = new ArrayList<>();
-        for (Category category : categoryList) {
-            Integer parentCatId = category.getParentCatId();
-            if (parentCatId == null) {
-                categories.add(category);
-            }
-        }
+        List<Category> categories = MenuUtils.createHierarchic(categoryList);
         request.getSession().setAttribute("categorysMenu", categories);
         return categories;
+        //todo meybi something wrong
     }
 }
