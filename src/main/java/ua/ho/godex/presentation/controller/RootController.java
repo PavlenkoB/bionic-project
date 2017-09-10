@@ -8,13 +8,14 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
+import ua.ho.godex.domain.Product;
+import ua.ho.godex.dto.ProductSort;
+import ua.ho.godex.service.CategoryService;
 import ua.ho.godex.service.ProductService;
 
-import javax.servlet.http.HttpServletRequest;
+import java.math.BigDecimal;
+import java.util.List;
 
 /**
  * Creator: Pavlenko Bohdan
@@ -25,17 +26,36 @@ import javax.servlet.http.HttpServletRequest;
 @SessionAttributes({"categorysMenu", "currentOrder"})
 public class RootController {
     final static String MAIN_URL = "/";
+    final static String SEARCH_URL = "search";
     ProductService productService;
 
+    private final int PAGE_SIZE = 5;
+    private CategoryService categoryService;
+
     @Autowired
-    public RootController(ProductService productService) {
+    public RootController(ProductService productService, CategoryService categoryService) {
         this.productService = productService;
+        this.categoryService = categoryService;
     }
 
     @GetMapping(MAIN_URL)
-    public String showMainPage(Model model,
-                               HttpServletRequest request) {
-        model.addAttribute("products", productService.getAll());
+    public String searchMainPage(Model model,
+                                 @RequestParam(value = "name", required = false) String name,
+                                 @RequestParam(value = "minPrice", required = false) BigDecimal min,
+                                 @RequestParam(value = "maxPrice", required = false) BigDecimal max,
+                                 @RequestParam(value = "sort", required = false) ProductSort sort,
+                                 @RequestParam(value = "page", defaultValue = "1") int page,
+                                 @RequestParam(value = "categoryId", required = false) Integer categoryId
+    ) {
+        int offset = (page - 1) * PAGE_SIZE;
+        int limit = PAGE_SIZE;
+        if (sort == null) sort = ProductSort.NAME_ASC;
+        List<Product> products = productService.getAll(name, min, max, sort, offset, limit, categoryId);
+        model.addAttribute("products", products);
+        int count = productService.getCount(name, min, max, categoryId);
+        model.addAttribute("productCount", count);
+        model.addAttribute("categorys", categoryService.getAll());
+        model.addAttribute("pageSize", PAGE_SIZE);
         return "index";
     }
 
