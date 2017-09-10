@@ -13,7 +13,6 @@
     <li>
         <a>
             (${category.order})
-            <input type="hidden" value="${category.order}"/>
                 ${category.name}
             <div class="menu-item-actions">
                 <form method="post" action="${category.id}/up">

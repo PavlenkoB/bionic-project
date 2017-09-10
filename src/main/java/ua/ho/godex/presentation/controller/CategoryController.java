@@ -77,8 +77,9 @@ public class CategoryController {
         Category category = categoryService.getById(categoryId);
         if (category.getOrder() > 0) {
             category.setOrder(category.getOrder() - 1);
+            categoryService.update(category);
         }
-        categoryService.update(category);
+
         return "redirect:" + referrer;
     }
 
