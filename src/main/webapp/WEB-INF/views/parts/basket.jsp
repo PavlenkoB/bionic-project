@@ -1,3 +1,4 @@
+<jsp:useBean id="currentOrder" scope="request" type="ua.ho.godex.domain.Order"/>
 <%--
   Created by IntelliJ IDEA.
   User: godex
@@ -11,6 +12,6 @@
     <title>Basket</title>
 </head>
 <body>
-basket {${currentOrder.products.size()})
+basket (${currentOrder.products.size()}=${currentOrder.totalAmount})
 </body>
 </html>

@@ -8,17 +8,51 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:include page="../parts/header.jsp"/>
-<table class="table table-striped">
-    <thead>
-    <tr>
-        <th>#</th>
-        <th>Date-open</th>
-        <th>Date-close</th>
-        <th>Descripiton</th>
-        <th>Sum</th>
-        <th>User data</th>
-    </tr>
-    </thead>
-    ${}
-</table>
+<c:choose>
+    <c:when test="${order.products.size()>0}">
+
+
+        <p>
+            Sum:${order.totalAmount}
+        </p>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Prod name</th>
+                <th>Price</th>
+                <th>action</th>
+            </tr>
+            </thead>
+            <c:forEach var="product" items="${order.products}" varStatus="iterator">
+                <tr>
+                    <td>
+                            ${iterator.index}
+                    </td>
+                    <td>
+                        <a href="/products/${product.id}/">
+                                ${product.name}
+                        </a>
+                    </td>
+                    <td>
+                            ${product.price}
+                    </td>
+                    <td>
+                        <form method="post" action="delFromBasket">
+                            <input type="hidden" value="${iterator.index}" name="indexInOrder">
+                            <button class="btn btn-danger" title="Delelete product form basket">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            </c:forEach>
+        </table>
+    </c:when>
+    <c:otherwise>
+        <h2>
+            Basket is empty
+        </h2>
+    </c:otherwise>
+</c:choose>
 <jsp:include page="../parts/footer.jsp"/>

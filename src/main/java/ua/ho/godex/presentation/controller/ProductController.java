@@ -6,7 +6,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ua.ho.godex.domain.Category;
-import ua.ho.godex.domain.Order;
 import ua.ho.godex.domain.Product;
 import ua.ho.godex.domain.Variant;
 import ua.ho.godex.service.CategoryService;
@@ -14,7 +13,6 @@ import ua.ho.godex.service.OrderService;
 import ua.ho.godex.service.ProductService;
 import ua.ho.godex.service.VariantService;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -41,8 +39,6 @@ public class ProductController {
     final static String ADD_PAGE = "/products/add_product";
     final static String VIEW_PAGE = "/products/info_page";
 
-    final static String ADD_TO_BASKET_URL = "{productId}/addToBasket";
-    final static String ADD_TO_BASKET_URL_PV = "productId";
 
 
     final private ProductService productService;
@@ -71,15 +67,6 @@ public class ProductController {
                               @PathVariable(value = VIEW_URL_PV) Integer productId) {
         model.addAttribute("product", productService.getById(productId));
         return VIEW_PAGE;
-    }
-
-    @PostMapping(ADD_URL)
-    public String addProduct(Model model,
-                             @RequestParam(value = ADD_URL_RP) Integer categoryId) {
-        Category category = categoryService.getById(categoryId);
-        model.addAttribute("category", category);
-        model.addAttribute("newProduct", new Product());
-        return ADD_PAGE;
     }
 
     @PostMapping(SAVE_URL)
@@ -121,11 +108,13 @@ public class ProductController {
         return "redirect:" + MAIN_URL;
     }
 
-    @RequestMapping(ADD_TO_BASKET_URL)
-    public String addToBasket(@PathVariable(ADD_TO_BASKET_URL_PV) Integer productId,
-                              @SessionAttribute("currentOrder") Order currentOrder, HttpServletRequest request) {
-        String referrer = request.getHeader("referer");
-        orderService.addProductToOrder(currentOrder, productId);
-        return "redirect:" + referrer;
+
+    @PostMapping(ADD_URL)
+    public String addProduct(Model model,
+                             @RequestParam(value = ADD_URL_RP) Integer categoryId) {
+        Category category = categoryService.getById(categoryId);
+        model.addAttribute("category", category);
+        model.addAttribute("newProduct", new Product());
+        return ADD_PAGE;
     }
 }

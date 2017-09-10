@@ -18,7 +18,7 @@
     <a class="btn btn-info" href="/categorys/${product.category.id}">
         <i class="fa fa-chevron-left"></i> ${product.category.name}
     </a>
-    <a class="btn btn-primary" href="/products/${product.id}/addToBasket">
+    <a class="btn btn-primary" href="/orders/${product.id}/addToBasket">
         <i class="fa  fa-shopping-cart "></i>add to basket
     </a>
     <p>

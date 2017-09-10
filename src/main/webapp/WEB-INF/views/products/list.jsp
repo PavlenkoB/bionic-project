@@ -62,7 +62,7 @@
                 </c:forEach>
             </td>
             <td>
-                <a class="btn btn-primary" href="/products/${product.id}/addToBasket">
+                <a class="btn btn-primary" href="/orders/${product.id}/addToBasket">
                     <i class="fa  fa-shopping-cart "></i>add to basket
                 </a>
                 <form method="post" action="<c:url value="/admin/products/${product.id}/edit"/>">
