@@ -18,11 +18,11 @@
     </div>
     <div class="form-group">
         <label for="order">order</label>
-        <form:input type="text" class="form-control" id="order" path="order"/>
+        <form:input type="number" class="form-control" id="order" path="order"/>
     </div>
     <form:input type="hidden" class="form-control" name="id" path="id" value="${editedCategory.id}"/>
     <select name="parentCategoryId">
-        <option value=""></option>
+        <option value="0">**Top level**</option>
         <c:forEach varStatus="loop" var="category" items="${categorys}">
             <jsp:useBean id="category" type="ua.ho.godex.domain.Category"/>
             <option <%= (category.getId().toString().equals(request.getParameter("categoryId"))) ? "selected" : "" %>

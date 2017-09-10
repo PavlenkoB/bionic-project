@@ -9,6 +9,12 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:include page="../parts/header.jsp"/>
+
+<form method="post" action="add">
+    <button class="btn btn-info">
+        <i class="fa fa-plus"></i>Add
+    </button>
+</form>
 <div class="category-list">
     <ul class="tree">
         <jsp:include page="category-row.jsp"/>

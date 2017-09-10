@@ -24,8 +24,9 @@ public class CategoryController {
     final static String EDIT_URL = ADMIN_URL + "{categoryId}/edit";
     final static String EDIT_URL_PV = "categoryId";
 
-    final static String ADD_URL = ADMIN_URL + "{categoryId}/add";
-    final static String ADD_URL_PV = "categoryId";
+    final static String ADD_CATEGORY_URL = ADMIN_URL + "add";
+    final static String ADD_SUB_URL = ADMIN_URL + "{categoryId}/add";
+    final static String ADD_SUB_URL_PV = "categoryId";
     final static String ADD_PAGE = "/category/add_page";
 
     final static String UP_URL = ADMIN_URL + "{categoryId}/up";
@@ -38,6 +39,7 @@ public class CategoryController {
     final static String CATEGORY_LIST_PV = "categoryId";
     final static String CATEGORY_PAGE = "/products/list";
 
+    final static String SAVE_NEW_CATEGORY = ADMIN_URL + "/save";
     final static String SAVE_URL = ADMIN_URL + "{categoryId}/save";
     final static String SAVE_URL_PV = "categoryId";
 
@@ -66,7 +68,6 @@ public class CategoryController {
             category.setOrder(category.getOrder() - 1);
             categoryService.update(category);
         }
-
         return "redirect:" + referrer;
     }
 
@@ -89,6 +90,15 @@ public class CategoryController {
         return "redirect:" + referrer;
     }
 
+    @PostMapping(ADD_CATEGORY_URL)
+    String editCategory(Model model) {
+        Category category = new Category();
+        category.setOrder(0);
+        model.addAttribute("editedCategory", category);
+        model.addAttribute("categorys", categoryService.getAll());
+        return ADD_PAGE;
+    }
+
     @PostMapping(EDIT_URL)
     String editCategory(Model model, @PathVariable(EDIT_URL_PV) Integer categoryId) {
         Category category = categoryService.getById(categoryId);
@@ -97,14 +107,16 @@ public class CategoryController {
         return ADD_PAGE;
     }
 
-    @PostMapping(SAVE_URL)
+    @PostMapping({SAVE_URL, SAVE_NEW_CATEGORY})
     public String saveCategory(Model model,
                                @ModelAttribute("editedCategory") Category newCategory,
-                               @PathVariable(SAVE_URL_PV) Integer categoryId,
                                @ModelAttribute("parentCategoryId") Integer parentCatId) {
+        if (parentCatId == 0) {
+            parentCatId = null;
+        }
         newCategory.setParentCatId(parentCatId);
         categoryService.update(newCategory);
-        return "redirect:" + MAIN_URL + ADMIN_URL;
+        return "redirect:/" + MAIN_URL + ADMIN_URL;
     }
 
     @GetMapping(CATEGORY_LIST)
