@@ -1,0 +1,17 @@
+{
+  "name": "sup_store",
+  "scripts": {
+    "build": "gulp build"
+  },
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-less": "*",
+    "gulp-minify-css": "*",
+    "gulp-livereload": "*"
+  },
+  "private": true,
+  "devDependencies": {
+    "gulp-clean-css": "^3.8.0",
+    "gulp-sourcemaps": "^2.6.1"
+  }
+}
