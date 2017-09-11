@@ -37,6 +37,11 @@ public class Variant implements AbstaractGenericDomainObj {
     public Variant() {
     }
 
+    public Variant(String name, Attribute attribute) {
+        this.name = name;
+        this.attribute = attribute;
+    }
+
     @Override
     public String toString() {
         return "Variant{" +

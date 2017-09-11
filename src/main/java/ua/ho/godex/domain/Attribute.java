@@ -5,6 +5,7 @@ import lombok.EqualsAndHashCode;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -32,6 +33,7 @@ public class Attribute implements AbstaractGenericDomainObj {
     private Category category;
 
     public Attribute() {
+        this.variantList = new ArrayList<>();
     }
 
     public Attribute(String name) {

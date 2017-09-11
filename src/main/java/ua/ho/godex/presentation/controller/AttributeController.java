@@ -6,8 +6,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ua.ho.godex.domain.Attribute;
 import ua.ho.godex.domain.FieldType;
+import ua.ho.godex.domain.Variant;
 import ua.ho.godex.service.AttributeService;
 import ua.ho.godex.service.CategoryService;
+import ua.ho.godex.service.VariantService;
 
 import java.util.List;
 
@@ -16,17 +18,20 @@ import java.util.List;
 public class AttributeController {
     final static String MAIN_URL = "attributes/";
     final static String ADMIN_URL = "admin/attributes/";
+    final static String ADD_URL = "add";
     final static String DELETE_URL = "{attributeId}/delete";
     final static String DELETE_URL_PV = "attributeId";
     final static String EDIT_URL = ADMIN_URL + "{attributeId}/edit";
     final static String EDIT_URL_PV = "attributeId";
     final private AttributeService attributeService;
     final private CategoryService categoryService;
+    final private VariantService variantService;
 
     @Autowired
-    public AttributeController(AttributeService attributeService, CategoryService categoryService) {
+    public AttributeController(AttributeService attributeService, CategoryService categoryService, VariantService variantService) {
         this.attributeService = attributeService;
         this.categoryService = categoryService;
+        this.variantService = variantService;
     }
 
     @GetMapping
@@ -41,14 +46,22 @@ public class AttributeController {
         return "/attribute/attribute-list";
     }
 
-    @PostMapping
+    @PostMapping(ADD_URL)
     String addAttribute(Model model,
                         @ModelAttribute("newAttribute") Attribute newAttribute,
                         @RequestParam(value = "categoryId", required = true) Integer categoryId) {
+
         //todo cheack input date
         newAttribute.setCategory(categoryService.getById(categoryId));
-        attributeService.create(newAttribute);
-        return "redirect:" + AttributeController.MAIN_URL;
+        List<Variant> variantList = newAttribute.getVariantList();
+        if (variantList.isEmpty() && newAttribute.getFieldType().equals(FieldType.CHECK_BOX)) {
+            variantList.add(new Variant("0", newAttribute));
+            variantList.add(new Variant("1", newAttribute));
+            newAttribute.setVariantList(variantList);
+        }
+        attributeService.update(newAttribute);
+        newAttribute.getVariantList().forEach(variantService::update);
+        return "redirect:/" + AttributeController.ADMIN_URL;
     }
 
     @PostMapping(EDIT_URL)
@@ -56,12 +69,12 @@ public class AttributeController {
                          @PathVariable(value = EDIT_URL_PV) Integer attributeId) {
         Attribute attribute = attributeService.getById(attributeId);
         model.addAttribute("newAttribute", attribute);
-        return "redirect:" + AttributeController.MAIN_URL;
+        return "redirect:/" + AttributeController.ADMIN_URL;
     }
 
     @PostMapping(DELETE_URL)
     String deleteAttribute(Model model, @PathVariable(DELETE_URL_PV) Integer attributeId) {
         attributeService.delete(attributeId);
-        return "redirect:" + AttributeController.MAIN_URL;
+        return "redirect:/" + AttributeController.ADMIN_URL;
     }
 }

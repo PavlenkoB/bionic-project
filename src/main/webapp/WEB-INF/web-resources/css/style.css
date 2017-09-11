@@ -1,36 +1,29 @@
 .category-list .menu-item-actions {
   display: inline-flex
 }
-
 .category-list body {
     margin: 50px;
     font-family: Arial, sans-serif
 }
-
 .category-list * {
     margin: 0;
     padding: 0
 }
-
 .category-list p {
     padding-bottom: 50px
 }
-
 .category-list .content {
     width: 500px;
     margin: auto
 }
-
 .category-list .tree ul {
     margin-left: 20px
 }
-
 .category-list .tree li {
     list-style-type: none;
     margin: 10px;
     position: relative
 }
-
 .category-list .tree li::before {
     content: "";
     position: absolute;
@@ -42,7 +35,6 @@
     width: 20px;
     height: 15px
 }
-
 .category-list .tree li::after {
     position: absolute;
     content: "";
@@ -54,30 +46,24 @@
     width: 20px;
     height: 100%
 }
-
 .category-list .tree li:last-child::after {
     display: none
 }
-
 .category-list .tree li:last-child:before {
     border-radius: 0 0 0 5px
 }
-
 .category-list ul.tree > li:first-child::before {
     display: none
 }
-
 .category-list ul.tree > li:first-child::after {
     border-radius: 5px 0 0 0
 }
-
 .category-list .tree li a {
     display: inline-flex;
     border: 1px #ccc solid;
     border-radius: 5px;
     padding: 2px 5px
 }
-
 .category-list .tree li a:focus,
 .category-list .tree li a:focus + ul li a,
 .category-list .tree li a:hover,
@@ -86,7 +72,6 @@
     color: #000;
     border: 1px solid #000
 }
-
 .category-list .tree li a:focus + ul li::after,
 .category-list .tree li a:focus + ul li::before .tree li a:hover + ul::before,
 .category-list .tree li a:focus + ul ul::before,

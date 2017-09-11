@@ -64,7 +64,7 @@
         </tbody>
     </table>
     <%--@elvariable id="newAttribute" type="ua.ho.godex.domain.Attribute"--%>
-    <form:form modelAttribute="newAttribute" method="post">
+    <form:form modelAttribute="newAttribute" method="post" action="add">
         <div class="form-group">
             <label for="name">Name</label>
             <form:input type="text" class="form-control" id="name" path="name"/>
