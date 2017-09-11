@@ -11,9 +11,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:include page="../parts/header.jsp"/>
 <%--@elvariable id="category" type="ua.ho.godex.domain.Category"--%>
-<form method="post" class="d-inline-block" action="<c:url value="/admin/products/add"/>">
+<form method="post" class="d-inline-block" action="<c:url value="/admin/products/${category.id}/add" />">
     <input type="hidden" name="categotyId" value="${category.id}">
-    <button type="submit" class="btn btn-primary">Add prod</button>
+    <button type="submit" class="btn btn-primary">
+        <i class="fa fa-plus"></i>Add
+    </button>
 </form>
 <script>
     update_tittle('${category.name}');
@@ -70,7 +72,7 @@
                         <i class="fa fa-edit"></i>
                     </button>
                 </form>
-                <form method="post" action="${product.id}/delete">
+                <form method="post" action="/admin/products/${product.id}/delete">
                     <button class="btn btn-danger">
                         <i class="fa fa-remove"></i>
                     </button>

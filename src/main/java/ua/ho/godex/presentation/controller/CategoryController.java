@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ua.ho.godex.domain.Category;
 import ua.ho.godex.service.CategoryService;
+import ua.ho.godex.service.ProductService;
 import ua.ho.godex.util.MenuUtils;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +16,7 @@ import java.util.List;
 @RequestMapping(CategoryController.MAIN_URL)
 @SessionAttributes("currentOrder")
 public class CategoryController {
-    final static String MAIN_URL = "categorys/";
+    final static String MAIN_URL = "/categorys/";
     final static String ADMIN_URL = "admin/";
 
     final static String DELETE_URL = ADMIN_URL + "{categoryId}/delete";
@@ -44,11 +45,16 @@ public class CategoryController {
     final static String SAVE_URL_PV = "categoryId";
 
 
+    final static String EDIT_PRODUCT_URL = "{categotyId}/{productId}/edit";
+
+
     final private CategoryService categoryService;
+    final private ProductService productService;
 
     @Autowired
-    public CategoryController(CategoryService categoryService) {
+    public CategoryController(CategoryService categoryService, ProductService productService) {
         this.categoryService = categoryService;
+        this.productService = productService;
     }
 
     @GetMapping(ADMIN_URL)

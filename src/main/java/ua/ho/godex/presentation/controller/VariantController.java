@@ -17,7 +17,6 @@ public class VariantController {
     final static String MAIN_URL = "/variants/";
     final static String ADMIN_URL = "/admin/variants/";
 
-
     final static String showVariantsForAttribute_URL = "{attributeId}/";
     final static String showVariantsForAttribute_URL_PV = "attributeId";
     final static String showVariantsForAttribute_PAGE = "/variant/variant-list";
