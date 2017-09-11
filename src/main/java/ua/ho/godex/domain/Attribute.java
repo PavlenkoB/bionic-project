@@ -25,8 +25,9 @@ public class Attribute implements AbstaractGenericDomainObj {
     @Enumerated(value = EnumType.STRING)
     private FieldType fieldType;
 
-    @OneToMany(mappedBy = "attribute", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "attribute", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private List<Variant> variantList;
+
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "categorys_id", nullable = false)
